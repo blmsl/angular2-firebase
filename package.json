@@ -2,6 +2,9 @@
   "name": "poehaly-angular-firebase",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "^6.9.4"
+  },
   "scripts": {
     "postinstall": "npm install --g @angular/cli && ng build --aot -prod",
     "ng": "ng",

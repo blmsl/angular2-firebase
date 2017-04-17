@@ -7,11 +7,9 @@ import { TourComponent } from "./tour/tour.component"
 
 const appRoutes: Routes = [
   { path: 'login', component:  LoginComponent },
-  { path: 'tour-listing', component:  TourListingComponent, children:[
-    { path: 'tour', component:  TourComponent },
-  ]
-  },
-  { path: '', component: DashboardComponent, pathMatch : 'full', data: { title: 'Dashboard' } },
+  { path: 'tour-listing', component:  TourListingComponent},
+  { path: 'tour', component:  TourComponent },
+  { path: '', component: TourListingComponent, pathMatch : 'full', data: { title: 'Dashboard' } },
   { path: '**', component: LoginComponent}
 ];
 

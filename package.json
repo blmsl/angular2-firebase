@@ -9,7 +9,7 @@
   "scripts": {
     "heroku-prebuild": "npm install -g http-server",
     "heroku-postbuild": "ng build --prod",
-    "start": "ng serve",
+    "start": "http-server dist/",
     "ng": "ng",
     "build": "ng build",
     "test": "ng test",

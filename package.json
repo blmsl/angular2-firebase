@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "npm install --save @angular/cli && ng build --aot -prod",
+    "postinstall": "npm install --g @angular/cli && ng build --aot -prod",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

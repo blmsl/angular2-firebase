@@ -1,10 +1,10 @@
-import { PoehalyAngularFirebasePage } from './app.po';
+import { PoehalyAngular2FirebasePage } from './app.po';
 
-describe('poehaly-angular-firebase App', () => {
-  let page: PoehalyAngularFirebasePage;
+describe('poehaly-angular2-firebase App', () => {
+  let page: PoehalyAngular2FirebasePage;
 
   beforeEach(() => {
-    page = new PoehalyAngularFirebasePage();
+    page = new PoehalyAngular2FirebasePage();
   });
 
   it('should display message saying app works', () => {

@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class PoehalyAngularFirebasePage {
+export class PoehalyAngular2FirebasePage {
   navigateTo() {
     return browser.get('/');
   }

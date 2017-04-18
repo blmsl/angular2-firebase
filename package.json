@@ -7,7 +7,7 @@
     "npm": "^3.10.9"
   },
   "scripts": {
-    "heroku-prebuild": "npm install -g npm install promise-polyfill --save-exact http-server",
+    "heroku-prebuild": "npm install -g && npm install promise-polyfill --save-exact http-server",
     "heroku-postbuild": "ng build --prod --aot",
     "start": "http-server dist/",
     "ng": "ng",

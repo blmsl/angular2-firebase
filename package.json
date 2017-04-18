@@ -8,7 +8,7 @@
   },
   "scripts": {
     "heroku-prebuild": "npm install -g http-server",
-    "heroku-postbuild": "ng build --prod",
+    "heroku-postbuild": "ng build --prod --aot",
     "start": "http-server dist/",
     "ng": "ng",
     "build": "ng build",

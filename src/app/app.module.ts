@@ -6,22 +6,23 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { LoginComponent } from "./authorization/login/login.component";
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { TourListingComponent } from './tour-listing/tour-listing.component';
-import { TourComponent } from './tour/tour.component';
+import { TourListingComponent } from './user-components/tour-listing/tour-listing.component';
+import { TourComponent } from './user-components/tour/tour.component';
 import { SharedModule } from './shared/shared.module'
 import { AuthServiceService } from './shared/services/auth-service.service'
 import { AngularFireModule } from "angularfire2";
 import { Constants } from "./shared/core/constants";
-import { RegistrationComponent } from './authorization/registration/registration.component'
+import { RegistrationComponent } from './authorization/registration/registration.component';
+import { AdminPanelModule } from "./admin-panel/admin-panel.module";
+import { MainComponentComponent } from './user-components/main-component/main-component.component'
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
     TourListingComponent,
     TourComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    MainComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -30,8 +31,9 @@ import { RegistrationComponent } from './authorization/registration/registration
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(Constants.fireBaseConfig),
+    AdminPanelModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(Constants.fireBaseConfig)
   ],
   providers: [
     AuthServiceService

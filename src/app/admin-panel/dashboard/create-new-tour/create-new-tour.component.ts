@@ -1,17 +1,37 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ToursService} from "../../../shared/services/tours.service";
 declare let $:any;
+
 @Component({
   selector: 'app-create-new-tour',
   templateUrl: './create-new-tour.component.html',
   styleUrls: ['./create-new-tour.component.scss']
 })
 export class CreateNewTourComponent implements OnInit,AfterViewInit {
-
-  constructor() { }
+  createTourForm: FormGroup;
+  constructor(public fb:FormBuilder,
+              public toursService:ToursService) { }
 
   ngOnInit() {
+    this.createTourForm = this.fb.group({
+      country:['',Validators.required],
+      price:['',Validators.required],
+      hotelName:['',Validators.required],
+      description:['',Validators.required],
+      mainImage:['',Validators.required],
+      imageGalery:['',Validators.required],
+      endDate:['',Validators.required]
+
+    })
+  }
+
+  createTour() {
+    console.log('this.createTourForm.value',this.createTourForm.value);
+    this.toursService.tours().push(this.createTourForm.value)
   }
   ngAfterViewInit() {
+    console.log("createTourForm",this.createTourForm.value);
     $('.datepicker').pickadate({
       selectMonths: true,//Creates a dropdown to control month
       selectYears: 15,//Creates a dropdown of 15 years to control year
@@ -27,11 +47,11 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       weekdaysFull: [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
       weekdaysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
 //Materialize modified
-      weekdaysLetter: [ 'S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+      weekdaysLetter: [ 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],
 //Today and clear
-      today: 'Today',
-      clear: 'Clear',
-      close: 'Close',
+      today: 'Cегодня',
+      clear: 'Очистить',
+      close: 'Закрыть',
 //The format to show on the `input` element
       format: 'dd/mm/yyyy'
     });

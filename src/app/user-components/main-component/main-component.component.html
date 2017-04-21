@@ -1,14 +1,14 @@
 <body>
 <nav class="red lighten-1" role="navigation">
-  <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Поехали</a>
+  <div class="nav-wrapper container">
+    <img id="logo-container" src="./assets/img/logo.png" class="brand-logo max-w-120px">
     <ul class="right hide-on-med-and-down">
-      <li><a href="#">Navbar Link</a></li>
+      <li><a [routerLink]="['../dashboard']">Админ панель</a></li>
     </ul>
-
     <ul id="nav-mobile" class="side-nav">
-      <li><a href="#">Navbar Link</a></li>
+      <li><a [routerLink]="['../dashboard']">Админ панель</a></li>
     </ul>
-    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    <a data-activates="nav-mobile" class="button-collapse pointer"><i class="material-icons">menu</i></a>
   </div>
 </nav>
 <div class="container">

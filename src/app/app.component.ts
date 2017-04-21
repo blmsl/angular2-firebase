@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { initializeApp, database } from 'firebase'
 import { Constants } from "./shared/core/constants"
 import {AngularFire, FirebaseListObservable} from "angularfire2";
-
+declare let $:any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,13 +15,6 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit() {
-
-
-    // initializeApp(Constants.fireBaseConfig);
-    // let root = database().ref('message/2');
-    // root.on('value', function (snap) {
-    //   console.log('snap',snap.val());
-    // })
   }
 
 

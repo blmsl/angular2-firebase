@@ -48,39 +48,36 @@
   <!--<div class="section"></div>-->
 <!--</div>-->
 <div class="row">
-  <div class="col s12 m4">
+  <div class="col s12 m6" *ngFor="let tour of toursList">
     <div class="card">
       <div class="card-image">
         <img src="https://ejourney.ru/files/img/2013/01/samye_dorogie_oteli_turcii.jpg">
-        <span class="card-title">Card Title</span>
+        <!--<span class="card-title">Card Title</span>-->
         <a class="btn-floating halfway-fab waves-effect waves-light red" [routerLink]="['../tour']"><i class="material-icons">add</i></a>
       </div>
       <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col s12 m4">
-    <div class="card">
-      <div class="card-image">
-        <img src="https://ejourney.ru/files/img/2013/01/samye_dorogie_oteli_turcii.jpg">
-        <span class="card-title">Card Title</span>
-        <a class="btn-floating halfway-fab waves-effect waves-light red" [routerLink]="['../tour']"><i class="material-icons">add</i></a>
-      </div>
-      <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col s12 m4">
-    <div class="card">
-      <div class="card-image">
-        <img src="https://ejourney.ru/files/img/2013/01/samye_dorogie_oteli_turcii.jpg">
-        <span class="card-title">Card Title</span>
-        <a class="btn-floating halfway-fab waves-effect waves-light red" [routerLink]="['../tour']"><i class="material-icons">add</i></a>
-      </div>
-      <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        <div class="chip">
+          <img src="./assets/img/plane.png" alt="country">
+          {{tour.country}}
+        </div>
+        <div class="chip">
+          <img src="./assets/img/money.png" alt="country">
+          {{tour.price}}
+        </div>
+        <div>
+          <span>
+            <img src="./assets/img/star.png" alt="country">
+            <img src="./assets/img/star.png" alt="country">
+            <img src="./assets/img/star.png" alt="country">
+            <img src="./assets/img/star.png" alt="country">
+            <img src="./assets/img/star.png" alt="country">
+          </span>
+        </div>
+        <h5>{{tour.hotelName}}</h5>
+        <!--<div class="card-panel teal">-->
+          <!--<span class="white-text">3000 UAH</span>-->
+        <!--</div>-->
+        <p>{{tour.shortDescription}}</p>
       </div>
     </div>
   </div>

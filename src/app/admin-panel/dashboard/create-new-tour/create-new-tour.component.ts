@@ -18,10 +18,11 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       country:['',Validators.required],
       price:['',Validators.required],
       hotelName:['',Validators.required],
-      description:['',Validators.required],
+      detailDescription:['',Validators.required],
       mainImage:['',Validators.required],
       imageGalery:['',Validators.required],
-      endDate:['',Validators.required]
+      endDate:['',Validators.required],
+      shortDescription: ['',Validators.required]
 
     })
   }

@@ -15,7 +15,8 @@ import { Constants } from "./shared/core/constants";
 import { RegistrationComponent } from './authorization/registration/registration.component';
 import { AdminPanelModule } from "./admin-panel/admin-panel.module";
 import { MainComponentComponent } from './user-components/main-component/main-component.component'
-import {ToursService} from "./shared/services/tours.service";
+import { ToursService } from "./shared/services/tours.service";
+
 @NgModule({
   declarations: [
     AppComponent,

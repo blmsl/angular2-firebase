@@ -12,5 +12,9 @@ export class ToursService {
     return this.af.database.list('tours')
   }
 
+  saveFile() {
+    return firebase.storage()
+  }
+
 
 }

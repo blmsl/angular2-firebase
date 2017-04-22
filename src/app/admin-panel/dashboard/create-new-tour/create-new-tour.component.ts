@@ -10,6 +10,7 @@ declare let $:any;
 })
 export class CreateNewTourComponent implements OnInit,AfterViewInit {
   createTourForm: FormGroup;
+  mainPhotoFile;
   constructor(public fb:FormBuilder,
               public toursService:ToursService) { }
 
@@ -25,6 +26,16 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       shortDescription: ['',Validators.required]
 
     })
+  }
+  onChange(event) {
+    this.mainPhotoFile = event.srcElement.files;
+    console.log('this.mainPhotoFile',this.mainPhotoFile);
+
+  }
+
+  saveFile(){
+    this.toursService.saveFile().ref('firstFile').child(this.mainPhotoFile[0].name)
+
   }
 
   createTour() {

@@ -1,5 +1,5 @@
 <div class="row">
-  <form class="col s12" [formGroup]="createTourForm"  novalidate>
+  <form class="col s12" enctype="multipart/form-data" [formGroup]="createTourForm"  method="post" novalidate>
     <div class="row">
       <div class="input-field col s6">
         <input type="text" formControlName="country" class="validate">
@@ -32,7 +32,7 @@
       <div class="file-field input-field">
         <div class="btn">
           <span>Загрузить главную фотографию</span>
-          <input formControlName="mainImage" type="file">
+          <input formControlName="mainImage" (change)="onChange($event)"  accept="image/*" type="file">
         </div>
         <div class="file-path-wrapper">
           <input class="file-path validate" type="text" placeholder="Фотография для листа предложений">
@@ -54,7 +54,7 @@
       <input type="date" formControlName="endDate" class="datepicker" placeholder="Кликните тут для определния даты окончания предложения">
     </div>
   </form>
-  <button class="btn waves-effect waves-light" (click)="createTour()" type="button" name="action">Submit
+  <button class="btn waves-effect waves-light" (click)="saveFile()" type="button" name="action">Submit
     <i class="material-icons right">send</i>
   </button>
 </div>

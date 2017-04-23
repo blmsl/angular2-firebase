@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ToursService} from "../../services/tours.service";
+import * as firebase from "firebase"
 
 @Component({
   selector: 'app-upload-images',
@@ -27,9 +28,12 @@ export class UploadImagesComponent implements OnInit {
   }
 
   saveFiles(){
-    this.toursService.saveFile().ref('firstFile').child(this.file.name).put(this.file).then(function(snapshot) {
-      console.log('snapshot',snapshot);
-    });
+    firebase.storage().ref('firstFile/Fav-(Star).png').getDownloadURL().then((resp)=>{
+      console.log('resp',resp)
+    })
+    // this.toursService.saveFile().ref('firstFile').child(this.file.name).put(this.file).then(function(snapshot) {
+    //   // console.log('snapshot',snapshot.a.fullPath)
+    // });
 
   }
 

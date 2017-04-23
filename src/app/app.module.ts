@@ -16,6 +16,7 @@ import { RegistrationComponent } from './authorization/registration/registration
 import { AdminPanelModule } from "./admin-panel/admin-panel.module";
 import { MainComponentComponent } from './user-components/main-component/main-component.component'
 import { ToursService } from "./shared/services/tours.service";
+import { CanActiveService } from "./shared/services/can-active.service";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ToursService } from "./shared/services/tours.service";
   ],
   providers: [
     AuthServiceService,
-    ToursService
+    ToursService,
+    CanActiveService
   ],
   bootstrap: [AppComponent]
 })

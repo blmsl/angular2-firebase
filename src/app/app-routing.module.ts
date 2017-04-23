@@ -5,10 +5,11 @@ import { TourListingComponent } from "./user-components/tour-listing/tour-listin
 import { TourComponent } from "./user-components/tour/tour.component"
 import { RegistrationComponent } from "./authorization/registration/registration.component"
 import { MainComponentComponent } from "./user-components/main-component/main-component.component"
+import { CanActiveService } from "./shared/services/can-active.service"
 
 const appRoutes: Routes = [
   { path: 'login', component:  LoginComponent },
-  { path: 'registration', component:  RegistrationComponent },
+  { path: 'registration',canActivate:[CanActiveService], component:  RegistrationComponent },
   { path: 'portal', component:   MainComponentComponent, children: [
     { path: 'tour-listing', component:  TourListingComponent},
     { path: 'tour', component:  TourComponent },

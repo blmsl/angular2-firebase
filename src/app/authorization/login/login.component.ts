@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AngularFire} from "angularfire2";
 import {AuthServiceService} from "../../shared/services/auth-service.service";
+import * as firebase from "firebase"
 
 declare let $:any;
 
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit,AfterViewInit {
 
   singIn()  {
     this.authService.singIn(this.singInForm.value.email, this.singInForm.value.password).then((response)=>{
-      console.log(response)
+
     })
   }
 

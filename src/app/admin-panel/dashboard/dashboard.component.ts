@@ -1,5 +1,9 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
+import * as firebase from "firebase/app";
+import {Router} from "@angular/router";
+
 declare let $:any;
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,9 +11,17 @@ declare let $:any;
 })
 export class DashboardComponent implements OnInit,AfterViewInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
+
+  }
+
+  singOut() {
+    let self = this;
+    firebase.auth().signOut().then(function() {
+      self.router.navigate(['/login'])
+    })
   }
   ngAfterViewInit() {
     $(".button-collapse").sideNav({

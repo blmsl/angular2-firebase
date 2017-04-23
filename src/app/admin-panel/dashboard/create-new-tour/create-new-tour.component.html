@@ -28,17 +28,7 @@
         <label>Короткое описание для листа предложений</label>
       </div>
     </div>
-    <div class="row">
-      <div class="file-field input-field">
-        <div class="btn">
-          <span>Загрузить главную фотографию</span>
-          <input formControlName="mainImage" (change)="onChange($event)"  accept="image/*" type="file">
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="Фотография для листа предложений">
-        </div>
-      </div>
-    </div>
+    <app-upload-images></app-upload-images>
     <div class="row">
       <div class="file-field input-field">
         <div class="btn">

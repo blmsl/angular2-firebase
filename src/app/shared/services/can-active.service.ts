@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from "@angular/router";
+import {CanActivate } from "@angular/router";
 import * as firebase from 'firebase'
 import {Observable} from "rxjs/Observable";
 
@@ -16,10 +16,8 @@ export class CanActiveService implements CanActivate{
         else access = false;
         observer.next(access);
         console.log('access',access);
-        console.log('user',user);
         observer.complete();
       });
-
       }
     );
 

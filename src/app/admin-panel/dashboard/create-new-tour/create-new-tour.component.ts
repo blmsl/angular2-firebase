@@ -20,7 +20,6 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       price:['',Validators.required],
       hotelName:['',Validators.required],
       detailDescription:['',Validators.required],
-      mainImage:['',Validators.required],
       imageGalery:['',Validators.required],
       endDate:['',Validators.required],
       shortDescription: ['',Validators.required]
@@ -33,13 +32,8 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
 
   }
 
-  saveFile(){
-    this.toursService.saveFile().ref('firstFile').child(this.mainPhotoFile[0].name)
-
-  }
 
   createTour() {
-    console.log('this.createTourForm.value',this.createTourForm.value);
     this.toursService.tours().push(this.createTourForm.value)
   }
   ngAfterViewInit() {

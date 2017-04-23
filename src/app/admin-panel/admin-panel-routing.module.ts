@@ -1,5 +1,5 @@
-import {  NgModule } from '@angular/core';
-import {  Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { CreateNewTourComponent } from './dashboard/create-new-tour/create-new-tour.component'
 import { CanActiveService } from "../shared/services/can-active.service"

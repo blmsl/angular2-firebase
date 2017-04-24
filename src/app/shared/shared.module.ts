@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from './pagination/pagination.component';
-import { UploadImagesComponent } from './components/upload-images/upload-images.component'
+import { UploadImagesComponent } from './components/upload-images/upload-images.component';
+import { ModalUsualComponent } from './components/modal-usual/modal-usual.component'
 
 @NgModule({
   imports: [
@@ -9,11 +10,13 @@ import { UploadImagesComponent } from './components/upload-images/upload-images.
   ],
   declarations: [
     PaginationComponent,
-    UploadImagesComponent
+    UploadImagesComponent,
+    ModalUsualComponent
   ],
   exports: [
     PaginationComponent,
-    UploadImagesComponent
+    UploadImagesComponent,
+    ModalUsualComponent
   ]
 })
 export class SharedModule { }

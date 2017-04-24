@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "poehaly-angular2-firebase"
+    "default": "poehaly-angular2-firebase",
+    "n": "poehaly-angular2-firebase"
   }
 }

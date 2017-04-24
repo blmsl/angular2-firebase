@@ -11,6 +11,7 @@ declare let $:any;
 export class CreateNewTourComponent implements OnInit,AfterViewInit {
   createTourForm: FormGroup;
   mainPhotoFile;
+  openAlertModal = false;
   constructor(public fb:FormBuilder,
               public toursService:ToursService) { }
 
@@ -20,21 +21,24 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       price:['',Validators.required],
       hotelName:['',Validators.required],
       detailDescription:['',Validators.required],
-      imageGalery:['',Validators.required],
+      mainPhotoUrl:['',Validators.required],
+      imageGalery:'',
       endDate:['',Validators.required],
       shortDescription: ['',Validators.required]
 
     })
   }
-  onChange(event) {
-    this.mainPhotoFile = event.srcElement.files;
-    console.log('this.mainPhotoFile',this.mainPhotoFile);
-
+  onMainPhotoUpload(Url) {
+      this.createTourForm.value.mainPhotoUrl = Url;
+      console.log("this.createTourForm.value",this.createTourForm.value);
   }
 
-
   createTour() {
-    this.toursService.tours().push(this.createTourForm.value)
+    if( this.createTourForm.status != "INVALID"){
+      this.toursService.tours().push(this.createTourForm.value)
+    } else  this.openAlertModal = true;
+    console.log('this.createTourForm',this.createTourForm.status);
+
   }
   ngAfterViewInit() {
     console.log("createTourForm",this.createTourForm.value);

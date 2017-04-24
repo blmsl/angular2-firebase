@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ToursService} from "../../services/tours.service";
 import * as firebase from "firebase"
@@ -9,9 +9,9 @@ import * as firebase from "firebase"
   styleUrls: ['./upload-images.component.scss']
 })
 export class UploadImagesComponent implements OnInit {
-  public fileForm:FormGroup;
-  mainPhotoFile;
   file;
+  fileName;
+  @Output() uploadedFileUrlTrigger = new EventEmitter;
 
   constructor(public fb:FormBuilder,
               public toursService:ToursService) { }
@@ -21,20 +21,20 @@ export class UploadImagesComponent implements OnInit {
   }
 
   onUploadfFile(event) {
-    console.log("event",event);
-    this.mainPhotoFile = event;
-    this.file = event.srcElement.files[0]
-
+    this.file = event.srcElement.files[0];
+    if(this.file.name.indexOf(' ')!= -1)this.fileName = this.file.name.split(' ').join('');
+    else this.fileName = this.file.name;
+    console.log('this.file',this.file);
   }
 
   saveFiles(){
-    firebase.storage().ref('firstFile/Fav-(Star).png').getDownloadURL().then((resp)=>{
-      console.log('resp',resp)
-    })
-    // this.toursService.saveFile().ref('firstFile').child(this.file.name).put(this.file).then(function(snapshot) {
-    //   // console.log('snapshot',snapshot.a.fullPath)
-    // });
-
+    let self = this;
+    firebase.storage().ref('firstFile').child(this.fileName).put(this.file).then(function(snapshot) {
+      firebase.storage().ref(snapshot['a'].fullPath).getDownloadURL().then((path)=>{
+        self.uploadedFileUrlTrigger.emit(path);
+        console.log('pathh',path);
+      });
+    });
   }
 
 }

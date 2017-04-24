@@ -1,5 +1,8 @@
+<app-modal-usual [modalHeader]="'Обратите внимание!'"
+                 [mainText]="'По всей видиомсти не все поля заполнены и тур не может быть сохранен. Для корректного сохранения тура нужно заполнить все поля'"
+                 [open]="openAlertModal"></app-modal-usual>
 <div class="row">
-  <form class="col s12" enctype="multipart/form-data" [formGroup]="createTourForm"  method="post" novalidate>
+  <form class="col s12" [formGroup]="createTourForm" (submit)="createTour()"  novalidate>
     <div class="row">
       <div class="input-field col s6">
         <input type="text" formControlName="country" class="validate">
@@ -28,23 +31,23 @@
         <label>Короткое описание для листа предложений</label>
       </div>
     </div>
-    <app-upload-images></app-upload-images>
-    <div class="row">
-      <div class="file-field input-field">
-        <div class="btn">
-          <span>Загрузить галерею</span>
-          <input formControlName="imageGalery" type="file" multiple>
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="Сюда можно загрузить несколько фотграфий для галереи">
-        </div>
-      </div>
-    </div>
+    <app-upload-images (uploadedFileUrlTrigger)="onMainPhotoUpload($event)"></app-upload-images>
+    <!--<div class="row">-->
+      <!--<div class="file-field input-field">-->
+        <!--<div class="btn">-->
+          <!--<span>Загрузить галерею</span>-->
+          <!--<input formControlName="imageGalery" type="file" multiple>-->
+        <!--</div>-->
+        <!--<div class="file-path-wrapper">-->
+          <!--<input class="file-path validate" type="text" placeholder="Сюда можно загрузить несколько фотграфий для галереи">-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
     <div class="row">
       <input type="date" formControlName="endDate" class="datepicker" placeholder="Кликните тут для определния даты окончания предложения">
     </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right">send</i>
+    </button>
   </form>
-  <button class="btn waves-effect waves-light" (click)="saveFile()" type="button" name="action">Submit
-    <i class="material-icons right">send</i>
-  </button>
 </div>

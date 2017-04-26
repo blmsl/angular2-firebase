@@ -6,9 +6,10 @@ import { TourComponent } from "./user-components/tour/tour.component"
 import { RegistrationComponent } from "./authorization/registration/registration.component"
 import { MainComponentComponent } from "./user-components/main-component/main-component.component"
 import { CanActiveService } from "./shared/services/can-active.service"
+import { ModalUsualComponent } from "./shared/components/modal-usual/modal-usual.component";
 
 const appRoutes: Routes = [
-  { path: 'login', component:  LoginComponent },
+  { path: 'login', component:  LoginComponent},
   { path: 'registration',canActivate:[CanActiveService], component:  RegistrationComponent },
   { path: 'portal', component:   MainComponentComponent, children: [
     { path: 'tour-listing', component:  TourListingComponent},

@@ -4,6 +4,7 @@ import {AngularFire} from "angularfire2";
 import {AuthServiceService} from "../../shared/services/auth-service.service";
 import * as firebase from "firebase"
 import {Router} from "@angular/router";
+import {ModalUsualComponent} from "../../shared/components/modal-usual/modal-usual.component";
 
 declare let $:any;
 
@@ -14,6 +15,7 @@ declare let $:any;
 })
 export class LoginComponent implements OnInit,AfterViewInit {
   public singInForm:FormGroup;
+  public alertModalTransition: boolean = false;
 
   constructor(public fb:FormBuilder,
               public angularFire:AngularFire,
@@ -27,10 +29,12 @@ export class LoginComponent implements OnInit,AfterViewInit {
     })
   }
 
-  singIn()  {
+  singIn() {
+    this.alertModalTransition = !this.alertModalTransition;
+    this.router.navigate([{outlets:{popUps:['alert-modal']}}],{queryParams:{transition:this.alertModalTransition}});
     this.authService.singIn(this.singInForm.value.email, this.singInForm.value.password).then((response)=>{
-      this.router.navigate(['../dashboard'])
-    })
+      if(response) this.router.navigate(['../dashboard']);
+    },(error)=>{})
   }
 
   ngAfterViewInit() {

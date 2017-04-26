@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ModalUsualComponent } from './components/modal-usual/modal-usual.component'
+import { LoginComponent } from "../authorization/login/login.component";
+import { ModalUsualComponent } from "./components/modal-usual/modal-usual.component";
 
-const sharedRoutes: Routes = [
-  { path: 'alert-modal', outlet:'alertModal', component:  ModalUsualComponent },
+const sharedAppRoutes: Routes = [
+  { path: 'login', component:  LoginComponent},
+  { path: 'alert-modal', component: ModalUsualComponent, outlet: 'popUps'},
+  { path: '',  redirectTo: '/login', pathMatch : 'full'},
+  { path: '**', component: LoginComponent}
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(sharedRoutes)
+    RouterModule.forChild(sharedAppRoutes)
   ],
   exports: [
     RouterModule

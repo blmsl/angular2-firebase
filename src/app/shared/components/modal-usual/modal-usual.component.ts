@@ -1,4 +1,8 @@
-import {Component, OnInit, AfterViewInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {
+  Component, OnInit, AfterViewInit, Input, OnChanges, SimpleChanges, Output, EventEmitter,
+  OnDestroy
+} from '@angular/core';
+import {Router, ActivatedRoute} from "@angular/router";
 declare let $:any;
 
 @Component({
@@ -7,29 +11,40 @@ declare let $:any;
   styleUrls: ['./modal-usual.component.scss']
 })
 
-export class ModalUsualComponent implements OnInit, AfterViewInit, OnChanges {
+export class ModalUsualComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
   @Input() modalHeader:string;
   @Input() mainText:string;
   @Input() open:boolean;
+  @Output() close = new EventEmitter();
 
-  constructor() { }
+  pramsTransition;
+
+  constructor(public router:Router,
+  public activeRoute:ActivatedRoute) { }
+
+
 
   ngOnInit() {
+    $('#usualModal').modal('open');
+    this.activeRoute.queryParams.subscribe((params)=>{
+      console.log("params", params);
+      this.pramsTransition  = params['transition'];
+      this.modalAction(this.pramsTransition);
+    });
+  }
 
+  modalAction(transition){
+    if(transition)$('#usualModal').modal('open');
+    else $('#usualModal').modal('close');
   }
 
   ngOnChanges(changes:SimpleChanges) {
-    console.log('this.open',this.open);
-    if(changes['open']) this.openModal();
-    else this.closeModal();
-  }
-
-  openModal() {
-    $('#usualModal').modal('open');
+    this.modalAction(this.pramsTransition);
   }
 
   closeModal() {
     $('#usualModal').modal('close');
+    this.router.navigate([{ outlets: { popUps: null }}]);
   }
 
   ngAfterViewInit() {
@@ -44,10 +59,17 @@ export class ModalUsualComponent implements OnInit, AfterViewInit, OnChanges {
           ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
             console.log(modal, trigger);
           },
-          complete: function() { console.log('closed'); } // Callback for Modal close
-        }
-      );
+          complete: function() {
+            $('#usualModal').modal('close');
+            // this.routerOutlet.deactivate();
+          } // Callback for Modal close
+        });
+      $('#usualModal').modal('open');
     });
+  }
+
+  ngOnDestroy() {
+    console.log('destroy')
   }
 
 }

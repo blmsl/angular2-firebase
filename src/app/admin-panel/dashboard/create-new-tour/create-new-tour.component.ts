@@ -22,9 +22,10 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       hotelName:['',Validators.required],
       detailDescription:['',Validators.required],
       mainPhotoUrl:['',Validators.required],
-      imageGalery:'',
+      // imageGalery:'',
       endDate:['',Validators.required],
-      shortDescription: ['',Validators.required]
+      shortDescription: ['',Validators.required],
+      stars:['',Validators.required],
 
     })
   }
@@ -34,10 +35,11 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   }
 
   createTour() {
-    if( this.createTourForm.status != "INVALID"){
-      this.toursService.tours().push(this.createTourForm.value)
-    } else  this.openAlertModal = true;
-    console.log('this.createTourForm',this.createTourForm.status);
+    this.toursService.tours().push(this.createTourForm.value)
+    // if( this.createTourForm.status != "INVALID"){
+    //   this.toursService.tours().push(this.createTourForm.value)
+    // } else  this.openAlertModal = true;
+    // console.log('this.createTourForm',this.createTourForm.status);
 
   }
   ngAfterViewInit() {
@@ -66,6 +68,6 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       format: 'dd/mm/yyyy'
     });
 //Copy settings and initialization tooltipped
-
+    $('select').material_select();
   }
 }

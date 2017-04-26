@@ -25,29 +25,17 @@ export class ModalUsualComponent implements OnInit, AfterViewInit, OnChanges, On
 
 
   ngOnInit() {
-    $('#usualModal').modal('open');
     this.activeRoute.queryParams.subscribe((params)=>{
-      console.log("params", params);
       this.pramsTransition  = params['transition'];
-      this.modalAction(this.pramsTransition);
     });
   }
 
-  modalAction(transition){
-    if(transition)$('#usualModal').modal('open');
-    else $('#usualModal').modal('close');
-  }
-
   ngOnChanges(changes:SimpleChanges) {
-    this.modalAction(this.pramsTransition);
-  }
-
-  closeModal() {
-    $('#usualModal').modal('close');
-    this.router.navigate([{ outlets: { popUps: null }}]);
+    if(this.open)$('#usualModal').modal('open');
   }
 
   ngAfterViewInit() {
+    let self = this
     $(document).ready(function(){
       $('.modal').modal({
           dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -57,19 +45,17 @@ export class ModalUsualComponent implements OnInit, AfterViewInit, OnChanges, On
           startingTop: '4%', // Starting top style attribute
           endingTop: '10%', // Ending top style attribute
           ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-            console.log(modal, trigger);
+
           },
           complete: function() {
-            $('#usualModal').modal('close');
-            // this.routerOutlet.deactivate();
+            self.close.emit('close');
           } // Callback for Modal close
         });
-      $('#usualModal').modal('open');
     });
   }
 
   ngOnDestroy() {
-    console.log('destroy')
+
   }
 
 }

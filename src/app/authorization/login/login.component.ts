@@ -15,7 +15,7 @@ declare let $:any;
 })
 export class LoginComponent implements OnInit,AfterViewInit {
   public singInForm:FormGroup;
-  public alertModalTransition: boolean = false;
+  public openAlertModal: boolean = false;
 
   constructor(public fb:FormBuilder,
               public angularFire:AngularFire,
@@ -28,13 +28,16 @@ export class LoginComponent implements OnInit,AfterViewInit {
       password:''
     })
   }
+  closeModal(event) {
+    this.openAlertModal = false;
+  }
 
   singIn() {
-    this.alertModalTransition = !this.alertModalTransition;
-    this.router.navigate([{outlets:{popUps:['alert-modal']}}],{queryParams:{transition:this.alertModalTransition}});
     this.authService.singIn(this.singInForm.value.email, this.singInForm.value.password).then((response)=>{
       if(response) this.router.navigate(['../dashboard']);
-    },(error)=>{})
+      else this.openAlertModal = true;
+    },(error)=>{
+    })
   }
 
   ngAfterViewInit() {

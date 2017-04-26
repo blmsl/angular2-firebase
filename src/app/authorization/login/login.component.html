@@ -1,4 +1,8 @@
-<router-outlet name="popUps"></router-outlet>
+<app-modal-usual [modalHeader]="'Ошибка авторизации'"
+                 [open]="openAlertModal"
+                 [mainText]="'Попробуйте авторизироваться повторно или обратитесь к администрации'"
+                 (close)="closeModal($event)"
+></app-modal-usual>
 <div class="center-align">
   <div class="section"></div>
 

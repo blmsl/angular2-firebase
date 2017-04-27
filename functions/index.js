@@ -30,12 +30,12 @@ exports.generateThumbnail = functions.storage.object().onChange(event => {
       
       const thumbFilePath = filePath.replace(/(\/)?([^\/]*)$/, `$1thumb_$2`);
 
-      admin.database().ref('/log').push({
-        thumbFilePath:thumbFilePath,
-        tempFilePath:tempFilePath,
-        fileBucket:fileBucket,
-        event:event
-      });
+      // admin.database().ref('/log').push({
+      //   thumbFilePath:thumbFilePath,
+      //   tempFilePath:tempFilePath,
+      //   fileBucket:fileBucket,
+      //   event:event
+      // });
       
       // Uploading the thumbnail.
        return bucket.upload(tempFilePath, {

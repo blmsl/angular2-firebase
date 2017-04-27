@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ToursService} from "../../../shared/services/tours.service";
+import {Observable} from "rxjs/Observable";
+import * as firebase from "firebase"
 declare let $:any;
 
 @Component({
@@ -12,6 +14,8 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   createTourForm: FormGroup;
   mainPhotoFile;
   openAlertModal = false;
+  newFileUrl;
+  uploadTrigger = false;
   constructor(public fb:FormBuilder,
               public toursService:ToursService) { }
 
@@ -30,13 +34,38 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     })
   }
   onMainPhotoUpload(Url) {
-      this.createTourForm.value.mainPhotoUrl = Url;
-      console.log("this.createTourForm.value",this.createTourForm.value);
+    this.newFileUrl = Url;
+  }
+
+  newFileObs() {
+    return Observable.create((observer)=>{
+      let timer = 0;
+      let int = setInterval(()=>{
+        timer = +timer;
+        if(this.newFileUrl){
+          observer.next(this.newFileUrl);
+          observer.complete();
+        }
+        if(timer>=50){clearInterval(int)}
+      },100)
+    })
   }
 
   createTour() {
-    console.log('this.createTourForm',this.createTourForm);
-    this.toursService.tours().push(this.createTourForm.value)
+    this.toursService.tours().push(this.createTourForm.value).then((response)=>{
+      this.uploadTrigger = true;
+      this.newFileObs().subscribe((Url)=>{
+        let objectPath = '/'+response.path.o.join('/');
+        let updates = {};
+        this.createTourForm.value.mainPhotoUrl = Url;
+
+        updates[`${objectPath}/mainPhotoUrl`] = this.createTourForm.value.mainPhotoUrl;
+        return firebase.database().ref().update(updates).then((responseUpdate)=>{
+          this.uploadTrigger = false;
+        });
+      });
+
+    })
     // if( this.createTourForm.status != "INVALID"){
     //   this.toursService.tours().push(this.createTourForm.value)
     // } else  this.openAlertModal = true;
@@ -44,7 +73,6 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
 
   }
   ngAfterViewInit() {
-    console.log("createTourForm",this.createTourForm.value);
     $('.datepicker').pickadate({
       selectMonths: true,//Creates a dropdown to control month
       selectYears: 15,//Creates a dropdown of 15 years to control year

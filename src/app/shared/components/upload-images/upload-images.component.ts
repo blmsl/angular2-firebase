@@ -17,16 +17,21 @@ export class UploadImagesComponent implements OnInit, OnChanges {
   constructor(public fb:FormBuilder,
               public toursService:ToursService) { }
 
-  ngOnInit() {}
-  
+  ngOnInit() {
+
+  }
   ngOnChanges() {
-    if(this.uploadTrigger) this.saveFiles()
+    if(this.uploadTrigger) {
+      console.log('trigger on')
+      this.saveFiles()
+    }
   }
 
   onUploadfFile(event) {
     this.file = event.srcElement.files[0];
     if(this.file.name.indexOf(' ')!= -1)this.fileName = this.file.name.split(' ').join('');
     else this.fileName = this.file.name;
+    console.log('this.file',this.file);
   }
 
   saveFiles(){
@@ -41,8 +46,10 @@ export class UploadImagesComponent implements OnInit, OnChanges {
     };
     firebase.storage().ref(metadata.customMetadata.parentFolder).child(this.fileName).put(this.file,metadata).then(function(snapshot) {
       let fullSizeImagePath = snapshot['a'].fullPath;
-      let withCustomSizePath = `${metadata.customMetadata.parentFolder}/${metadata.customMetadata.folder}/${metadata.customMetadata.fileName}`;
-      firebase.storage().ref(withCustomSizePath).getDownloadURL().then((path)=> self.uploadedFileUrlTrigger.emit(path));
+      let withCustomSizePath = `/${metadata.customMetadata.parentFolder}/${metadata.customMetadata.folder}/${metadata.customMetadata.fileName}`;
+
+      firebase.storage().ref(withCustomSizePath).getDownloadURL().then((path)=> self.uploadedFileUrlTrigger.emit(path) );
+
     });
   }
 

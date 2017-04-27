@@ -43,6 +43,7 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       let int = setInterval(()=>{
         timer = +timer;
         if(this.newFileUrl){
+          clearInterval(int);
           observer.next(this.newFileUrl);
           observer.complete();
         }
@@ -55,21 +56,19 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     this.toursService.tours().push(this.createTourForm.value).then((response)=>{
       this.uploadTrigger = true;
       this.newFileObs().subscribe((Url)=>{
+        this.uploadTrigger = false;
         let objectPath = '/'+response.path.o.join('/');
         let updates = {};
+        console.log("Url",Url);
         this.createTourForm.value.mainPhotoUrl = Url;
 
         updates[`${objectPath}/mainPhotoUrl`] = this.createTourForm.value.mainPhotoUrl;
-        return firebase.database().ref().update(updates).then((responseUpdate)=>{
-          this.uploadTrigger = false;
-        });
+        console.log("Url",Url);
+        console.log("updates",updates);
+        firebase.database().ref().update(updates);
       });
 
     })
-    // if( this.createTourForm.status != "INVALID"){
-    //   this.toursService.tours().push(this.createTourForm.value)
-    // } else  this.openAlertModal = true;
-    // console.log('this.createTourForm',this.createTourForm.status);
 
   }
   ngAfterViewInit() {

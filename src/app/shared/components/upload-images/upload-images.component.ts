@@ -29,11 +29,18 @@ export class UploadImagesComponent implements OnInit {
 
   saveFiles(){
     let self = this;
-    firebase.storage().ref('firstFile').child(this.fileName).put(this.file).then(function(snapshot) {
-      firebase.storage().ref(snapshot['a'].fullPath).getDownloadURL().then((path)=>{
-        self.uploadedFileUrlTrigger.emit(path);
-        console.log('pathh',path);
-      });
+    let metadata = {
+      customMetadata: {
+        scale:'200x200',
+        folder:'200x200',
+        parentFolder:`tours-images`,
+        fileName:this.fileName
+      }
+    };
+    firebase.storage().ref(metadata.customMetadata.parentFolder).child(this.fileName).put(this.file,metadata).then(function(snapshot) {
+      let fullSizeImagePath = snapshot['a'].fullPath;
+      let withCustomSizePath = `${metadata.customMetadata.parentFolder}/${metadata.customMetadata.folder}/${metadata.customMetadata.fileName}`;
+      firebase.storage().ref(withCustomSizePath).getDownloadURL().then((path)=>self.uploadedFileUrlTrigger.emit(path) );
     });
   }
 

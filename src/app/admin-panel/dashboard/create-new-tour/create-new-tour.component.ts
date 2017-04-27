@@ -35,6 +35,7 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   }
 
   createTour() {
+    console.log('this.createTourForm',this.createTourForm);
     this.toursService.tours().push(this.createTourForm.value)
     // if( this.createTourForm.status != "INVALID"){
     //   this.toursService.tours().push(this.createTourForm.value)

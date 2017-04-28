@@ -42,7 +42,7 @@
         <label>Короткое описание для листа предложений</label>
       </div>
     </div>
-    <app-upload-images [uploadTrigger]="uploadTrigger" (uploadedFileUrlTrigger)="onMainPhotoUpload($event)"></app-upload-images>
+    <app-upload-images [tourId]="tourId" (uploadedFileUrlTrigger)="onMainPhotoUpload($event)"></app-upload-images>
     <!--<div class="row">-->
       <!--<div class="file-field input-field">-->
         <!--<div class="btn">-->

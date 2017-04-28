@@ -38,6 +38,7 @@
     "jquery": "^3.2.1",
     "materialize-css": "^0.98.2",
     "mdi": "^1.9.33",
+    "ng2-img-tools": "^1.0.3",
     "rxjs": "^5.1.0",
     "typescript": "~2.2.0",
     "zone.js": "^0.8.4"

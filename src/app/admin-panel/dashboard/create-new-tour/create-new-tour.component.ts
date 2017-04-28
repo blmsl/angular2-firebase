@@ -15,7 +15,7 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   mainPhotoFile;
   openAlertModal = false;
   newFileUrl;
-  uploadTrigger = false;
+  tourId;
   constructor(public fb:FormBuilder,
               public toursService:ToursService) { }
 
@@ -54,9 +54,9 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
 
   createTour() {
     this.toursService.tours().push(this.createTourForm.value).then((response)=>{
-      this.uploadTrigger = true;
+      this.tourId = response.path.o[response.path.o.length-1];
       this.newFileObs().subscribe((Url)=>{
-        this.uploadTrigger = false;
+        this.tourId = null;
         let objectPath = '/'+response.path.o.join('/');
         let updates = {};
         console.log("Url",Url);

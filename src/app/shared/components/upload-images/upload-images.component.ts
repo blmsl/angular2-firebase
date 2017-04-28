@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, Input, EventEmitter, OnChanges} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ToursService} from "../../services/tours.service";
+import { Ng2ImgToolsService } from 'ng2-img-tools';
 import * as firebase from "firebase"
 
 @Component({
@@ -11,44 +12,51 @@ import * as firebase from "firebase"
 export class UploadImagesComponent implements OnInit, OnChanges {
   file;
   fileName;
-  @Input() uploadTrigger;
+  @Input() tourId;
   @Output() uploadedFileUrlTrigger = new EventEmitter;
 
   constructor(public fb:FormBuilder,
-              public toursService:ToursService) { }
+              public toursService:ToursService,
+              private ng2ImgToolsService: Ng2ImgToolsService) { }
 
   ngOnInit() {
 
   }
   ngOnChanges() {
-    if(this.uploadTrigger) {
+    if(this.tourId) {
       console.log('trigger on')
-      this.saveFiles()
+      this.saveFiles(this.tourId)
     }
   }
 
   onUploadfFile(event) {
-    this.file = event.srcElement.files[0];
-    if(this.file.name.indexOf(' ')!= -1)this.fileName = this.file.name.split(' ').join('');
-    else this.fileName = this.file.name;
-    console.log('this.file',this.file);
+
+    this.ng2ImgToolsService.resize([event.srcElement.files[0]], 400, 400).subscribe(result => {
+      console.info(result);
+      if(result.name.indexOf(' ')!= -1)this.fileName = result.name.split(' ').join('');
+      else this.fileName = result.name;
+      this.file = result;
+    }, error => {
+      //use result.compressedFile or handle specific error cases individually
+    });
+
   }
 
-  saveFiles(){
+  saveFiles(tourId){
     let self = this;
     let metadata = {
       customMetadata: {
-        scale:'400x400',
-        folder:'400x400',
-        parentFolder:`tours-images`,
+        parentFolder:`tours-images/${tourId}`,
         fileName:this.fileName
       }
     };
     firebase.storage().ref(metadata.customMetadata.parentFolder).child(this.fileName).put(this.file,metadata).then(function(snapshot) {
-      let fullSizeImagePath = snapshot['a'].fullPath;
-      let withCustomSizePath = `/${metadata.customMetadata.parentFolder}/${metadata.customMetadata.folder}/${metadata.customMetadata.fileName}`;
-
-      firebase.storage().ref(withCustomSizePath).getDownloadURL().then((path)=> self.uploadedFileUrlTrigger.emit(path) );
+      let downloadedFilePath = snapshot['a'].fullPath;
+      console.log('snapshot',snapshot);
+      firebase.storage().ref(downloadedFilePath).getDownloadURL().then((path)=> {
+        console.log('path',path);
+        self.uploadedFileUrlTrigger.emit(path)
+      } );
 
     });
   }

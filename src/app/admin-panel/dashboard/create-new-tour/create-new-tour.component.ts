@@ -39,7 +39,7 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   }
 
   changeFormatValueSelectStars(starsQuantity) {
-    this.createTourForm.value.start = [];
+    this.createTourForm.value.stars = [];
     for(let i = 1; starsQuantity>=i;i++){
       this.createTourForm.value.stars.push(i)
     }

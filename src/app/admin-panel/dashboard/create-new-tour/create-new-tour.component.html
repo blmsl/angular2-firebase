@@ -2,7 +2,7 @@
                  [mainText]="'По всей видиомсти не все поля заполнены и тур не может быть сохранен. Для корректного сохранения тура нужно заполнить все поля'"
                  [open]="openAlertModal"></app-modal-usual>
 <div class="row">
-  <form class="col s12" [formGroup]="createTourForm" (submit)="createTour()"  novalidate>
+  <form class="col s12" [formGroup]="createTourForm" novalidate>
     <div class="row">
       <div class="input-field col s6">
         <input type="text" formControlName="country" class="validate">
@@ -19,7 +19,7 @@
         <label>Цена</label>
       </div>
       <div class="input-field col s6 starsSelect">
-        <select formControlName="stars" (change)="onSelectStars($event.target.value)" >
+        <select formControlName="stars">
           <option value="" disabled selected>Сделайте выбор</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -57,7 +57,7 @@
     <div class="row">
       <input type="date" formControlName="endDate" class="datepicker" placeholder="Кликните тут для определния даты окончания предложения">
     </div>
-    <button class="btn waves-effect waves-light" type="submit" name="action">Сохранить
+    <button class="btn waves-effect waves-light" (click)="$event.preventDefault();createTour()"  type="button" name="action">Сохранить
       <i class="material-icons right">send</i>
     </button>
   </form>

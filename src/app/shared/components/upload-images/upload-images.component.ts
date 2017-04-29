@@ -17,7 +17,7 @@ export class UploadImagesComponent implements OnInit, OnChanges {
 
   constructor(public fb:FormBuilder,
               public toursService:ToursService,
-              private ng2ImgToolsService: Ng2ImgToolsService) { }
+              private ng2ImgToolsService: Ng2ImgToolsService,) { }
 
   ngOnInit() {
 
@@ -30,16 +30,19 @@ export class UploadImagesComponent implements OnInit, OnChanges {
   }
 
   onUploadfFile(event) {
+    let file = event.srcElement.files[0];
+    this.cropFile(file);
+    event = null;
+  }
 
-    this.ng2ImgToolsService.resize([event.srcElement.files[0]], 400, 400).subscribe(result => {
-      console.info(result);
+  cropFile(file) {
+    console.log('filer income',file);
+    this.ng2ImgToolsService.resizeExactCrop([file], 600,400 ).subscribe(result => {
+      console.log('result crop',result);
       if(result.name.indexOf(' ')!= -1)this.fileName = result.name.split(' ').join('');
       else this.fileName = result.name;
       this.file = result;
-    }, error => {
-      //use result.compressedFile or handle specific error cases individually
-    });
-
+    }, error => {console.log(error)});
   }
 
   saveFiles(tourId){

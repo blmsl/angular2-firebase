@@ -16,6 +16,7 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   openAlertModal = false;
   newFileUrl;
   tourId;
+  starsSelect;
   constructor(public fb:FormBuilder,
               public toursService:ToursService) { }
 
@@ -37,6 +38,13 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     this.newFileUrl = Url;
   }
 
+  changeFormatValueSelectStars(starsQuantity) {
+    this.createTourForm.value.start = [];
+    for(let i = 1; starsQuantity>=i;i++){
+      this.createTourForm.value.stars.push(i)
+    }
+  }
+
   newFileObs() {
     return Observable.create((observer)=>{
       let timer = 0;
@@ -53,9 +61,13 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   }
 
   createTour() {
+    let starsSelectValue = $('.starsSelect').find('.select-dropdown').val();
+    this.changeFormatValueSelectStars(starsSelectValue);
     this.toursService.tours().push(this.createTourForm.value).then((response)=>{
       this.tourId = response.path.o[response.path.o.length-1];
       this.newFileObs().subscribe((Url)=>{
+
+
         this.tourId = null;
         let objectPath = '/'+response.path.o.join('/');
         let updates = {};
@@ -70,7 +82,8 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
 
     })
 
-  }
+    }
+
   ngAfterViewInit() {
     $('.datepicker').pickadate({
       selectMonths: true,//Creates a dropdown to control month

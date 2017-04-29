@@ -18,8 +18,8 @@
         <input type="text" formControlName="price" class="validate">
         <label>Цена</label>
       </div>
-      <div class="input-field col s6">
-        <select formControlName="stars">
+      <div class="input-field col s6 starsSelect">
+        <select formControlName="stars" (change)="onSelectStars($event.target.value)" >
           <option value="" disabled selected>Сделайте выбор</option>
           <option value="1">1</option>
           <option value="2">2</option>

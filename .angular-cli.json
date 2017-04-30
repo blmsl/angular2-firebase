@@ -21,11 +21,13 @@
       "styles": [
         "styles.scss",
         "../node_modules/materialize-css/dist/css/materialize.min.css",
-        "./app/shared/scss/helpers.scss"
+        "./app/shared/scss/helpers.scss",
+        "../node_modules/slick-carousel/slick/slick.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/materialize-css/dist/js/materialize.min.js"
+        "../node_modules/materialize-css/dist/js/materialize.min.js",
+        "../node_modules/slick-carousel/slick/slick.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

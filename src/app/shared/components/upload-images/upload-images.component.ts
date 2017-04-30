@@ -24,7 +24,7 @@ export class UploadImagesComponent implements OnInit, OnChanges {
   }
   ngOnChanges() {
     if(this.tourId) {
-      console.log('trigger on')
+      console.log('trigger on');
       this.saveFiles(this.tourId)
     }
   }
@@ -58,6 +58,8 @@ export class UploadImagesComponent implements OnInit, OnChanges {
       console.log('snapshot',snapshot);
       firebase.storage().ref(downloadedFilePath).getDownloadURL().then((path)=> {
         console.log('path',path);
+        self.file = null;
+        self.fileName = null;
         self.uploadedFileUrlTrigger.emit(path)
       } );
 

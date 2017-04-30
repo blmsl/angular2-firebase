@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col s12 m6" *ngFor="let tour of toursList">
     <div class="card">
-      <div class="card-image" *ngIf="tour?.mainPhotoUrl">
-        <img [src]="tour?.mainPhotoUrl">
+      <div class="card-image z-depth-2" *ngIf="tour?.mainPhotoUrl">
+        <img class="pointer" [routerLink]="['../tour']" [src]="tour?.mainPhotoUrl">
         <!--<span class="card-title">Card Title</span>-->
         <a class="btn-floating halfway-fab waves-effect waves-light red" [routerLink]="['../tour']"><i class="material-icons">add</i></a>
       </div>

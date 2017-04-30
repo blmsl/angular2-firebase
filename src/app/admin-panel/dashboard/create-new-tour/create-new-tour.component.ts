@@ -77,7 +77,9 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
         updates[`${objectPath}/mainPhotoUrl`] = this.createTourForm.value.mainPhotoUrl;
         console.log("Url",Url);
         console.log("updates",updates);
-        firebase.database().ref().update(updates);
+        firebase.database().ref().update(updates).then(()=>{
+          location.reload()
+        });
       });
 
     })

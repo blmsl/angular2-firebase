@@ -35,6 +35,7 @@
     "core-js": "^2.4.1",
     "firebase": "^3.7.8",
     "font-awesome": "^4.7.0",
+    "slick-carousel": "https://github.com/kenwheeler/slick.git",
     "jquery": "^3.2.1",
     "materialize-css": "^0.98.2",
     "mdi": "^1.9.33",

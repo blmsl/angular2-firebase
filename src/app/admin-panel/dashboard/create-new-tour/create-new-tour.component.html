@@ -43,17 +43,7 @@
       </div>
     </div>
     <app-upload-images [tourId]="tourId" (uploadedFileUrlTrigger)="onMainPhotoUpload($event)"></app-upload-images>
-    <!--<div class="row">-->
-      <!--<div class="file-field input-field">-->
-        <!--<div class="btn">-->
-          <!--<span>Загрузить галерею</span>-->
-          <!--<input formControlName="imageGalery" type="file" multiple>-->
-        <!--</div>-->
-        <!--<div class="file-path-wrapper">-->
-          <!--<input class="file-path validate" type="text" placeholder="Сюда можно загрузить несколько фотграфий для галереи">-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
+    <app-upload-files-multiple [tourId]="tourId" (uploadedMultipleFilesTrigger)="onFullPhotosUpload($event)"></app-upload-files-multiple>
     <div class="row">
       <input type="date" formControlName="endDate" class="datepicker" placeholder="Кликните тут для определния даты окончания предложения">
     </div>

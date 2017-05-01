@@ -9,7 +9,11 @@ export class ToursService {
   constructor(public af: AngularFire) { }
 
   tours(){
-    return this.af.database.list('tours')
+    return this.af.database.list('tours');
+  }
+
+  readTour(tourPath){
+    return this.af.database.object(tourPath);
   }
 
   saveFile() {

@@ -15,6 +15,7 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   mainPhotoFile;
   openAlertModal = false;
   newFileUrl;
+  newImagelistUrl = [];
   tourId;
   starsSelect;
   constructor(public fb:FormBuilder,
@@ -27,15 +28,20 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       hotelName:['',Validators.required],
       detailDescription:['',Validators.required],
       mainPhotoUrl:['',Validators.required],
-      // imageGalery:'',
+      fullImageGalery:'',
       endDate:['',Validators.required],
       shortDescription: ['',Validators.required],
       stars:['',Validators.required],
 
     })
   }
+
   onMainPhotoUpload(Url) {
     this.newFileUrl = Url;
+  }
+
+  onFullPhotosUpload(UrlList:any[]) {
+    this.newImagelistUrl = UrlList;
   }
 
   changeFormatValueSelectStars(starsQuantity) {
@@ -60,16 +66,37 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     })
   }
 
+  newFilesListObs() {
+    return Observable.create((observer)=>{
+      let timer = 0;
+      let int = setInterval(()=>{
+        timer = +timer;
+        if(this.newImagelistUrl.length){
+          clearInterval(int);
+          observer.next(this.newImagelistUrl);
+          observer.complete();
+        }
+        if(timer>=50){clearInterval(int)}
+      },100)
+    })
+  }
+
   createTour() {
     let starsSelectValue = $('.starsSelect').find('.select-dropdown').val();
     this.changeFormatValueSelectStars(starsSelectValue);
     this.toursService.tours().push(this.createTourForm.value).then((response)=>{
       this.tourId = response.path.o[response.path.o.length-1];
-      this.newFileObs().subscribe((Url)=>{
+      this.uploadMainPhoto(response);
+      this.uploadFullPhotoListOneByOne(response);
+      // location.reload()
+    })
 
+    }
 
+    uploadMainPhoto(tour) {
+      return this.newFileObs().subscribe((Url)=>{
         this.tourId = null;
-        let objectPath = '/'+response.path.o.join('/');
+        let objectPath = '/'+tour.path.o.join('/');
         let updates = {};
         console.log("Url",Url);
         this.createTourForm.value.mainPhotoUrl = Url;
@@ -77,14 +104,21 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
         updates[`${objectPath}/mainPhotoUrl`] = this.createTourForm.value.mainPhotoUrl;
         console.log("Url",Url);
         console.log("updates",updates);
-        firebase.database().ref().update(updates).then(()=>{
-          location.reload()
-        });
+        firebase.database().ref().update(updates);
       });
-
-    })
-
     }
+
+  uploadFullPhotoListOneByOne(tour) {
+    this.newFilesListObs().subscribe((fullImagesListUrls)=>{
+      this.tourId = null;
+      let objectPath = '/'+tour.path.o.join('/');
+      let updates = {};
+      updates[`${objectPath}/fullImageGalery`] = fullImagesListUrls;
+      console.log("fullImagesListUrls",fullImagesListUrls);
+      console.log("updates",updates);
+      firebase.database().ref().update(updates);
+    });
+  }
 
   ngAfterViewInit() {
     $('.datepicker').pickadate({

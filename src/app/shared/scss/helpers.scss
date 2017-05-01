@@ -25,11 +25,26 @@
   padding-top: 5px;
 }
 
+.m-0-auto {
+  margin: 0 auto;
+}
+
+.main {
+  background-color: linen;
+}
+
 .slider-nav {
   button::before {
     color: black !important;
   }
   .slick-list {
     border-radius: 10px;
+  }
+}
+.collapsible-header {
+  background-color: #ef5350;
+  color: white;
+  i {
+    color: white;
   }
 }

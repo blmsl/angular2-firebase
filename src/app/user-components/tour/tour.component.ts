@@ -14,6 +14,7 @@ export class TourComponent implements OnInit,AfterViewInit {
 
   ngAfterViewInit() {
     $('.materialboxed').materialbox();
+    $('.collapsible').collapsible();
     $('.slider-for').slick({
       slidesToShow: 1,
       slidesToScroll: 1,

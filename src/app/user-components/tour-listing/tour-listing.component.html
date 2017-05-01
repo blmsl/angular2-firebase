@@ -18,12 +18,7 @@
         <h5>{{tour?.hotelName}}</h5>
         <div>
           <span>
-            <!--<img src="" alt="" *ngFor="let star of ">-->
-            <img src="./assets/img/star.png" alt="country">
-            <img src="./assets/img/star.png" alt="country">
-            <img src="./assets/img/star.png" alt="country">
-            <img src="./assets/img/star.png" alt="country">
-            <img src="./assets/img/star.png" alt="country">
+            <img  *ngFor="let star of tour?.stars" src="./assets/img/star.png" alt="country">
           </span>
         </div>
         <!--<div class="card-panel teal">-->

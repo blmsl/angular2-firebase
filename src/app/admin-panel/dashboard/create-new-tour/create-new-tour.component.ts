@@ -82,15 +82,14 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   }
 
   createTour() {
-    let starsSelectValue = $('.starsSelect').find('.select-dropdown').val();
-    this.changeFormatValueSelectStars(starsSelectValue);
-    this.toursService.tours().push(this.createTourForm.value).then((response)=>{
-      this.tourId = response.path.o[response.path.o.length-1];
-      this.uploadMainPhoto(response);
-      this.uploadFullPhotoListOneByOne(response);
-      // location.reload()
-    })
-
+      let starsSelectValue = $('.starsSelect').find('.select-dropdown').val();
+      this.changeFormatValueSelectStars(starsSelectValue);
+      this.toursService.list('tours').push(this.createTourForm.value).then((response)=>{
+        this.tourId = response.path.o[response.path.o.length-1];
+        this.uploadMainPhoto(response);
+        this.uploadFullPhotoListOneByOne(response);
+        // location.reload()
+      })
     }
 
     uploadMainPhoto(tour) {

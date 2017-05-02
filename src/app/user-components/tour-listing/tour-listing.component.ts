@@ -16,7 +16,7 @@ export class TourListingComponent implements OnInit {
   }
 
   getToursList() {
-    this.toursService.tours().subscribe((response)=>{
+    this.toursService.list('tours').subscribe((response)=>{
       this.toursList = response;
       console.log('this.toursList',this.toursList)
     })

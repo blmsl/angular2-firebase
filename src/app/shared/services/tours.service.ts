@@ -4,21 +4,27 @@ import * as firebase from "firebase/app";
 
 @Injectable()
 export class ToursService {
-  courses = firebase.database().ref('courses')
 
   constructor(public af: AngularFire) { }
 
-  tours(){
-    return this.af.database.list('tours');
+  list(value){
+    return this.af.database.list(value);
   }
 
-  readTour(tourPath){
-    return this.af.database.object(tourPath);
+  Object(path){
+    return this.af.database.object(path);
+  }
+  updateData(path,updates) {
+    firebase.database().ref(path).update(updates);
   }
 
-  saveFile() {
-    return firebase.storage()
+  setData(path,data) {
+    firebase.database().ref(path).set(data);
   }
+  readData(path) {
+    firebase.database().ref(path)
+  }
+
 
 
 }

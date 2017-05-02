@@ -7,14 +7,6 @@
         <a class="btn-floating halfway-fab waves-effect waves-light red" [routerLink]="['../tour']"><i class="material-icons">add</i></a>
       </div>
       <div class="card-content">
-        <div class="chip">
-          <img src="./assets/img/plane.png" alt="country">
-          {{tour.country}}
-        </div>
-        <div class="chip">
-          <img src="./assets/img/money.png" alt="country">
-          {{tour.price}}
-        </div>
         <h5>{{tour?.hotelName}}</h5>
         <div>
           <span>
@@ -24,7 +16,15 @@
         <!--<div class="card-panel teal">-->
           <!--<span class="white-text">3000 UAH</span>-->
         <!--</div>-->
-        <p>{{tour?.shortDescription}}</p>
+        <p class="f-s-13">{{tour?.shortDescription}}</p>
+        <div class="chip">
+          <img src="./assets/img/plane.png" alt="country">
+          {{tour.country}}
+        </div>
+        <div class="chip">
+          <img src="./assets/img/money.png" alt="country">
+          {{tour.price}}
+        </div>
       </div>
     </div>
   </div>

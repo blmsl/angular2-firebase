@@ -4,7 +4,8 @@ import { DashboardComponent } from './dashboard/dashboard.component'
 import { AdminPanelRoutingModule } from './admin-panel-routing.module';
 import { CreateNewTourComponent } from './dashboard/create-new-tour/create-new-tour.component'
 import {ReactiveFormsModule} from "@angular/forms";
-import { SharedModule } from "../shared/shared.module"
+import { SharedModule } from "../shared/shared.module";
+import { ConfigurationPageComponent } from './dashboard/configuration-page/configuration-page.component'
 
 @NgModule({
   imports: [
@@ -15,11 +16,13 @@ import { SharedModule } from "../shared/shared.module"
   ],
   declarations: [
     DashboardComponent,
-    CreateNewTourComponent
+    CreateNewTourComponent,
+    ConfigurationPageComponent
   ],
   exports: [
     DashboardComponent,
-    CreateNewTourComponent
+    CreateNewTourComponent,
+    ConfigurationPageComponent
   ]
 })
 export class AdminPanelModule { }

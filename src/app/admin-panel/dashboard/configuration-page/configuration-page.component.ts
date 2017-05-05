@@ -21,34 +21,27 @@ export class ConfigurationPageComponent implements OnInit, AfterViewInit{
      this.getCountriesList();
    }
 
-   ngAfterViewInit() {
-     $(document).ready(function(){
-         $('.collapsible').collapsible();
-     });
-   }
+   ngAfterViewInit() {}
 
    onSaveCountry() {
      this.toursService.list('configurations/countries').push({country:this.countryControl}).then((response)=>{
-       console.log('response',response);
-
-       this.newAddedCountryKey = `/configurations/countries/${response[response.path.o.length-1]}`;
+       this.newAddedCountryKey = response[response.path.o.length-1];
      });
      this.countryControl = null;
      this.newAddedCountryKey = null;
    }
 
-   onSaveCity(countryKey,cityControlKey,index) {
+   onSaveCity(countryKey,cityControlKey) {
      let key = this.newAddedCountryKey ? this.newAddedCountryKey : countryKey;
-     this.toursService.list(`/configurations/countries/${key}/cities`).push(this.cityControl[cityControlKey]).then(()=>{
+     this.toursService.list(`/configurations/countries/${key}/cities`).push(this.cityControl[cityControlKey]).then((responseCity)=>{
+       this.getCountriesList();
        this.cityControl[cityControlKey] = null;
      });
    }
 
    getCountriesList() {
-     this.toursService.list('configurations/countries').subscribe(cities => {
-
-       this.countriesList = cities
-       console.log('this.countriesList',this.countriesList);
+     this.toursService.list('configurations/countries').subscribe(countriesWithCities => {
+       this.countriesList = countriesWithCities;
        $(document).ready(function(){
            $('.collapsible').collapsible();
        });

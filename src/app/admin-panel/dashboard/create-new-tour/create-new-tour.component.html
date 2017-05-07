@@ -4,16 +4,24 @@
 <div class="row">
   <form class="col s12" [formGroup]="createTourForm" novalidate>
     <div class="row">
-      <div class="input-field col s6">
-        <select formControlName="country" class="validate">
-          <option value="" disabled selected>Страна</option>
+      <div class="input-field col s6" id="countrySelect" *ngIf="countriesListForDropDown">
+
+        <select materialize="material_select" [materializeSelectOptions]="countriesListForDropDown">
+          <option *ngFor="let country of countriesListForDropDown" [value]="country.country">{{country.country}}</option>
+        </select>
+        <!--<label for="countrySelect">Выберите страну</label>-->
+
+      </div>
+      <div class="input-field col s6" id="citySelect">
+        <select formControlName="city" class="validate">
+          <option value="" disabled selected></option>
           <option value="Турция">Турция</option>
           <option value="Египет">Египет</option>
           <option value="Греция">Греция</option>
         </select>
-        <label>Materialize Select</label>
+        <label for="citySelect">Выберите город</label>
       </div>
-      <div class="input-field col s6">
+      <div class="input-field col s12">
         <input type="text" formControlName="hotelName" class="validate">
         <label>Название отеля</label>
       </div>

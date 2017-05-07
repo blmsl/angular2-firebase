@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MaterializeModule } from "angular2-materialize";
+
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from "./app-routing.module";
@@ -11,6 +13,7 @@ import { TourComponent } from './user-components/tour/tour.component';
 import { SharedModule } from './shared/shared.module'
 import { AuthServiceService } from './shared/services/auth-service.service'
 import { AngularFireModule } from "angularfire2";
+import { AngularFireDatabaseModule } from "angularfire2/database";
 import { Constants } from "./shared/core/constants";
 import { RegistrationComponent } from './authorization/registration/registration.component';
 import { AdminPanelModule } from "./admin-panel/admin-panel.module";
@@ -36,6 +39,7 @@ import { CanActiveService } from "./shared/services/can-active.service";
     ReactiveFormsModule,
     AdminPanelModule,
     AppRoutingModule,
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(Constants.fireBaseConfig)
   ],
   providers: [

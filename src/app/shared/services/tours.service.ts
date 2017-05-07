@@ -1,18 +1,26 @@
 import { Injectable } from '@angular/core';
-import {AngularFire} from "angularfire2";
+import { AngularFireDatabase } from "angularfire2/database";
+import {Observable} from "rxjs/Observable";
+
 import * as firebase from "firebase/app";
+
+declare interface someThing {
+    value:{
+      value:string
+    };
+}
 
 @Injectable()
 export class ToursService {
 
-  constructor(public af: AngularFire) { }
+  constructor(public afDatabase: AngularFireDatabase) { }
 
   list(value){
-    return this.af.database.list(value);
+    return this.afDatabase.list(value);
   }
 
   Object(path){
-    return this.af.database.object(path);
+    return this.afDatabase.object(path);
   }
   updateData(path,updates) {
     firebase.database().ref(path).update(updates);
@@ -24,7 +32,5 @@ export class ToursService {
   readData(path) {
     firebase.database().ref(path)
   }
-
-
 
 }

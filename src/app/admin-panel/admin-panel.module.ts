@@ -5,6 +5,7 @@ import { AdminPanelRoutingModule } from './admin-panel-routing.module';
 import { CreateNewTourComponent } from './dashboard/create-new-tour/create-new-tour.component'
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SharedModule } from "../shared/shared.module";
+import { MaterializeModule } from "angular2-materialize";
 import { ConfigurationPageComponent } from './dashboard/configuration-page/configuration-page.component'
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ConfigurationPageComponent } from './dashboard/configuration-page/confi
     AdminPanelRoutingModule,
     ReactiveFormsModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    MaterializeModule,
   ],
   declarations: [
     DashboardComponent,

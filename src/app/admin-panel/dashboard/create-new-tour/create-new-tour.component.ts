@@ -18,12 +18,15 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   newImagelistUrl = [];
   tourId;
   starsSelect;
+  countriesListForDropDown;
+  citiesListForDropDown;
   constructor(public fb:FormBuilder,
               public toursService:ToursService) { }
 
   ngOnInit() {
     this.createTourForm = this.fb.group({
       country:['',Validators.required],
+      city:['',Validators.required],
       price:['',Validators.required],
       hotelName:['',Validators.required],
       detailDescription:['',Validators.required],
@@ -32,9 +35,10 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       endDate:['',Validators.required],
       shortDescription: ['',Validators.required],
       stars:['',Validators.required],
-
     })
+    this.getCountriesList();
   }
+
 
   onMainPhotoUpload(Url) {
     this.newFileUrl = Url;
@@ -81,14 +85,27 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     })
   }
 
+  getSelectsValue() {
+    let starsSelectValue = $('.starsSelect').find('.select-dropdown').val();
+    this.changeFormatValueSelectStars(starsSelectValue);
+    this.createTourForm.value.country =  $('#countrySelect').find('.select-dropdown').val();
+    this.createTourForm.value.city = $('#citySelect').find('.select-dropdown').val();
+  }
+
+  selectOptions(event) {
+    console.log("cahnged",event);
+  }
+
+  onCountrySelect(event) {
+    console.log("cahnged",event);
+  }
+
   createTour() {
-      let starsSelectValue = $('.starsSelect').find('.select-dropdown').val();
-      this.changeFormatValueSelectStars(starsSelectValue);
+      this.getSelectsValue();
       this.toursService.list('tours').push(this.createTourForm.value).then((response)=>{
         this.tourId = response.path.o[response.path.o.length-1];
         this.uploadMainPhoto(response);
         this.uploadFullPhotoListOneByOne(response);
-        // location.reload()
       })
     }
 
@@ -119,6 +136,16 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     });
   }
 
+  getCountriesList() {
+    this.toursService.list('configurations/countries').subscribe((response)=>{
+      console.log('countries reposne',response);
+      this.countriesListForDropDown = response;
+      setTimeout(()=>{
+        $('select').material_select();
+        },200)
+    })
+  }
+
   ngAfterViewInit() {
     $('.datepicker').pickadate({
       selectMonths: true,//Creates a dropdown to control month
@@ -144,6 +171,5 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       format: 'dd/mm/yyyy'
     });
 //Copy settings and initialization tooltipped
-    $('select').material_select();
   }
 }

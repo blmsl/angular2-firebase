@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AngularFire } from "angularfire2";
+import { AngularFireDatabase } from "angularfire2/database"
 import * as firebase from 'firebase'
 
 @Injectable()
 export class AuthServiceService {
 
-  constructor(public af:AngularFire){}
+  constructor(public afDatabase:AngularFireDatabase){}
 
   public registration(email,password) {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -19,12 +19,12 @@ export class AuthServiceService {
     return firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
 
-      console.log('error.message',error.message)
+      console.log('error.message',error.message);
       var errorMessage = error.message;
       // ...
     })
   }
   public getAllData() {
-    return this.af.database.list('courses')
+    return this.afDatabase.list('courses')
   };
 }

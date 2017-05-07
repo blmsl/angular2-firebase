@@ -4,22 +4,28 @@
 <div class="row">
   <form class="col s12" [formGroup]="createTourForm" novalidate>
     <div class="row">
-      <div class="input-field col s6" id="countrySelect" *ngIf="countriesListForDropDown">
-
-        <select materialize="material_select" [materializeSelectOptions]="countriesListForDropDown">
-          <option *ngFor="let country of countriesListForDropDown" [value]="country.country">{{country.country}}</option>
-        </select>
-        <!--<label for="countrySelect">Выберите страну</label>-->
-
+      <div class="col s6" *ngIf="countriesListForDropDown">
+        <mz-select-container>
+          <select mz-select
+                  [label]="'Страна'"
+                  (change)="onSelectCountry($event.target.value)"
+                  [placeholder]="'Тут должна быть страна'"
+                  id="countrySelect">
+            <option *ngFor="let country of countriesListForDropDown" [value]="country.country">{{country.country}}</option>
+          </select>
+        </mz-select-container>
       </div>
-      <div class="input-field col s6" id="citySelect">
-        <select formControlName="city" class="validate">
-          <option value="" disabled selected></option>
-          <option value="Турция">Турция</option>
-          <option value="Египет">Египет</option>
-          <option value="Греция">Греция</option>
-        </select>
-        <label for="citySelect">Выберите город</label>
+      <div class="col s6">
+        <mz-select-container>
+          <select mz-select
+                  [label]="'Город'"
+                  [disabled]="!createTourForm.value.country"
+                  (change)="onCountrySelect($event.target.value)"
+                  [placeholder]="'Тут должна быть страна'"
+                  id="citySelect">
+            <option *ngFor="let city of (countriesListForDropDown | defineCityList: createTourForm.value.country)" [value]="city">{{city}}</option>
+          </select>
+        </mz-select-container>
       </div>
       <div class="input-field col s12">
         <input type="text" formControlName="hotelName" class="validate">

@@ -12,14 +12,12 @@ declare let $:any;
 })
 export class CreateNewTourComponent implements OnInit,AfterViewInit {
   createTourForm: FormGroup;
-  mainPhotoFile;
   openAlertModal = false;
   newFileUrl;
   newImagelistUrl = [];
   tourId;
-  starsSelect;
   countriesListForDropDown;
-  citiesListForDropDown;
+
   constructor(public fb:FormBuilder,
               public toursService:ToursService) { }
 
@@ -92,12 +90,12 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     this.createTourForm.value.city = $('#citySelect').find('.select-dropdown').val();
   }
 
-  selectOptions(event) {
-    console.log("cahnged",event);
+  onSelectCountry(countryName) {
+    this.createTourForm.value.country = countryName;
   }
 
-  onCountrySelect(event) {
-    console.log("cahnged",event);
+  onSelectCity(cityName) {
+    this.createTourForm.value.city = cityName;
   }
 
   createTour() {

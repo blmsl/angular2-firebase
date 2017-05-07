@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterializeModule } from "angular2-materialize";
+import { MaterializeModule } from 'ng2-materialize';
 
 
 import { AppComponent } from './app.component';
@@ -39,8 +39,9 @@ import { CanActiveService } from "./shared/services/can-active.service";
     ReactiveFormsModule,
     AdminPanelModule,
     AppRoutingModule,
-    AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(Constants.fireBaseConfig)
+    MaterializeModule.forRoot(),
+    AngularFireModule.initializeApp(Constants.fireBaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [
     AuthServiceService,

@@ -37,7 +37,7 @@ export class UploadImagesComponent implements OnInit, OnChanges {
 
   cropFile(file) {
     console.log('filer income',file);
-    this.ng2ImgToolsService.resizeExactCrop([file], 600,400 ).subscribe(result => {
+    this.ng2ImgToolsService.resizeExactCrop([file], 640,480 ).subscribe(result => {
       console.log('result crop',result);
       if(result.name.indexOf(' ')!= -1)this.fileName = result.name.split(' ').join('');
       else this.fileName = result.name;

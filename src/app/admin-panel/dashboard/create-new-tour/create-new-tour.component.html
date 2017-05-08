@@ -10,6 +10,7 @@
                   [label]="'Страна'"
                   (change)="onSelectCountry($event.target.value)"
                   [placeholder]="'Тут должна быть страна'"
+                  formControlName="country"
                   id="countrySelect">
             <option *ngFor="let country of countriesListForDropDown" [value]="country.country">{{country.country}}</option>
           </select>
@@ -20,7 +21,8 @@
           <select mz-select
                   [label]="'Город'"
                   [disabled]="!createTourForm.value.country"
-                  (change)="onCountrySelect($event.target.value)"
+                  (change)="onSelectCity($event.target.value)"
+                  formControlName="city"
                   [placeholder]="'Тут должна быть страна'"
                   id="citySelect">
             <option *ngFor="let city of (countriesListForDropDown | defineCityList: createTourForm.value.country)" [value]="city">{{city}}</option>

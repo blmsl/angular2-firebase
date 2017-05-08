@@ -86,8 +86,6 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   getSelectsValue() {
     let starsSelectValue = $('.starsSelect').find('.select-dropdown').val();
     this.changeFormatValueSelectStars(starsSelectValue);
-    this.createTourForm.value.country =  $('#countrySelect').find('.select-dropdown').val();
-    this.createTourForm.value.city = $('#citySelect').find('.select-dropdown').val();
   }
 
   onSelectCountry(countryName) {

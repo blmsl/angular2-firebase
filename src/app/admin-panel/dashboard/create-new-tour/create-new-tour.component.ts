@@ -1,7 +1,8 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ToursService} from "../../../shared/services/tours.service";
-import {Observable} from "rxjs/Observable";
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ToursService } from "../../../shared/services/tours.service";
+import { ProcessHandlerService } from "../../../shared/services/process-handler.service"
+import { Observable } from "rxjs/Observable";
 import * as firebase from "firebase"
 declare let $:any;
 
@@ -17,9 +18,12 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   newImagelistUrl = [];
   tourId;
   countriesListForDropDown;
+  activateSpinner;
+
 
   constructor(public fb:FormBuilder,
-              public toursService:ToursService) { }
+              public toursService:ToursService,
+              public processHandlerService:ProcessHandlerService) { }
 
   ngOnInit() {
     this.createTourForm = this.fb.group({
@@ -97,6 +101,7 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   }
 
   createTour() {
+    this.processHandlerService.start();
       this.getSelectsValue();
       this.toursService.list('tours').push(this.createTourForm.value).then((response)=>{
         this.tourId = response.path.o[response.path.o.length-1];
@@ -106,6 +111,8 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     }
 
     uploadMainPhoto(tour) {
+    let self = this;
+      this.processHandlerService.start();
       return this.newFileObs().subscribe((Url)=>{
         this.tourId = null;
         let objectPath = '/'+tour.path.o.join('/');
@@ -116,11 +123,15 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
         updates[`${objectPath}/mainPhotoUrl`] = this.createTourForm.value.mainPhotoUrl;
         console.log("Url",Url);
         console.log("updates",updates);
-        firebase.database().ref().update(updates);
+        firebase.database().ref().update(updates).then(()=>{
+          self.processHandlerService.done();
+        });
       });
     }
 
   uploadFullPhotoListOneByOne(tour) {
+    let self = this;
+    this.processHandlerService.start();
     this.newFilesListObs().subscribe((fullImagesListUrls)=>{
       this.tourId = null;
       let objectPath = '/'+tour.path.o.join('/');
@@ -128,7 +139,9 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       updates[`${objectPath}/fullImageGalery`] = fullImagesListUrls;
       console.log("fullImagesListUrls",fullImagesListUrls);
       console.log("updates",updates);
-      firebase.database().ref().update(updates);
+      firebase.database().ref().update(updates).then(()=>{
+        self.processHandlerService.done();
+      });
     });
   }
 

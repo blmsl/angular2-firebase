@@ -20,6 +20,7 @@ import { AdminPanelModule } from "./admin-panel/admin-panel.module";
 import { MainComponentComponent } from './user-components/main-component/main-component.component'
 import { ToursService } from "./shared/services/tours.service";
 import { CanActiveService } from "./shared/services/can-active.service";
+import { ProcessHandlerService } from "./shared/services/process-handler.service"
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CanActiveService } from "./shared/services/can-active.service";
   providers: [
     AuthServiceService,
     ToursService,
-    CanActiveService
+    CanActiveService,
+    ProcessHandlerService
   ],
   bootstrap: [AppComponent]
 })

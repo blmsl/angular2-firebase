@@ -2,6 +2,7 @@ import {Component, OnInit, Output, Input, EventEmitter, OnChanges} from '@angula
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ToursService} from "../../services/tours.service";
 import { Ng2ImgToolsService } from 'ng2-img-tools';
+import { ProcessHandlerService } from "../../services/process-handler.service"
 import * as firebase from "firebase"
 import * as _ from "lodash"
 
@@ -18,7 +19,8 @@ export class UploadFilesMultipleComponent implements OnInit, OnChanges {
 
   constructor(public fb:FormBuilder,
               public toursService:ToursService,
-              private ng2ImgToolsService: Ng2ImgToolsService,) { }
+              private ng2ImgToolsService: Ng2ImgToolsService,
+  public processHandlerService:ProcessHandlerService) { }
 
   ngOnInit() {
   }
@@ -41,9 +43,12 @@ export class UploadFilesMultipleComponent implements OnInit, OnChanges {
   }
 
   cropFile(files) {
+    this.processHandlerService.start();
     this.ng2ImgToolsService.resizeExactCrop(files, 800,400 ).subscribe(result => {
+      this.processHandlerService.start();
       console.log('result crop',result);
       this.files.push(result);
+      this.processHandlerService.done();
     }, error => {console.log(error)});
   }
 

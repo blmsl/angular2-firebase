@@ -13,7 +13,7 @@ const appRoutes: Routes = [
   { path: 'registration',canActivate:[CanActiveService], component:  RegistrationComponent },
   { path: 'portal', component:   MainComponentComponent, children: [
     { path: 'tour-listing', component:  TourListingComponent},
-    { path: 'tour', component:  TourComponent },
+    { path: 'tour/:key', component:  TourComponent },
     { path: '**', redirectTo: '/portal/tour-listing'},
   ]},
   { path: '',  redirectTo: '/portal/tour-listing', pathMatch : 'full'},

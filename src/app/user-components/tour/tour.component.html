@@ -1,41 +1,21 @@
 <div class="row">
   <div class="col s12 center">
-    <h5 class="center">Alhambre palas
-      <div>
-        <span>
-         <img src="./assets/img/star.png" alt="country">
-         <img src="./assets/img/star.png" alt="country">
-         <img src="./assets/img/star.png" alt="country">
-         <img src="./assets/img/star.png" alt="country">
-         <img src="./assets/img/star.png" alt="country">
+    <div class="col s12 m8 text-a-l m-b-5p">
+      <h5 class="m-b--5p">{{tourModel?.hotelName}} <img class="h-21p" src="./assets/img/star.png" alt="country" *ngFor="let star of tourModel?.stars"></h5>
+      <span *ngIf="tourModel?.country">
+          {{tourModel?.country}} ({{tourModel?.city}} )
       </span>
-      </div>
-    </h5>
-    <span>
-      Турция (Анталия)
-    </span>
+    </div>
   </div>
-  <div class="col s12 m8">
+  <div class="col s12 m8 slider-container">
     <div class="slider-for center">
-      <div>
-        <img class="max-w-100 max-h-100 m-0-auto" src="http://www.cutlereyecare.com/images/assets/landscapes/landscape-7-800x400.jpg" alt="">
-      </div>
-      <div>
-        <img class="max-w-100 max-h-100 m-0-auto" src="http://www.wmconnolley.org.uk/diary/2001/07/Dscn3341-lfk-ls-rgs-pwand_crop_800x400.jpg" alt="">
-      </div>
-      <div>
-        <img class="max-w-100 max-h-100 m-0-auto" src="http://www.thefashionisto.com/wp-content/uploads/2012/09/1017-800x400.jpg" alt="">
+      <div *ngFor="let bigImage of tourModel?.fullImageGalery">
+        <img class="max-w-100 max-h-100 m-0-auto pointer" [src]="bigImage" alt="">
       </div>
     </div>
     <div class="slider-nav p-t-5p">
-      <div>
-        <img class="max-w-100 max-h-100" src="http://www.cutlereyecare.com/images/assets/landscapes/landscape-7-800x400.jpg" alt="">
-      </div>
-      <div>
-        <img class="max-w-100 max-h-100" src="http://www.wmconnolley.org.uk/diary/2001/07/Dscn3341-lfk-ls-rgs-pwand_crop_800x400.jpg" alt="">
-      </div>
-      <div>
-        <img class="max-w-100 max-h-100" src="http://www.thefashionisto.com/wp-content/uploads/2012/09/1017-800x400.jpg" alt="">
+      <div *ngFor="let bigImage of tourModel?.fullImageGalery">
+        <img class="max-w-100 max-h-100 m-0-auto pointer" [src]="bigImage" alt="">
       </div>
     </div>
   </div>
@@ -50,19 +30,63 @@
     </div>
   </div>
   <div class="col s12">
-    <ul class="collapsible" data-collapsible="expandable">
-      <li>
-        <div class="collapsible-header active"><i class="material-icons">filter_drama</i>First</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-      <li>
-        <div class="collapsible-header active"><i class="material-icons">place</i>Second</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-      <li>
-        <div class="collapsible-header active"><i class="material-icons">whatshot</i>Third</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-    </ul>
+    <mz-collapsible
+      [mode]="'expandable'"
+      [popout]="true">
+      <mz-collapsible-item [active]="true">
+        <mz-collapsible-item-header>
+          <i mz-icon
+             [align]="'left'"
+             [icon]="'description'"
+             [size]="'medium'">
+          </i>
+          Общая информация
+        </mz-collapsible-item-header>
+        <mz-collapsible-item-body>
+          {{tourModel?.detailDescription}}
+        </mz-collapsible-item-body>
+      </mz-collapsible-item>
+      <mz-collapsible-item>
+        <mz-collapsible-item-header>
+          <i mz-icon
+             [align]="'left'"
+             [icon]="'my_location'"
+             [size]="'medium'">
+          </i>
+          Детали местонахождения отеля
+        </mz-collapsible-item-header>
+        <mz-collapsible-item-body>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </mz-collapsible-item-body>
+      </mz-collapsible-item>
+      <mz-collapsible-item>
+        <mz-collapsible-item-header>
+          <i mz-icon
+             [align]="'left'"
+             [icon]="'room_service'"
+             [size]="'medium'">
+          </i>
+          Услугах отеля
+        </mz-collapsible-item-header>
+        <mz-collapsible-item-body>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </mz-collapsible-item-body>
+      </mz-collapsible-item>
+      <mz-collapsible-item>
+        <mz-collapsible-item-header>
+          <i mz-icon
+             [align]="'left'"
+             [icon]="'card_travel'"
+             [size]="'medium'">
+          </i>
+          Включено в стоимость тура
+        </mz-collapsible-item-header>
+        <mz-collapsible-item-body>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </mz-collapsible-item-body>
+      </mz-collapsible-item>
+
+    </mz-collapsible>
+
   </div>
 </div>

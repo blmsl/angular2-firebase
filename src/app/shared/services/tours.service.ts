@@ -33,4 +33,8 @@ export class ToursService {
     firebase.database().ref(path)
   }
 
+  getTourDetails(key:string) {
+    return this.afDatabase.object(`tours/${key}`);
+  }
+
 }

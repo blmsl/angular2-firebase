@@ -48,7 +48,7 @@ import { ProcessHandlerService } from "./shared/services/process-handler.service
     AuthServiceService,
     ToursService,
     CanActiveService,
-    ProcessHandlerService
+    ProcessHandlerService,
   ],
   bootstrap: [AppComponent]
 })

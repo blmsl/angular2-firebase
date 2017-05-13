@@ -30,9 +30,9 @@
                   <p class="btn-floating btn-large waves-effect waves-light red" (click)="onSaveCity(country.$key,country.country)"><i class="material-icons">add</i></p>
                 </div>
               </div>
-              <div class="col s12">
-                <ul>
-                  <li *ngFor="let city of country?.cities | objectToCollection">{{city}}</li>
+              <div class="col s12 m7">
+                <ul class="collection">
+                  <li class="collection-item" *ngFor="let city of country?.cities | objectToCollection">{{city}}</li>
                 </ul>
               </div>
             </div>
@@ -40,6 +40,39 @@
         </li>
       </ul>
     </div>
+  </div>
+
+
+  <div class="input-field col s12">
+    <ul class="collapsible" data-collapsible="expandable">
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">filter_drama</i>Сервисы гостиниц
+        </div>
+        <div class="collapsible-body">
+          <div class="row">
+              <div class="input-field col s12">
+                <div class="col s12">
+                  <div>
+                    <div class="col s8">
+                      <input id="config-services-add" [(ngModel)]="servicesControl"  type="text">
+                      <label for="config-services-add">Добавить навание сервиса</label>
+                    </div>
+                    <div class="col s4">
+                      <a class="btn-floating btn-large waves-effect waves-light red" (click)="$event.preventDefault(); onSaveService()"><i class="material-icons">add</i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col s12 m7">
+                <ul class="collection">
+                  <li class="collection-item" *ngFor="let service of servicesList">{{service?.title}}</li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
 

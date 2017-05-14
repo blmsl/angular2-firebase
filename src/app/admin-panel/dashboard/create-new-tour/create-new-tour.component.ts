@@ -2,7 +2,8 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToursService } from "../../../shared/services/tours.service";
 import { ProcessHandlerService } from "../../../shared/services/process-handler.service"
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs/Observable"
+import * as _ from "lodash"
 import * as firebase from "firebase"
 declare let $:any;
 
@@ -19,6 +20,7 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   tourId;
   countriesListForDropDown;
   activateSpinner;
+  servicesListForView;
 
 
   constructor(public fb:FormBuilder,
@@ -37,8 +39,10 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       endDate:['',Validators.required],
       shortDescription: ['',Validators.required],
       stars:['',Validators.required],
-    })
+      serviceList:['',Validators.required]
+    });
     this.getCountriesList();
+    this.getServicesList();
   }
 
 
@@ -92,12 +96,30 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     this.changeFormatValueSelectStars(starsSelectValue);
   }
 
+  getServicesList() {
+    this.toursService.list('configurations/hotelServices').subscribe(servicesList => {
+      this.servicesListForView = servicesList;
+      this.servicesListForView.forEach((service)=>{
+        service.checked = false;
+      })
+    })
+  }
+
   onSelectCountry(countryName) {
     this.createTourForm.value.country = countryName;
   }
 
   onSelectCity(cityName) {
     this.createTourForm.value.city = cityName;
+  }
+
+  onSelectHotelService(value:string,checked:boolean) {
+    this.createTourForm.value.serviceList = [];
+    _.find(this.servicesListForView,{title:value}).checked = checked;
+    _.filter(this.servicesListForView,{checked: true}).forEach((service)=>{
+      this.createTourForm.value.serviceList.push(service.title);
+    });
+    console.log('this.createTourForm.value.serviceList',this.createTourForm.value.serviceList);
   }
 
   createTour() {
@@ -111,7 +133,7 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     }
 
     uploadMainPhoto(tour) {
-    let self = this;
+      let self = this;
       this.processHandlerService.start();
       return this.newFileObs().subscribe((Url)=>{
         this.tourId = null;
@@ -123,7 +145,7 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
         updates[`${objectPath}/mainPhotoUrl`] = this.createTourForm.value.mainPhotoUrl;
         console.log("Url",Url);
         console.log("updates",updates);
-        firebase.database().ref().update(updates).then(()=>{
+        return firebase.database().ref().update(updates).then(()=>{
           self.processHandlerService.done();
         });
       });
@@ -133,6 +155,7 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     let self = this;
     this.processHandlerService.start();
     this.newFilesListObs().subscribe((fullImagesListUrls)=>{
+      console.log('fullImagesListUrls',fullImagesListUrls);
       this.tourId = null;
       let objectPath = '/'+tour.path.o.join('/');
       let updates = {};

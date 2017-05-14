@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit,AfterViewInit {
       self.router.navigate(['/login'])
     })
   }
+
   ngAfterViewInit() {
     $(".button-collapse").sideNav({
       menuWidth: 300, // Default is 300

@@ -68,6 +68,18 @@
     <app-upload-images [tourId]="tourId" (uploadedFileUrlTrigger)="onMainPhotoUpload($event)"></app-upload-images>
     <app-upload-files-multiple [tourId]="tourId" (uploadedMultipleFilesTrigger)="onFullPhotosUpload($event)"></app-upload-files-multiple>
     <div class="row">
+      <div class="col s12 m6">
+        <blockquote>
+          Сервисы отеля
+        </blockquote>
+        <p *ngFor="let service of servicesListForView; let i = index">
+          <input [value]="service.title" type="checkbox" [checked]="service.checked" [id]="i"
+                 (change)="onSelectHotelService($event.target.value,$event.target.checked)"/>
+          <label [for]="i">{{service.title}}</label>
+        </p>
+      </div>
+    </div>
+    <div class="row">
       <input type="date" formControlName="endDate" class="datepicker" placeholder="Кликните тут для определния даты окончания предложения">
     </div>
     <button class="btn waves-effect waves-light" (click)="$event.preventDefault();createTour()"  type="button" name="action">Сохранить

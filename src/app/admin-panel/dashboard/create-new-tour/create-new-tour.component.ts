@@ -14,14 +14,14 @@ declare let $:any;
 })
 export class CreateNewTourComponent implements OnInit,AfterViewInit {
   createTourForm: FormGroup;
-  openAlertModal = false;
-  newFileUrl;
+  openAlertModal:boolean = false;
+  newFileUrl:string;
   newImagelistUrl = [];
-  tourId;
-  countriesListForDropDown;
-  activateSpinner;
-  servicesListForView;
-
+  tourId:string;
+  countriesListForDropDown:any[];
+  servicesListForView:any[];
+  updatesModel = {};
+  newTourPath:string;
 
   constructor(public fb:FormBuilder,
               public toursService:ToursService,
@@ -119,7 +119,6 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     _.filter(this.servicesListForView,{checked: true}).forEach((service)=>{
       this.createTourForm.value.serviceList.push(service.title);
     });
-    console.log('this.createTourForm.value.serviceList',this.createTourForm.value.serviceList);
   }
 
   createTour() {
@@ -127,45 +126,23 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       this.getSelectsValue();
       this.toursService.list('tours').push(this.createTourForm.value).then((response)=>{
         this.tourId = response.path.o[response.path.o.length-1];
-        this.uploadMainPhoto(response);
-        this.uploadFullPhotoListOneByOne(response);
+        this.newTourPath = '/'+response.path.o.join('/');
+        Observable.zip(
+          this.newFileObs(),
+          this.newFilesListObs()
+        ).subscribe((response)=>{
+          this.updatesModel[`${this.newTourPath}/mainPhotoUrl`] =response[0];
+          this.updatesModel[`${this.newTourPath}/fullImageGalery`] = response[1];
+          setTimeout(()=>{
+            this.updateData(this.updatesModel).then(()=>this.processHandlerService.done())
+          },500);
+        })
       })
     }
 
-    uploadMainPhoto(tour) {
-      let self = this;
-      this.processHandlerService.start();
-      return this.newFileObs().subscribe((Url)=>{
-        this.tourId = null;
-        let objectPath = '/'+tour.path.o.join('/');
-        let updates = {};
-        console.log("Url",Url);
-        this.createTourForm.value.mainPhotoUrl = Url;
-
-        updates[`${objectPath}/mainPhotoUrl`] = this.createTourForm.value.mainPhotoUrl;
-        console.log("Url",Url);
-        console.log("updates",updates);
-        return firebase.database().ref().update(updates).then(()=>{
-          self.processHandlerService.done();
-        });
-      });
-    }
-
-  uploadFullPhotoListOneByOne(tour) {
-    let self = this;
-    this.processHandlerService.start();
-    this.newFilesListObs().subscribe((fullImagesListUrls)=>{
-      console.log('fullImagesListUrls',fullImagesListUrls);
-      this.tourId = null;
-      let objectPath = '/'+tour.path.o.join('/');
-      let updates = {};
-      updates[`${objectPath}/fullImageGalery`] = fullImagesListUrls;
-      console.log("fullImagesListUrls",fullImagesListUrls);
-      console.log("updates",updates);
-      firebase.database().ref().update(updates).then(()=>{
-        self.processHandlerService.done();
-      });
-    });
+  updateData(updatesModel) {
+    console.log("this.updatesModel",updatesModel);
+    return firebase.database().ref().update(updatesModel)
   }
 
   getCountriesList() {

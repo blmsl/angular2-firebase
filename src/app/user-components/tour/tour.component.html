@@ -46,7 +46,7 @@
           {{tourModel?.detailDescription}}
         </mz-collapsible-item-body>
       </mz-collapsible-item>
-      <mz-collapsible-item>
+      <mz-collapsible-item [active]="true">
         <mz-collapsible-item-header>
           <i mz-icon
              [align]="'left'"
@@ -59,7 +59,7 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </mz-collapsible-item-body>
       </mz-collapsible-item>
-      <mz-collapsible-item>
+      <mz-collapsible-item [active]="true">
         <mz-collapsible-item-header>
           <i mz-icon
              [align]="'left'"
@@ -69,10 +69,15 @@
           Услугах отеля
         </mz-collapsible-item-header>
         <mz-collapsible-item-body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <ul class="collection">
+            <li class="collection-item" *ngFor="let service of tourModel?.serviceList">
+              <i class="tiny material-icons">done</i>
+              {{service}}
+            </li>
+          </ul>
         </mz-collapsible-item-body>
       </mz-collapsible-item>
-      <mz-collapsible-item>
+      <mz-collapsible-item [active]="true">
         <mz-collapsible-item-header>
           <i mz-icon
              [align]="'left'"

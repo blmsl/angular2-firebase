@@ -82,6 +82,9 @@
     <div class="row">
       <input type="date" formControlName="endDate" class="datepicker" placeholder="Кликните тут для определния даты окончания предложения">
     </div>
+    <div class="row">
+      <app-google-map-autocomplete></app-google-map-autocomplete>
+    </div>
     <button class="btn waves-effect waves-light" (click)="$event.preventDefault();createTour()"  type="button" name="action">Сохранить
       <i class="material-icons right">send</i>
     </button>

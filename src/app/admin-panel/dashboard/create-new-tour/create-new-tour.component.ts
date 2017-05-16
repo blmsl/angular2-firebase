@@ -33,14 +33,18 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       city:['',Validators.required],
       price:['',Validators.required],
       hotelName:['',Validators.required],
+      currency:['UAH',Validators.required],
       detailDescription:['',Validators.required],
       mainPhotoUrl:['',Validators.required],
       fullImageGalery:'',
       endDate:['',Validators.required],
       shortDescription: ['',Validators.required],
       stars:['',Validators.required],
-      serviceList:['',Validators.required]
+      serviceList:['',Validators.required],
+      creationDate:[new Date(),Validators.required],
+      searchControl:['',Validators.required]
     });
+    console.log("this.createTourForm.value",this.createTourForm.value.creationDate);
     this.getCountriesList();
     this.getServicesList();
   }

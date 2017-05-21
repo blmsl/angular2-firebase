@@ -1,11 +1,13 @@
-<div class="container">
+<div class="col s12">
   <label>Местонахождение отеля</label>
   <div class="form-group">
-    <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+    <input placeholder="Поле для поиска" autocorrect="on" autocapitalize="on" spellcheck="on" type="text"
            class="form-control" #search [formControl]="searchControl">
   </div>
   <sebm-google-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
     <sebm-google-map-marker [latitude]="latitude" [longitude]="longitude"></sebm-google-map-marker>
   </sebm-google-map>
 </div>
+
+
 

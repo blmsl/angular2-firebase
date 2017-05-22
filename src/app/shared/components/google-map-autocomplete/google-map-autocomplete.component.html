@@ -1,6 +1,6 @@
 <div class="col s12">
-  <label>Местонахождение отеля</label>
-  <div class="form-group">
+  <label *ngIf="!readOnly" >Местонахождение отеля</label>
+  <div class="form-group" *ngIf="!readOnly">
     <input placeholder="Поле для поиска" autocorrect="on" autocapitalize="on" spellcheck="on" type="text"
            class="form-control" #search [formControl]="searchControl">
   </div>

@@ -56,7 +56,12 @@
           Детали местонахождения отеля
         </mz-collapsible-item-header>
         <mz-collapsible-item-body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <div class="row">
+            <span class="block m-b-10p">Мето нахождения отеля:
+              <span class="text-decor-un font-bold"> {{tourModel?.hotelLocation?.addressName}}</span>
+            </span>
+            <app-google-map-autocomplete [readOnly]="true" [tourLocation]="tourModel?.hotelLocation"></app-google-map-autocomplete>
+          </div>
         </mz-collapsible-item-body>
       </mz-collapsible-item>
       <mz-collapsible-item [active]="true">

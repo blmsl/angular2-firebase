@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, NgZone, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, NgZone, OnInit, Output, Input, ViewChild, OnChanges} from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { MapsAPILoader, GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
 import { } from '@types/googlemaps';
@@ -11,8 +11,10 @@ declare var google:any;
   styleUrls: ['./google-map-autocomplete.component.scss']
 })
 
-export class GoogleMapAutocompleteComponent implements OnInit {
-  @Output() emitLocation = new EventEmitter;
+export class GoogleMapAutocompleteComponent implements OnInit,OnChanges {
+  @Output() emitLocation? = new EventEmitter;
+  @Input() readOnly?;
+  @Input() tourLocation?;
 
   public latitude: number;
   public longitude: number;
@@ -27,19 +29,24 @@ export class GoogleMapAutocompleteComponent implements OnInit {
     private ngZone: NgZone
   ) {}
 
+  ngOnChanges() {
+    if(this.tourLocation){
+      this.latitude = this.tourLocation.latitude;
+      this.longitude = this.tourLocation.longitude;
+      this.zoom = 12;
+    }
+  }
   ngOnInit() {
     //set google maps defaults
     // this.zoom = 4;
-    // this.latitude = 39.8282;
-    // this.longitude = -98.5795;
-
     //create search FormControl
     this.searchControl = new FormControl();
-
+    if(this.readOnly) return;
     //set current position
     this.setCurrentPosition();
 
     //load Places Autocomplete
+
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["address"]

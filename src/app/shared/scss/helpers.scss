@@ -37,6 +37,10 @@
   font-size: 13px !important;
 }
 
+.font-bold {
+  font-weight: bold;
+}
+
 .main {
   background-color: linen;
 }
@@ -56,6 +60,20 @@
 .m-b-5p {
   margin-bottom: 5px !important;
 }
+
+.m-b-10p {
+  margin-bottom: 10px !important;
+}
+
+.text-decor-un {
+  text-decoration: underline;
+}
+
+.block {
+  display: block;
+}
+
+
 
 .slider-nav {
   button::before {

@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fceb9f3c-e06f-4388-9155-7bf6b3827719" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/admin-panel/dashboard/create-new-tour/create-new-tour.component.html" afterPath="$PROJECT_DIR$/src/app/admin-panel/dashboard/create-new-tour/create-new-tour.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/admin-panel/dashboard/create-new-tour/create-new-tour.component.ts" afterPath="$PROJECT_DIR$/src/app/admin-panel/dashboard/create-new-tour/create-new-tour.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.html" afterPath="$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.ts" afterPath="$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/scss/helpers.scss" afterPath="$PROJECT_DIR$/src/app/shared/scss/helpers.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/user-components/tour/tour.component.html" afterPath="$PROJECT_DIR$/src/app/user-components/tour/tour.component.html" />
     </list>
     <ignored path="poehaly-angular-firebase.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,11 +28,9 @@
       <file leaf-file-name="create-new-tour.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/admin-panel/dashboard/create-new-tour/create-new-tour.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1360">
-              <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-              <folding>
-                <marker date="1495405549000" expanded="true" signature="3998:4068" ph="..." />
-              </folding>
+            <state relative-caret-position="1184">
+              <caret line="74" column="21" lean-forward="true" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -47,14 +45,57 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create-new-tour.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="create-new-tour.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/admin-panel/dashboard/create-new-tour/create-new-tour.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="137" column="2" lean-forward="false" selection-start-line="137" selection-start-column="2" selection-end-line="137" selection-end-column="2" />
+            <state relative-caret-position="156">
+              <caret line="21" column="33" lean-forward="true" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
               <folding>
                 <element signature="e#0#74#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="google-map-autocomplete.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+              <folding>
+                <element signature="e#0#119#0" expanded="true" />
+                <marker date="1495491205000" expanded="true" signature="2596:2605" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="google-map-autocomplete.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tour.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/user-components/tour/tour.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="159">
+              <caret line="62" column="47" lean-forward="true" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helpers.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/shared/scss/helpers.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="64" column="19" lean-forward="false" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,9 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>звезд</find>
-      <find>this.waintingForTheSelectsValue();</find>
-      <find>materializeSelectOptions</find>
       <find>selectOptions</find>
       <find>countriesListForDropDown</find>
       <find>AngularFireAuth</find>
@@ -116,12 +154,15 @@
       <find>uploadMainPhoto</find>
       <find>formControlName</find>
       <find>searchControl</find>
-      <find>latitude</find>
       <find>this.hotelLocation</find>
       <find>hotelLoacation</find>
       <find>hotelLocation</find>
       <find>serviceList</find>
+      <find>nativeElement</find>
+      <find>latitude</find>
       <find>updatesModel</find>
+      <find>font</find>
+      <find>margin</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/node_modules</dir>
@@ -173,19 +214,19 @@
         <option value="$PROJECT_DIR$/src/app/user-components/tour-listing/tour-listing.component.html" />
         <option value="$PROJECT_DIR$/src/app/shared/services/tours.service.ts" />
         <option value="$PROJECT_DIR$/src/app/user-components/tour/tour.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/shared/scss/helpers.scss" />
         <option value="$PROJECT_DIR$/src/app/admin-panel/dashboard/configuration-page/configuration-page.component.ts" />
         <option value="$PROJECT_DIR$/src/app/admin-panel/dashboard/configuration-page/configuration-page.component.html" />
         <option value="$PROJECT_DIR$/src/app/admin-panel/dashboard/dashboard.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/user-components/tour/tour.component.html" />
         <option value="$PROJECT_DIR$/src/app/shared/shared.module.ts" />
         <option value="$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.scss" />
         <option value="$PROJECT_DIR$/src/app/shared/components/upload-images/upload-images.component.html" />
-        <option value="$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.html" />
         <option value="$PROJECT_DIR$/src/app/shared/components/upload-files-multiple/upload-files-multiple.component.html" />
-        <option value="$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.ts" />
         <option value="$PROJECT_DIR$/src/app/admin-panel/dashboard/create-new-tour/create-new-tour.component.html" />
         <option value="$PROJECT_DIR$/src/app/admin-panel/dashboard/create-new-tour/create-new-tour.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.html" />
+        <option value="$PROJECT_DIR$/src/app/shared/scss/helpers.scss" />
+        <option value="$PROJECT_DIR$/src/app/user-components/tour/tour.component.html" />
       </list>
     </option>
   </component>
@@ -330,115 +371,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="poehaly-angular-firebase" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="poehaly-angular-firebase" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shared" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="google-map-autocomplete" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="poehaly-angular-firebase" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="poehaly-angular-firebase" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="poehaly-angular-firebase" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="poehaly-angular-firebase" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dashboard" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="poehaly-angular-firebase" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="poehaly-angular-firebase" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin-panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dashboard" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="create-new-tour" />
+              <option name="myItemId" value="scss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -586,12 +519,12 @@
       <workItem from="1494790738545" duration="5308000" />
       <workItem from="1494964890648" duration="6067000" />
       <workItem from="1495394885643" duration="7850000" />
-      <workItem from="1495431368775" duration="2080000" />
+      <workItem from="1495431368775" duration="5263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="219532000" />
+    <option name="totallyTimeSpent" value="222715000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -604,16 +537,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13671875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24921875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3276923" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34130147" sideWeight="0.496875" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34130147" sideWeight="0.496875" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -637,13 +569,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/shared/pipes/object-to-collection.pipe.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/user-components/tour-listing/tour-listing.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -814,13 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/scss/helpers.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="55" column="1" lean-forward="false" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -885,25 +803,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user-components/tour/tour.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1072">
-          <caret line="67" column="14" lean-forward="false" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/shared/components/spinner/spinner.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="8" column="49" lean-forward="false" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@types/googlemaps/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18395">
-          <caret line="2256" column="17" lean-forward="false" selection-start-line="2256" selection-start-column="17" selection-end-line="2256" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -918,6 +822,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
           <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -954,20 +859,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="8" column="85" lean-forward="false" selection-start-line="8" selection-start-column="85" selection-end-line="8" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="39" column="30" lean-forward="true" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -976,16 +868,6 @@
         <state relative-caret-position="448">
           <caret line="29" column="27" lean-forward="false" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin-panel/dashboard/create-new-tour/create-new-tour.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding>
-            <marker date="1495405549000" expanded="true" signature="3998:4068" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1005,13 +887,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es6.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="9757" column="1" lean-forward="true" selection-start-line="9757" selection-start-column="1" selection-end-line="9757" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/googlemaps/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="2450" column="18" lean-forward="false" selection-start-line="2450" selection-start-column="18" selection-end-line="2450" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin-panel/dashboard/create-new-tour/create-new-tour.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1184">
+          <caret line="74" column="21" lean-forward="true" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/components/google-map-autocomplete/google-map-autocomplete.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#119#0" expanded="true" />
+            <marker date="1495491205000" expanded="true" signature="2596:2605" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin-panel/dashboard/create-new-tour/create-new-tour.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="137" column="2" lean-forward="false" selection-start-line="137" selection-start-column="2" selection-end-line="137" selection-end-column="2" />
+        <state relative-caret-position="156">
+          <caret line="21" column="33" lean-forward="true" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
           <folding>
             <element signature="e#0#74#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/scss/helpers.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="64" column="19" lean-forward="false" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user-components/tour/tour.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="62" column="47" lean-forward="true" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnChanges, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToursService } from "../../../shared/services/tours.service";
 import { ProcessHandlerService } from "../../../shared/services/process-handler.service"
@@ -14,6 +14,7 @@ declare let $:any;
 })
 export class CreateNewTourComponent implements OnInit,AfterViewInit {
   createTourForm: FormGroup;
+  createTourModel;
   openAlertModal:boolean = false;
   newFileUrl:string;
   newImagelistUrl = [];
@@ -22,6 +23,7 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   servicesListForView:any[];
   updatesModel = {};
   newTourPath:string;
+  hotelLocation;
 
   constructor(public fb:FormBuilder,
               public toursService:ToursService,
@@ -33,25 +35,27 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       city:['',Validators.required],
       price:['',Validators.required],
       hotelName:['',Validators.required],
-      currency:'UAH',
       detailDescription:['',Validators.required],
-      mainPhotoUrl:['',Validators.required],
+      mainPhotoUrl:'',
       fullImageGalery:'',
       endDate:['',Validators.required],
       shortDescription: ['',Validators.required],
       stars:['',Validators.required],
       serviceList:['',Validators.required],
-      creationDate:new Date(),
-      hotelLoacation:['',Validators.required]
     });
-    console.log("this.createTourForm.value",this.createTourForm.value.creationDate);
     this.getCountriesList();
     this.getServicesList();
   }
 
-
   onMainPhotoUpload(Url) {
     this.newFileUrl = Url;
+  }
+
+  initCreateTourModel() {
+    this.createTourModel = _.cloneDeep(this.createTourForm.value);
+    this.createTourModel.hotelLocation = this.hotelLocation;
+    this.createTourModel.creationDate = new Date().toISOString();
+    this.createTourModel.currency = 'UAH';
   }
 
   onFullPhotosUpload(UrlList:any[]) {
@@ -63,6 +67,11 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     for(let i = 1; starsQuantity>=i;i++){
       this.createTourForm.value.stars.push(i)
     }
+  }
+
+  onSelectHotelLocation(location) {
+    this.hotelLocation = location;
+    console.log('this.createTourForm',this.createTourForm);
   }
 
   newFileObs() {
@@ -128,7 +137,9 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   createTour() {
     this.processHandlerService.start();
       this.getSelectsValue();
-      this.toursService.list('tours').push(this.createTourForm.value).then((response)=>{
+      console.log('this.createTourModel',this.createTourModel);
+      this.initCreateTourModel();
+      this.toursService.list('tours').push(this.createTourModel).then((response)=>{
         this.tourId = response.path.o[response.path.o.length-1];
         this.newTourPath = '/'+response.path.o.join('/');
         Observable.zip(

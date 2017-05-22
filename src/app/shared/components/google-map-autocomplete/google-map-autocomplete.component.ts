@@ -1,4 +1,4 @@
-import { Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, NgZone, OnInit, Output, ViewChild} from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { MapsAPILoader, GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
 import { } from '@types/googlemaps';
@@ -12,6 +12,7 @@ declare var google:any;
 })
 
 export class GoogleMapAutocompleteComponent implements OnInit {
+  @Output() emitLocation = new EventEmitter;
 
   public latitude: number;
   public longitude: number;
@@ -28,9 +29,9 @@ export class GoogleMapAutocompleteComponent implements OnInit {
 
   ngOnInit() {
     //set google maps defaults
-    this.zoom = 4;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+    // this.zoom = 4;
+    // this.latitude = 39.8282;
+    // this.longitude = -98.5795;
 
     //create search FormControl
     this.searchControl = new FormControl();
@@ -57,6 +58,14 @@ export class GoogleMapAutocompleteComponent implements OnInit {
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
           this.zoom = 12;
+
+          let dataForSave = {
+            latitude:this.latitude,
+            longitude:this.longitude,
+            addressName: this.searchElementRef.nativeElement.value
+          };
+
+          this.emitLocation.emit(dataForSave);
         });
       });
     });

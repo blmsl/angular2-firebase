@@ -1,0 +1,9 @@
+<div class="overlay" (click)="hideOverlay=true" *ngIf="!hideOverlay"></div>
+
+<iframe height="450"
+        *ngIf="tourLocation"
+        class="googleMap"
+        frameborder="0"
+        scrollwheel="false"
+        [src]="googleMapApiUrl"
+        allowfullscreen></iframe>

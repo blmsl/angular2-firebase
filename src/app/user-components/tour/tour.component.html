@@ -60,7 +60,7 @@
             <span class="block m-b-10p">Мето нахождения отеля:
               <span class="text-decor-un font-bold"> {{tourModel?.hotelLocation?.addressName}}</span>
             </span>
-            <app-google-map-autocomplete [readOnly]="true" [tourLocation]="tourModel?.hotelLocation"></app-google-map-autocomplete>
+            <app-google-map-iframe [tourLocation]="tourModel?.hotelLocation"></app-google-map-iframe>
           </div>
         </mz-collapsible-item-body>
       </mz-collapsible-item>

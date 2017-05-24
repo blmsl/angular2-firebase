@@ -13,6 +13,7 @@ import { DefineCityListPipe } from './pipes/define-city-list.pipe';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { GoogleMapAutocompleteComponent } from './components/google-map-autocomplete/google-map-autocomplete.component'
 import { ReactiveFormsModule } from "@angular/forms";
+import { GoogleMapComponent } from './components/google-map-iframe/google-map.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     ObjectToCollectionPipe,
     DefineCityListPipe,
     SpinnerComponent,
-    GoogleMapAutocompleteComponent
+    GoogleMapAutocompleteComponent,
+    GoogleMapComponent
   ],
   exports: [
     PaginationComponent,
@@ -43,7 +45,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     ObjectToCollectionPipe,
     DefineCityListPipe,
     SpinnerComponent,
-    GoogleMapAutocompleteComponent
+    GoogleMapAutocompleteComponent,
+    GoogleMapComponent
   ]
 })
 export class SharedModule { }

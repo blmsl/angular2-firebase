@@ -5,13 +5,13 @@ declare let $:any;
 @Component({
   selector: 'app-tour',
   templateUrl: './tour.component.html',
-  styleUrls: ['./tour.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./tour.component.scss']
 
 })
 export class TourComponent implements OnInit,AfterViewInit {
   tourKey;
   tourModel;
+  alreadyLoaded;
 
   constructor(public activatedRoute:ActivatedRoute,
               public toursService:ToursService,
@@ -24,6 +24,7 @@ export class TourComponent implements OnInit,AfterViewInit {
         this.tourModel = response;
         this.initImageGallery();
         console.log("tourModel",this.tourModel);
+        $('.materialboxed').materialbox();
       })
     })
   }
@@ -49,8 +50,10 @@ export class TourComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit() {
-    $('.materialboxed').materialbox();
-
+    let mapTimeOut = setTimeout(() => {
+      this.alreadyLoaded = true;
+      clearTimeout(mapTimeOut);
+    }, 200)
   }
 
 

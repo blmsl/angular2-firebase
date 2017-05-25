@@ -33,13 +33,10 @@ export class GoogleMapAutocompleteComponent implements OnInit,OnChanges {
     if(this.tourLocation){
       this.latitude = this.tourLocation.latitude;
       this.longitude = this.tourLocation.longitude;
-      this.zoom = 12;
+      this.zoom = 7;
     }
   }
   ngOnInit() {
-    //set google maps defaults
-    // this.zoom = 4;
-    //create search FormControl
     this.searchControl = new FormControl();
     if(this.readOnly) return;
     //set current position
@@ -64,7 +61,7 @@ export class GoogleMapAutocompleteComponent implements OnInit,OnChanges {
           //set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
-          this.zoom = 12;
+          this.zoom = 7;
 
           let dataForSave = {
             latitude:this.latitude,

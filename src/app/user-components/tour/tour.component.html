@@ -7,7 +7,7 @@
       </span>
     </div>
   </div>
-  <div class="col s12 m8 slider-container">
+  <div class="col s12 l9 m12 slider-container">
     <div class="slider-for center">
       <div *ngFor="let bigImage of tourModel?.fullImageGalery">
         <img class="max-w-100 max-h-100 m-0-auto pointer" [src]="bigImage" alt="">
@@ -19,13 +19,10 @@
       </div>
     </div>
   </div>
-  <div class="col s12 m4">
+  <div class="col s12 m12 l3">
     <div class="card-panel teal">
-          <p class="white-text"><i class="material-icons">place</i>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-          </p>
-          <p class="white-text"><i class="material-icons">whatshot</i>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          <p class="white-text"><i class="material-icons">short_text</i>
+            {{tourModel?.shortDescription}}
           </p>
     </div>
   </div>

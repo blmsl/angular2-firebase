@@ -1,32 +1,4 @@
-<div class="row">
-  <div class="col s12 m6" *ngFor="let tour of toursList">
-    <div class="card">
-      <div class="card-image z-depth-2" *ngIf="tour?.mainPhotoUrl">
-        <img class="pointer" [routerLink]="['../tour',tour?.$key]" [src]="tour?.mainPhotoUrl">
-        <!--<span class="card-title">Card Title</span>-->
-        <a class="btn-floating halfway-fab waves-effect waves-light red" [routerLink]="['../tour',tour?.$key]"><i class="material-icons">add</i></a>
-      </div>
-      <div class="card-content">
-        <h5>{{tour?.hotelName}}</h5>
-        <div>
-          <span>
-            <img  *ngFor="let star of tour?.stars" src="./assets/img/star.png" alt="country">
-          </span>
-        </div>
-        <!--<div class="card-panel teal">-->
-          <!--<span class="white-text">3000 UAH</span>-->
-        <!--</div>-->
-        <p class="f-s-13">{{tour?.shortDescription}}</p>
-        <div class="chip">
-          <img src="./assets/img/plane.png" alt="country">
-          {{tour.country}}
-        </div>
-        <div class="chip">
-          <img src="./assets/img/money.png" alt="country">
-          {{tour.price}}
-        </div>
-      </div>
-    </div>
+<div class="row" *ngFor="let tour of toursList">
+    <app-tour-item [tour]="tour"></app-tour-item>
   </div>
-</div>
 <!--<app-pagination></app-pagination>-->

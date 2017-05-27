@@ -23,7 +23,8 @@
         "../node_modules/materialize-css/dist/css/materialize.min.css",
         "./app/shared/scss/helpers.scss",
         "../node_modules/slick-carousel/slick/slick.scss",
-        "../node_modules/slick-carousel/slick/slick-theme.scss"
+        "../node_modules/slick-carousel/slick/slick-theme.scss",
+        "../node_modules/font-awesome/scss/font-awesome.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",

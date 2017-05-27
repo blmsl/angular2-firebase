@@ -33,8 +33,36 @@
   padding: 5px;
 }
 
+.p-0 {
+  padding: 0 !important;
+}
+
+.p-b-3p {
+  padding-bottom: 3px !important;
+}
+
+.p-l-8p {
+  padding-left: 8px !important;
+}
+
+.p-l-0 {
+  padding-left: 0 !important;
+}
+
 .m-0-auto {
   margin: 0 auto;
+}
+
+.m-t-2p {
+  margin-top: 2px !important;
+}
+
+.m-b-2p {
+  margin-bottom: 2px !important;
+}
+
+.m-t-0p {
+  margin-top: 0 !important;
 }
 
 .f-s-13 {
@@ -47,6 +75,10 @@
 
 .font-bold {
   font-weight: bold;
+}
+
+.font-w-400 {
+  font-weight: 400 !important;
 }
 
 .main {
@@ -79,6 +111,14 @@
 
 .block {
   display: block;
+}
+
+.border-1-s-b {
+  border: 1px solid black;
+}
+
+.text-trans-none {
+  text-transform: none !important;
 }
 
 

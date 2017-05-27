@@ -20,7 +20,8 @@ import { AdminPanelModule } from "./admin-panel/admin-panel.module";
 import { MainComponentComponent } from './user-components/main-component/main-component.component'
 import { ToursService } from "./shared/services/tours.service";
 import { CanActiveService } from "./shared/services/can-active.service";
-import { ProcessHandlerService } from "./shared/services/process-handler.service"
+import { ProcessHandlerService } from "./shared/services/process-handler.service";
+import { TourItemComponent } from './user-components/tour-listing/tour-item/tour-item.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProcessHandlerService } from "./shared/services/process-handler.service
     TourListingComponent,
     TourComponent,
     RegistrationComponent,
-    MainComponentComponent
+    MainComponentComponent,
+    TourItemComponent
   ],
   imports: [
     BrowserModule,

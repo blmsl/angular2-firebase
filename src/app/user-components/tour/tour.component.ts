@@ -29,8 +29,6 @@ export class TourComponent implements OnInit,AfterViewInit {
     })
   }
 
-
-
   initImageGallery() {
     $(document).ready(function() {
       $('.slider-for').slick({

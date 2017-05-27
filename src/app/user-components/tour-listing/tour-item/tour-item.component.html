@@ -1,0 +1,43 @@
+<div class="col s12 m9 border-1-s-b p-0 z-depth-4">
+  <div class="col s12 p-0">
+    <h5 class="m-b-2p p-l-8p">{{tour?.hotelName}}
+      <span>
+        <img class="h-21p" *ngFor="let star of tour?.stars" src="./assets/img/star.png" alt="country">
+      </span>
+    </h5>
+    <p class="m-t-2p m-b-2p p-l-8p">{{tour?.country}} ({{tour?.city}})</p>
+  </div>
+  <div class="col s12 m8 p-0">
+    <img class="pointer max-w-100" [routerLink]="['../tour',tour?.$key]" [src]="tour?.mainPhotoUrl">
+  </div>
+  <div class="col s12 m4 p-0">
+    <ul class="collection m-t-0p">
+      <li class="collection-item">
+        <i class="fa fa-plane" aria-hidden="true"></i> Вылет из Одесса
+      </li>
+      <li class="collection-item">
+        <i class="fa fa-calendar" aria-hidden="true"></i> Вылет 24-01-2017
+      </li>
+      <li class="collection-item">
+        <i class="fa fa-cutlery" aria-hidden="true"></i> All inclusive
+      </li>
+      <li class="collection-item">
+        <i class="fa fa-bed" aria-hidden="true"></i> 8дней 7ночей
+      </li>
+      <li class="collection-item">
+        <i class="fa fa-bus" aria-hidden="true"></i> Трансфер Free
+      </li>
+      <li class="collection-item">
+        <i class="fa fa-suitcase" aria-hidden="true"></i> 15кг Free
+      </li>
+    </ul>
+  </div>
+  <div class="col s12 p-b-3p">
+    <div class="col s7 p-l-0">
+      <p class="flow-text m-b-2p m-t-2p font-w-400">{{tour?.price | currency:'USD':true:'1.0'}}</p>
+    </div>
+    <div class="col s5 right-align">
+      <a class="waves-effect green darken-2 btn text-trans-none" [routerLink]="['../tour',tour?.$key]">Детали</a>
+    </div>
+  </div>
+</div>

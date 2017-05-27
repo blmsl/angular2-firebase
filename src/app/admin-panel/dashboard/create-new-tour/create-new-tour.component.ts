@@ -21,6 +21,8 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
   tourId:string;
   countriesListForDropDown:any[];
   servicesListForView:any[];
+  departureCitiesListForDropDown:any[];
+  supplyListForDropDown:any[];
   updatesModel = {};
   newTourPath:string;
   hotelLocation;
@@ -42,9 +44,15 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
       shortDescription: ['',Validators.required],
       stars:['',Validators.required],
       serviceList:['',Validators.required],
+      nights:['',Validators.required],
+      days:['',Validators.required],
+      departure:['',Validators.required],
+      supply:['',Validators.required]
     });
     this.getCountriesList();
     this.getServicesList();
+    this.getDepartureCitiesListForDropDown();
+    this.getSupplyListForDropDown();
   }
 
   onMainPhotoUpload(Url) {
@@ -55,7 +63,20 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     this.createTourModel = _.cloneDeep(this.createTourForm.value);
     this.createTourModel.hotelLocation = this.hotelLocation;
     this.createTourModel.creationDate = new Date().toISOString();
-    this.createTourModel.currency = 'UAH';
+    this.createTourModel.currency = 'USD';
+  }
+
+  getDepartureCitiesListForDropDown() {
+    this.toursService.list('configurations/departure').subscribe((response)=>{
+      this.departureCitiesListForDropDown = response;
+    });
+  }
+
+  getSupplyListForDropDown() {
+    this.toursService.list('configurations/supply').subscribe((response)=>{
+      console.log('supply',response);
+      this.supplyListForDropDown = response;
+    })
   }
 
   onFullPhotosUpload(UrlList:any[]) {
@@ -132,6 +153,14 @@ export class CreateNewTourComponent implements OnInit,AfterViewInit {
     _.filter(this.servicesListForView,{checked: true}).forEach((service)=>{
       this.createTourForm.value.serviceList.push(service.title);
     });
+  }
+
+  onSelectDeparture(departureCity) {
+    this.createTourForm.value.departure = departureCity;
+  }
+
+  onSelectSupply(supply) {
+    this.createTourForm.value.supply = supply;
   }
 
   createTour() {

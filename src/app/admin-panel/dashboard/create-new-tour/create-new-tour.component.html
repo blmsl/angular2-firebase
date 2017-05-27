@@ -4,34 +4,62 @@
 <div class="row">
   <form class="col s12" [formGroup]="createTourForm" novalidate>
     <div class="row">
-      <div class="col s6" *ngIf="countriesListForDropDown">
-        <mz-select-container>
-          <select mz-select
-                  [label]="'Страна'"
-                  (change)="onSelectCountry($event.target.value)"
-                  [placeholder]="'Тут должна быть страна'"
-                  formControlName="country"
-                  id="countrySelect">
-            <option *ngFor="let country of countriesListForDropDown" [value]="country.country">{{country.country}}</option>
-          </select>
-        </mz-select-container>
+      <div class="row">
+        <div class="col s6" *ngIf="countriesListForDropDown">
+          <mz-select-container>
+            <select mz-select
+                    [label]="'Страна'"
+                    (change)="onSelectCountry($event.target.value)"
+                    [placeholder]="'Тут должна быть страна'"
+                    formControlName="country"
+                    id="countrySelect">
+              <option *ngFor="let country of countriesListForDropDown" [value]="country.country">{{country.country}}</option>
+            </select>
+          </mz-select-container>
+        </div>
+        <div class="col s6">
+          <mz-select-container>
+            <select mz-select
+                    [label]="'Город'"
+                    [disabled]="!createTourForm.value.country"
+                    (change)="onSelectCity($event.target.value)"
+                    formControlName="city"
+                    [placeholder]="'Тут должна быть страна'"
+                    id="citySelect">
+              <option *ngFor="let city of (countriesListForDropDown | defineCityList: createTourForm.value.country)" [value]="city">{{city}}</option>
+            </select>
+          </mz-select-container>
+        </div>
       </div>
-      <div class="col s6">
-        <mz-select-container>
-          <select mz-select
-                  [label]="'Город'"
-                  [disabled]="!createTourForm.value.country"
-                  (change)="onSelectCity($event.target.value)"
-                  formControlName="city"
-                  [placeholder]="'Тут должна быть страна'"
-                  id="citySelect">
-            <option *ngFor="let city of (countriesListForDropDown | defineCityList: createTourForm.value.country)" [value]="city">{{city}}</option>
-          </select>
-        </mz-select-container>
-      </div>
-      <div class="input-field col s12">
-        <input type="text" formControlName="hotelName" class="validate">
-        <label>Название отеля</label>
+      <div class="row">
+        <div class="input-field col s5">
+          <input type="text" formControlName="hotelName" class="validate">
+          <label>Название отеля</label>
+        </div>
+        <div class="col s3" *ngIf="departureCitiesListForDropDown">
+          <mz-select-container>
+            <select mz-select
+                    [label]="'Вылет из'"
+                    (change)="onSelectDeparture($event.target.value)"
+                    [placeholder]="'Город вылета'"
+                    formControlName="departure"
+                    id="departureSelect">
+              <option *ngFor="let city of departureCitiesListForDropDown" [value]="city.label">{{city.label}}</option>
+            </select>
+          </mz-select-container>
+        </div>
+        <div class="col s4" *ngIf="departureCitiesListForDropDown">
+          <mz-select-container>
+            <select mz-select
+                    [label]="'Питание'"
+                    (change)="onSelectSupply($event.target.value)"
+                    [placeholder]="'Схема питания'"
+                    formControlName="supply"
+                    id="supplySelect">
+              <option *ngFor="let supply of supplyListForDropDown" [value]="supply | json">{{supply.label}}</option>
+            </select>
+          </mz-select-container>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -40,11 +68,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s3">
         <input type="text" formControlName="price" class="validate">
         <label>Цена</label>
       </div>
-      <div class="input-field col s6 starsSelect">
+      <div class="input-field col s3 starsSelect">
         <select formControlName="stars">
           <option value="" disabled selected>Сделайте выбор</option>
           <option value="1">1</option>
@@ -54,6 +82,14 @@
           <option value="5">5</option>
         </select>
         <label>Колличество звезд</label>
+      </div>
+      <div class="input-field col s3">
+        <input type="number" formControlName="nights" class="validate">
+        <label>Ночей</label>
+      </div>
+      <div class="input-field col s3">
+        <input type="number" formControlName="days" class="validate">
+        <label>Дней</label>
       </div>
     </div>
     <div class="row">

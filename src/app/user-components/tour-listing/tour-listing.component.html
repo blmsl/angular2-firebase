@@ -1,4 +1,9 @@
 <div class="row" *ngFor="let tour of toursList">
-    <app-tour-item [tour]="tour"></app-tour-item>
+    <div class="col s12 m3">
+      <app-tours-filters-and-sorting></app-tours-filters-and-sorting>
+    </div>
+    <div class="col s12 m9 border-1-s-b p-0 z-depth-4">
+      <app-tour-item [tour]="tour"></app-tour-item>
+    </div>
   </div>
 <!--<app-pagination></app-pagination>-->

@@ -1,0 +1,80 @@
+<div class="filters-container">
+  <div class="filter-header">Кол-во звезд
+    <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+  </div>
+  <mz-checkbox-container>
+    <input mz-checkbox
+           id="checkbox-id1"
+           type="checkbox">
+    <label for="checkbox-id1">
+      <img class="h-21p" src="./assets/img/star.png" alt="country"></label>
+  </mz-checkbox-container>
+  <mz-checkbox-container>
+    <input mz-checkbox
+           id="checkbox-id2"
+           type="checkbox">
+    <label for="checkbox-id2">
+      <img class="h-21p" *ngFor="let star of [1,2]" src="./assets/img/star.png" alt="country">
+    </label>
+  </mz-checkbox-container>
+  <mz-checkbox-container>
+    <input mz-checkbox
+           id="checkbox-id3"
+           type="checkbox">
+    <label for="checkbox-id3">
+      <img class="h-21p" *ngFor="let star of [1,2,3]" src="./assets/img/star.png" alt="country">
+    </label>
+  </mz-checkbox-container>
+  <mz-checkbox-container>
+    <input mz-checkbox
+           id="checkbox-id4"
+           type="checkbox">
+    <label for="checkbox-id4">
+      <img class="h-21p" *ngFor="let star of [1,2,3,4]" src="./assets/img/star.png" alt="country">
+    </label>
+  </mz-checkbox-container>
+  <mz-checkbox-container>
+    <input mz-checkbox
+           id="checkbox-id5"
+           type="checkbox">
+    <label for="checkbox-id5">
+      <img class="h-21p" *ngFor="let star of [1,2,3,4,5]" src="./assets/img/star.png" alt="country">
+    </label>
+  </mz-checkbox-container>
+  <hr>
+</div>
+<div class="filters-container">
+  <div class="filter-header">Страна
+    <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+  </div>
+  <mz-checkbox-container>
+    <input mz-checkbox
+           [label]="'Tурция'"
+           id="filter-country1"
+           type="checkbox">
+  </mz-checkbox-container>
+  <mz-checkbox-container>
+    <input mz-checkbox
+           [label]="'Египет'"
+           id="filter-country2"
+           type="checkbox">
+  </mz-checkbox-container>
+  <mz-checkbox-container>
+    <input mz-checkbox
+           [label]="'Тунис'"
+           id="filter-country3"
+           type="checkbox">
+  </mz-checkbox-container>
+  <hr>
+</div>
+<div class="filters-container">
+  <div class="filter-header">Система питания
+    <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+  </div>
+  <mz-checkbox-container>
+    <input mz-checkbox
+           [label]="'All Inclusive'"
+           id="filter-supply1"
+           type="checkbox">
+  </mz-checkbox-container>
+</div>

@@ -21,7 +21,8 @@ import { MainComponentComponent } from './user-components/main-component/main-co
 import { ToursService } from "./shared/services/tours.service";
 import { CanActiveService } from "./shared/services/can-active.service";
 import { ProcessHandlerService } from "./shared/services/process-handler.service";
-import { TourItemComponent } from './user-components/tour-listing/tour-item/tour-item.component'
+import { TourItemComponent } from './user-components/tour-listing/tour-item/tour-item.component';
+import { ToursFiltersAndSortingComponent } from './user-components/tour-listing/tours-filters-and-sorting/tours-filters-and-sorting.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TourItemComponent } from './user-components/tour-listing/tour-item/tour
     TourComponent,
     RegistrationComponent,
     MainComponentComponent,
-    TourItemComponent
+    TourItemComponent,
+    ToursFiltersAndSortingComponent
   ],
   imports: [
     BrowserModule,

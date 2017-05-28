@@ -1,0 +1,21 @@
+.filters-container {
+  hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: dashed;
+    border-width: 1px;
+  }
+  .filter-header {
+    margin: 6px 0 3px 0 !important;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .checkbox-field {
+    margin: 4px 0 4px 0;
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import * as _ from "lodash"
 import {ToursService} from "../../../shared/services/tours.service";
 @Component({
@@ -8,6 +8,7 @@ import {ToursService} from "../../../shared/services/tours.service";
   encapsulation: ViewEncapsulation.None
 })
 export class ToursFiltersAndSortingComponent implements OnInit {
+  @Output() applyFilterModel = new EventEmitter;
   public countriesListForFiltering;
   public filteringModel;
   public supplyList;
@@ -30,18 +31,28 @@ export class ToursFiltersAndSortingComponent implements OnInit {
   }
   initStartCheckBoxModel() {
     this.starsCheckboxList = [
-      {label:1,quantity:_.range(0,1)},
-      {label:2,quantity:_.range(0,2)},
-      {label:3,quantity:_.range(0,3)},
-      {label:4,quantity:_.range(0,4)},
-      {label:5,quantity:_.range(0,5)},
-    ]
-    console.log('this.starsCheckboxList',this.starsCheckboxList);
+      {label:1,
+        quantity:_.range(0,1),
+      },
+      {label:2,
+        quantity:_.range(0,2),
+      },
+      {label:3,
+        quantity:_.range(0,3),
+      },
+      {label:4,
+        quantity:_.range(0,4),
+      },
+      {label:5,
+        quantity:_.range(0,5),
+      },
+    ];
   }
 
   getCountriesList() {
     this.toursService.list('configurations/countries').subscribe((response)=>{
       this.countriesListForFiltering = response;
+      this.applyFilterModel.emit(this.filteringModel);
       console.log('this.countriesListForFiltering',this.countriesListForFiltering);
     })
   }
@@ -66,6 +77,17 @@ export class ToursFiltersAndSortingComponent implements OnInit {
     _.find(this.supplyList,{label:value}).checked = checked;
     _.filter(this.supplyList,{checked: true}).forEach((supply)=>{
       this.filteringModel.supply.push(supply.label);
+    });
+    console.log('this.filteringModel',this.filteringModel)
+  }
+
+  onSelectStars(value:string,checked:boolean) {
+    let valeTrans = parseInt(value);
+    this.filteringModel.stars = [];
+    console.log('this.starsCheckboxList',this.starsCheckboxList);
+    _.find(this.starsCheckboxList,{label:valeTrans}).checked = checked;
+    _.filter(this.starsCheckboxList,{checked: true}).forEach((stars)=>{
+      this.filteringModel.stars.push(stars.label);
     });
     console.log('this.filteringModel',this.filteringModel)
   }

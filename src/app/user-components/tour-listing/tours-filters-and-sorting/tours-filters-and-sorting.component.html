@@ -8,7 +8,7 @@
            type="checkbox"
            [checked]="starsItem['checked']"
            [id]="'stars'+i"
-           (change)="onSelectSupply($event.target.value,$event.target.checked)"/>
+           (change)="onSelectStars($event.target.value,$event.target.checked)"/>
     <label [for]="'stars'+i"><img *ngFor="let starts of starsItem?.quantity" class="h-21p" src="./assets/img/star.png" alt="country"></label>
   </div>
   <hr>

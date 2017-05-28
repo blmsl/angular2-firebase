@@ -15,8 +15,8 @@ export class ToursService {
 
   constructor(public afDatabase: AngularFireDatabase) { }
 
-  list(value){
-    return this.afDatabase.list(value);
+  list(value,query?){
+    return this.afDatabase.list(value) ;
   }
 
   Object(path){

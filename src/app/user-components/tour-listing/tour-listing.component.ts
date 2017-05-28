@@ -20,6 +20,10 @@ export class TourListingComponent implements OnInit {
   }
 
   getToursList(filtedData?:filterInterface) {
+    let query = [{
+      orderByChild: 'country',
+      equalTo: 'Турция',
+    }];
     this.toursService.list('tours').subscribe((response)=>{
       this.toursList = response;
       console.log('this.toursList',this.toursList)

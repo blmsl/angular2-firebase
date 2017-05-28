@@ -2,79 +2,35 @@
   <div class="filter-header">Кол-во звезд
     <i class="fa fa-minus-square-o" aria-hidden="true"></i>
   </div>
-  <mz-checkbox-container>
-    <input mz-checkbox
-           id="checkbox-id1"
-           type="checkbox">
-    <label for="checkbox-id1">
-      <img class="h-21p" src="./assets/img/star.png" alt="country"></label>
-  </mz-checkbox-container>
-  <mz-checkbox-container>
-    <input mz-checkbox
-           id="checkbox-id2"
-           type="checkbox">
-    <label for="checkbox-id2">
-      <img class="h-21p" *ngFor="let star of [1,2]" src="./assets/img/star.png" alt="country">
-    </label>
-  </mz-checkbox-container>
-  <mz-checkbox-container>
-    <input mz-checkbox
-           id="checkbox-id3"
-           type="checkbox">
-    <label for="checkbox-id3">
-      <img class="h-21p" *ngFor="let star of [1,2,3]" src="./assets/img/star.png" alt="country">
-    </label>
-  </mz-checkbox-container>
-  <mz-checkbox-container>
-    <input mz-checkbox
-           id="checkbox-id4"
-           type="checkbox">
-    <label for="checkbox-id4">
-      <img class="h-21p" *ngFor="let star of [1,2,3,4]" src="./assets/img/star.png" alt="country">
-    </label>
-  </mz-checkbox-container>
-  <mz-checkbox-container>
-    <input mz-checkbox
-           id="checkbox-id5"
-           type="checkbox">
-    <label for="checkbox-id5">
-      <img class="h-21p" *ngFor="let star of [1,2,3,4,5]" src="./assets/img/star.png" alt="country">
-    </label>
-  </mz-checkbox-container>
+  <div *ngFor="let starsItem of starsCheckboxList; let i = index">
+    <input class="filled-in"
+           [value]="starsItem.label"
+           type="checkbox"
+           [checked]="starsItem['checked']"
+           [id]="'stars'+i"
+           (change)="onSelectSupply($event.target.value,$event.target.checked)"/>
+    <label [for]="'stars'+i"><img *ngFor="let starts of starsItem?.quantity" class="h-21p" src="./assets/img/star.png" alt="country"></label>
+  </div>
   <hr>
 </div>
 <div class="filters-container">
   <div class="filter-header">Страна
     <i class="fa fa-minus-square-o" aria-hidden="true"></i>
   </div>
-  <mz-checkbox-container>
-    <input mz-checkbox
-           [label]="'Tурция'"
-           id="filter-country1"
-           type="checkbox">
-  </mz-checkbox-container>
-  <mz-checkbox-container>
-    <input mz-checkbox
-           [label]="'Египет'"
-           id="filter-country2"
-           type="checkbox">
-  </mz-checkbox-container>
-  <mz-checkbox-container>
-    <input mz-checkbox
-           [label]="'Тунис'"
-           id="filter-country3"
-           type="checkbox">
-  </mz-checkbox-container>
+  <div *ngFor="let country of countriesListForFiltering; let i = index">
+    <input class="filled-in" [value]="country.country" type="checkbox" [checked]="country['checked']" [id]="'country'+i"
+           (change)="onSelectCountry($event.target.value,$event.target.checked)"/>
+    <label [for]="'country'+i">{{country.country}}</label>
+  </div>
   <hr>
 </div>
 <div class="filters-container">
   <div class="filter-header">Система питания
     <i class="fa fa-minus-square-o" aria-hidden="true"></i>
   </div>
-  <mz-checkbox-container>
-    <input mz-checkbox
-           [label]="'All Inclusive'"
-           id="filter-supply1"
-           type="checkbox">
-  </mz-checkbox-container>
+  <div *ngFor="let supply of supplyList; let i = index">
+    <input class="filled-in" [value]="supply.label" type="checkbox" [checked]="supply['checked']" [id]="'supply'+i"
+           (change)="onSelectSupply($event.target.value,$event.target.checked)"/>
+    <label [for]="'supply'+i">{{supply.label}}</label>
+  </div>
 </div>

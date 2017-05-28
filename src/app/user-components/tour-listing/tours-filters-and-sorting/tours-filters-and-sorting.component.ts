@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import * as _ from "lodash"
+import {ToursService} from "../../../shared/services/tours.service";
 @Component({
   selector: 'app-tours-filters-and-sorting',
   templateUrl: './tours-filters-and-sorting.component.html',
@@ -7,10 +8,66 @@ import * as _ from "lodash"
   encapsulation: ViewEncapsulation.None
 })
 export class ToursFiltersAndSortingComponent implements OnInit {
-
-  constructor() { }
+  public countriesListForFiltering;
+  public filteringModel;
+  public supplyList;
+  public starsCheckboxList;
+  constructor(private toursService:ToursService) { }
 
   ngOnInit() {
+    this.getCountriesList();
+    this.initFilteringModel();
+    this.initStartCheckBoxModel();
+    this.getSupplyList();
+  }
+
+  initFilteringModel() {
+    this.filteringModel = {
+      countries:[],
+      supply:[],
+      stars:[]
+    }
+  }
+  initStartCheckBoxModel() {
+    this.starsCheckboxList = [
+      {label:1,quantity:_.range(0,1)},
+      {label:2,quantity:_.range(0,2)},
+      {label:3,quantity:_.range(0,3)},
+      {label:4,quantity:_.range(0,4)},
+      {label:5,quantity:_.range(0,5)},
+    ]
+    console.log('this.starsCheckboxList',this.starsCheckboxList);
+  }
+
+  getCountriesList() {
+    this.toursService.list('configurations/countries').subscribe((response)=>{
+      this.countriesListForFiltering = response;
+      console.log('this.countriesListForFiltering',this.countriesListForFiltering);
+    })
+  }
+
+  getSupplyList() {
+    this.toursService.list('configurations/supply').subscribe((response)=>{
+      this.supplyList = response;
+    })
+  }
+
+  onSelectCountry(value:string,checked:boolean) {
+    this.filteringModel.countries = [];
+    _.find(this.countriesListForFiltering,{country:value}).checked = checked;
+    _.filter(this.countriesListForFiltering,{checked: true}).forEach((country)=>{
+      this.filteringModel.countries.push(country.country);
+    });
+    console.log('this.filteringModel',this.filteringModel)
+  }
+
+  onSelectSupply(value:string,checked:boolean) {
+    this.filteringModel.supply = [];
+    _.find(this.supplyList,{label:value}).checked = checked;
+    _.filter(this.supplyList,{checked: true}).forEach((supply)=>{
+      this.filteringModel.supply.push(supply.label);
+    });
+    console.log('this.filteringModel',this.filteringModel)
   }
 
 }

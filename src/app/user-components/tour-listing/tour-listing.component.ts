@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ToursService} from "../../shared/services/tours.service";
 import * as _ from "lodash";
+import {Observable} from "rxjs/Observable";
 export interface filterInterface {
   countries:any[],
   supply:any[],
@@ -22,26 +23,30 @@ export class TourListingComponent implements OnInit {
 
   getToursList(filteringModel?:filterInterface) {
     this.toursService.list('tours').subscribe((response)=>{
-      let filteredData=[];
-      let filteredByCountry=[];
       if(filteringModel) {
 
-        // filter criteria with highest priority
-        filteringModel.countries.forEach((country)=>{
-          let listWhichShouldToFilter = response;
-          let filteredByCriteriaList = _.filter(listWhichShouldToFilter,{country:country});
-          console.log('filteredByCriteriaList',filteredByCriteriaList);
-          filteredByCountry = filteredByCountry.concat(filteredByCriteriaList);
-          filteredData = filteredData.concat(filteredByCountry);
-        });
-        // filter criteria with middle priority
-        filteringModel.supply.forEach((supply)=>{
-          let listWhichShouldToFilter = filteringModel.countries.length ? filteredData : response;
-          let filteredByCriteriaList = _.filter(listWhichShouldToFilter,{supply:supply});
-          filteredData = filteredData.concat(filteredByCriteriaList);
+        let filterObs = Observable.create((observer)=>{
+          let filteredData=[];
+          // filter criteria with highest priority
+          filteringModel.countries.forEach((country)=>{
+            let filteredByCountry=[];
+            let filteredByCriteriaList = _.filter(response,{country:country});
+            console.log('filteredByCriteriaList',filteredByCriteriaList);
+            filteredByCountry = filteredByCountry.concat(filteredByCriteriaList);
+            filteredData = filteredData.concat(filteredByCountry);
+          });
+          observer.next(filteredData);
+          observer.complete();
+        }).subscribe((filteredData)=>{
+          // filter criteria with middle priority
+          filteringModel.supply.forEach((supply)=>{
+            let listWhichShouldToFilter = filteringModel.countries.length ? filteredData : response;
+            let filteredByCriteriaList = _.filter(listWhichShouldToFilter,{supply:supply});
+            filteredData = filteredData.concat(filteredByCriteriaList);
+            this.toursList = this.filterDuplicatesToursList(filteredData,'id');
+          });
         });
 
-        this.toursList = this.filterDuplicatesToursList(filteredData,'id');
         return;
       }
       this.toursList = response;

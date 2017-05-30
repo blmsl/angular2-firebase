@@ -7,6 +7,12 @@
     "rewrites": [{
       "source": "**",
       "destination": "/index.html"
+    }],
+    "headers" : [{
+      "source": "**/*.@(css|html|js|map|json|woff)",
+      "headers": [
+        {"key": "Cache-Control", "value": "max-age=31536000"}
+      ]
     }]
   }
 }

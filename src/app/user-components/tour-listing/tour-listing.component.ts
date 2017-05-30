@@ -14,6 +14,7 @@ export interface filterInterface {
 })
 export class TourListingComponent implements OnInit {
   toursList;
+  filteredData=[];
 
   constructor(public toursService:ToursService) { }
 
@@ -23,34 +24,31 @@ export class TourListingComponent implements OnInit {
 
   getToursList(filteringModel?:filterInterface) {
     this.toursService.list('tours').subscribe((response)=>{
+      this.filteredData = [];
       if(filteringModel) {
-
         let filterObs = Observable.create((observer)=>{
-          let filteredData=[];
           // filter criteria with highest priority
+          let filteredByCountry = [];
           filteringModel.countries.forEach((country)=>{
-            let filteredByCountry=[];
-            let filteredByCriteriaList = _.filter(response,{country:country});
-            console.log('filteredByCriteriaList',filteredByCriteriaList);
-            filteredByCountry = filteredByCountry.concat(filteredByCriteriaList);
-            filteredData = filteredData.concat(filteredByCountry);
+            filteredByCountry = _.filter(response,{country:country});
           });
-          observer.next(filteredData);
+          observer.next(filteredByCountry);
           observer.complete();
-        }).subscribe((filteredData)=>{
+        }).subscribe((filteredByCountryObs)=>{
           // filter criteria with middle priority
-          filteringModel.supply.forEach((supply)=>{
-            let listWhichShouldToFilter = filteringModel.countries.length ? filteredData : response;
+          filteringModel.supply.forEach((supply) => {
+            let listWhichShouldToFilter = filteringModel.countries.length ? filteredByCountryObs : response;
             let filteredByCriteriaList = _.filter(listWhichShouldToFilter,{supply:supply});
-            filteredData = filteredData.concat(filteredByCriteriaList);
-            this.toursList = this.filterDuplicatesToursList(filteredData,'id');
+            this.filteredData = this.filteredData.concat(filteredByCriteriaList);
           });
+          if(!filteringModel.supply.length) {
+            this.filteredData = this.filteredData.concat(filteredByCountryObs);
+          }
+          this.toursList = this.filterDuplicatesToursList(this.filteredData,'id');
         });
-
         return;
       }
       this.toursList = response;
-      console.log('this.toursList',this.toursList);
     })
   }
 

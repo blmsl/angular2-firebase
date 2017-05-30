@@ -86,6 +86,7 @@ export class ToursFiltersAndSortingComponent implements OnInit {
     _.filter(this.starsCheckboxList,{checked: true}).forEach((stars)=>{
       this.filteringModel.stars.push(stars.label);
     });
+    this.applyFilterModel.emit(this.filteringModel);
   }
 
 }

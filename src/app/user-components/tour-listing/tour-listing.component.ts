@@ -26,11 +26,13 @@ export class TourListingComponent implements OnInit {
     this.toursService.list('tours').subscribe((response) => {
       this.filteredData = [];
       if (filteringModel) {
+        console.log('filteringModel', filteringModel);
+        console.log('reponse', response);
         const filterObs = Observable.create((observer) => {
           // filter criteria with highest priority
           let filteredByCountry = [];
           filteringModel.countries.forEach((country) => {
-            filteredByCountry = _.filter(response, {country: country});
+            filteredByCountry = filteredByCountry.concat( _.filter(response, {country: country}));
           });
           observer.next(filteredByCountry);
           observer.complete();
@@ -38,7 +40,9 @@ export class TourListingComponent implements OnInit {
           // filter criteria with middle priority
           filteringModel.supply.forEach((supply) => {
             const listWhichShouldToFilter = filteringModel.countries.length ? filteredByCountryObs : response;
-            const filteredByCriteriaList = _.filter(listWhichShouldToFilter, {supply: supply});
+            const filteredByCriteriaList = _.filter(listWhichShouldToFilter, (tour) => {
+              return tour.supply.label === supply;
+            });
             this.filteredData = this.filteredData.concat(filteredByCriteriaList);
           });
           // filter criteria with lowest priority, last filtering criteria has a appropriate filtering specific

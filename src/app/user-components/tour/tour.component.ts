@@ -24,7 +24,6 @@ export class TourComponent implements OnInit, AfterViewInit {
       this.tourKey = params.key;
       this.toursService.getTourDetails(this.tourKey).subscribe((response) => {
         this.tourModel = response;
-        this.tourModel.starts = _.range(parseFloat(response.stars));
         this.initImageGallery();
         $('.materialboxed').materialbox();
       });

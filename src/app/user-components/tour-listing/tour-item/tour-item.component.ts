@@ -17,6 +17,7 @@ export class TourItemComponent implements OnInit {
   ngOnInit() {
     this.processHandlerService.start();
     this.tourObs().subscribe(() => {
+      console.log('this.tour', this.tour);
       this.processHandlerService.done();
     });
   }

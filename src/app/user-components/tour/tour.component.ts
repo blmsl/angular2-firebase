@@ -13,6 +13,7 @@ export class TourComponent implements OnInit, AfterViewInit {
   tourKey;
   tourModel;
   alreadyLoaded;
+  _ = _;
 
   constructor(public activatedRoute: ActivatedRoute,
               public toursService: ToursService,

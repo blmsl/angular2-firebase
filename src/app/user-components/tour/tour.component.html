@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col s12 center">
     <div class="col s12 m8 text-a-l m-b-5p">
-      <h5 class="m-b--5p">{{tourModel?.hotelName}} <img class="h-21p" src="./assets/img/star.png" alt="country" *ngFor="let star of tourModel?.stars"></h5>
+      <h5 class="m-b--5p">{{tourModel?.hotelName}} <img class="h-21p" src="./assets/img/star.png" alt="country" *ngFor="let star of _.range(0,tourModel?.stars)"></h5>
       <span *ngIf="tourModel?.country">
           {{tourModel?.country}} ({{tourModel?.city}} )
       </span>

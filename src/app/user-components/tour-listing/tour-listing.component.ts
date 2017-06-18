@@ -33,10 +33,13 @@ export class TourListingComponent implements OnInit {
           filteringModel.countries.forEach((country) => {
             filteredByCountry = filteredByCountry.concat( _.filter(response, {country: country}));
           });
+          if (!filteringModel.countries.length) { filteredByCountry = response; }
           observer.next(filteredByCountry);
           observer.complete();
         }).subscribe((filteredByCountryObs) => {
+          console.log('filteredByCountryObs', filteredByCountryObs);
           const fiteringModelKeys = Object.keys(filteringModel);
+          // filter criteria with middle priority
           fiteringModelKeys.forEach((filterKey) => {
             let filteredToursListBySeparateCriteria = [];
             filteringModel[filterKey].forEach((filteringCriteriaItem) => {
@@ -45,7 +48,6 @@ export class TourListingComponent implements OnInit {
             });
             this.filteredData = this.filteredData.concat(filteredToursListBySeparateCriteria);
           });
-          // filter criteria with middle priority
 
           if (!filteringModel.supply.length && !filteringModel.stars.length) {
             this.filteredData = this.filteredData.concat(filteredByCountryObs);

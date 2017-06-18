@@ -31,20 +31,20 @@ export class ToursFiltersAndSortingComponent implements OnInit {
   }
   initStartCheckBoxModel() {
     this.starsCheckboxList = [
-      {label:1,
-        quantity:_.range(0,1),
+      {label: 1,
+        quantity: _.range(0, 1),
       },
-      {label:2,
-        quantity:_.range(0,2),
+      {label: 2,
+        quantity: _.range(0, 2),
       },
-      {label:3,
-        quantity:_.range(0,3),
+      {label: 3,
+        quantity: _.range(0, 3),
       },
-      {label:4,
-        quantity:_.range(0,4),
+      {label: 4,
+        quantity: _.range(0, 4),
       },
-      {label:5,
-        quantity:_.range(0,5),
+      {label: 5,
+        quantity: _.range(0, 5),
       },
     ];
   }

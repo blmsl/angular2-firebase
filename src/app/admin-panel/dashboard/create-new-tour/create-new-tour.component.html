@@ -56,7 +56,7 @@
                     [placeholder]="'Схема питания'"
                     formControlName="supply"
                     id="supplySelect">
-              <option *ngFor="let supply of supplyListForDropDown" [value]="supply | json">{{supply.label}}</option>
+              <option *ngFor="let supply of supplyListForDropDown" [value]="supply.label">{{supply.label}}</option>
             </select>
           </mz-select-container>
         </div>

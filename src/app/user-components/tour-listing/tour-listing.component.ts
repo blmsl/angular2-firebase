@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ToursService} from '../../shared/services/tours.service';
 import * as _ from 'lodash';
 import {Observable} from 'rxjs/Observable';
+
 export interface FilterInterface {
   countries: any[];
   supply: any[];
@@ -14,7 +15,7 @@ export interface FilterInterface {
 })
 export class TourListingComponent implements OnInit {
   toursList;
-  filteredData=[];
+  filteredData = [];
 
   constructor(public toursService: ToursService) { }
 
@@ -26,8 +27,6 @@ export class TourListingComponent implements OnInit {
     this.toursService.list('tours').subscribe((response) => {
       this.filteredData = [];
       if (filteringModel) {
-        console.log('filteringModel', filteringModel);
-        console.log('reponse', response);
         const filterObs = Observable.create((observer) => {
           // filter criteria with highest priority
           let filteredByCountry = [];
@@ -37,30 +36,17 @@ export class TourListingComponent implements OnInit {
           observer.next(filteredByCountry);
           observer.complete();
         }).subscribe((filteredByCountryObs) => {
+          const fiteringModelKeys = Object.keys(filteringModel);
+          fiteringModelKeys.forEach((filterKey) => {
+            let filteredToursListBySeparateCriteria = [];
+            filteringModel[filterKey].forEach((filteringCriteriaItem) => {
+              if (filterKey === 'countries') { return; }
+              filteredToursListBySeparateCriteria = _.filter(filteredByCountryObs, { [filterKey]: filteringCriteriaItem });
+            });
+            this.filteredData = this.filteredData.concat(filteredToursListBySeparateCriteria);
+          });
           // filter criteria with middle priority
-          filteringModel.supply.forEach((supply) => {
-            const listWhichShouldToFilter = filteringModel.countries.length ? filteredByCountryObs : response;
-            const filteredByCriteriaList = _.filter(listWhichShouldToFilter, (tour) => {
-              return tour.supply.label === supply;
-            });
-            this.filteredData = this.filteredData.concat(filteredByCriteriaList);
-          });
-          // filter criteria with lowest priority, last filtering criteria has a appropriate filtering specific
-          filteringModel.stars.forEach((stars) => {
-            let listWhichShouldToFilter = null;
-            if (filteringModel.countries.length && !filteringModel.supply.length ) {
-              listWhichShouldToFilter = filteredByCountryObs;
-            }
-            if (filteringModel.supply.length) {
-              listWhichShouldToFilter = this.filteredData;
-            }
-            if (!filteringModel.countries.length && !filteringModel.supply.length) {
-              listWhichShouldToFilter = response;
-            }
-            this.filteredData = _.filter(listWhichShouldToFilter, (item) => {
-              return item.stars.length === stars;
-            });
-          });
+
           if (!filteringModel.supply.length && !filteringModel.stars.length) {
             this.filteredData = this.filteredData.concat(filteredByCountryObs);
           }

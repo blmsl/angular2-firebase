@@ -1,32 +1,33 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {ToursService} from "../../shared/services/tours.service";
-declare let $:any;
+import {ActivatedRoute} from '@angular/router';
+import {ToursService} from '../../shared/services/tours.service';
+import * as _ from 'lodash';
+declare const $: any;
 @Component({
   selector: 'app-tour',
   templateUrl: './tour.component.html',
   styleUrls: ['./tour.component.scss']
 
 })
-export class TourComponent implements OnInit,AfterViewInit {
+export class TourComponent implements OnInit, AfterViewInit {
   tourKey;
   tourModel;
   alreadyLoaded;
 
-  constructor(public activatedRoute:ActivatedRoute,
-              public toursService:ToursService,
+  constructor(public activatedRoute: ActivatedRoute,
+              public toursService: ToursService,
               private el: ElementRef) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params=>{
+    this.activatedRoute.params.subscribe(params => {
       this.tourKey = params.key;
-      this.toursService.getTourDetails(this.tourKey).subscribe((response)=>{
+      this.toursService.getTourDetails(this.tourKey).subscribe((response) => {
         this.tourModel = response;
+        this.tourModel.starts = _.range(parseFloat(response.stars));
         this.initImageGallery();
-        console.log("tourModel",this.tourModel);
         $('.materialboxed').materialbox();
-      })
-    })
+      });
+    });
   }
 
   initImageGallery() {
@@ -48,10 +49,10 @@ export class TourComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit() {
-    let mapTimeOut = setTimeout(() => {
+    const mapTimeOut = setTimeout(() => {
       this.alreadyLoaded = true;
       clearTimeout(mapTimeOut);
-    }, 200)
+    }, 200);
   }
 
 

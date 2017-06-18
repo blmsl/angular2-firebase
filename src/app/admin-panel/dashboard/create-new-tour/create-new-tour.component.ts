@@ -77,18 +77,11 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
     this.toursService.list('configurations/supply').subscribe((response) => {
       console.log('supply', response);
       this.supplyListForDropDown = response;
-    })
+    });
   }
 
   onFullPhotosUpload(UrlList: any[]) {
     this.newImagelistUrl = UrlList;
-  }
-
-  changeFormatValueSelectStars(starsQuantity) {
-    this.createTourForm.value.stars = [];
-    for (let i = 1; starsQuantity >= i; i++) {
-      this.createTourForm.value.stars.push(i);
-    }
   }
 
   onSelectHotelLocation(location) {
@@ -127,8 +120,8 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
   }
 
   getSelectsValue() {
-    const starsSelectValue = $('.starsSelect').find('.select-dropdown').val();
-    this.changeFormatValueSelectStars(starsSelectValue);
+    this.createTourForm.value.stars = parseFloat($('.starsSelect').find('.select-dropdown').val());
+    console.log('this.createTourForm.value.stars', this.createTourForm.value.stars);
   }
 
   getServicesList() {
@@ -161,7 +154,6 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
   }
 
   onSelectSupply(supply) {
-    console.log('supply', JSON.parse(supply));
     this.createTourForm.value.supply = supply;
   }
 
@@ -181,7 +173,6 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
           this.updatesModel[`${this.newTourPath}/fullImageGalery`] = finalResponse[1];
           setTimeout(() => {
             this.updateData(this.updatesModel).then(() => this.processHandlerService.done());
-            window.location.reload(false);
           }, 500);
         });
       });

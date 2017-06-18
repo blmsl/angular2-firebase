@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProcessHandlerService } from '../../../shared/services/process-handler.service';
 import { Observable } from 'rxjs/Observable';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class TourItemComponent implements OnInit {
   @Input() tour;
+  _ = _;
   constructor(public processHandlerService: ProcessHandlerService) { }
 
   ngOnInit() {

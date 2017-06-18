@@ -2,7 +2,7 @@
   <div class="col s12 p-0">
     <h5 class="m-b-2p p-l-8p">{{tour?.hotelName}}
       <span>
-        <img class="h-21p" *ngFor="let star of tour?.stars" src="./assets/img/star.png" alt="country">
+        <img class="h-21p" *ngFor="let star of _.range(0, tour?.stars)" src="./assets/img/star.png" alt="country">
       </span>
     </h5>
     <p class="m-t-2p m-b-2p p-l-8p">{{tour?.country}} ({{tour?.city}})</p>

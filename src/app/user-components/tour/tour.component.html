@@ -71,31 +71,50 @@
         <mz-collapsible-item-header>
           <i mz-icon
              [align]="'left'"
-             [icon]="'room_service'"
-             [size]="'medium'">
-          </i>
-          Услугах отеля
-        </mz-collapsible-item-header>
-        <mz-collapsible-item-body>
-          <ul class="collection">
-            <li class="collection-item" *ngFor="let service of tourModel?.serviceList">
-              <i class="tiny material-icons">done</i>
-              {{service}}
-            </li>
-          </ul>
-        </mz-collapsible-item-body>
-      </mz-collapsible-item>
-      <mz-collapsible-item [active]="true">
-        <mz-collapsible-item-header>
-          <i mz-icon
-             [align]="'left'"
              [icon]="'card_travel'"
              [size]="'medium'">
           </i>
-          Включено в стоимость тура
+          Пакет тура и сервисы отеля
         </mz-collapsible-item-header>
         <mz-collapsible-item-body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <div class="row">
+            <div class="col s12 m6">
+              <blockquote>
+                Включено в стоимость
+              </blockquote>
+              <ul class="collection m-t-0p">
+                <li class="collection-item">
+                  <i class="fa fa-plane" aria-hidden="true"></i> Вылет из {{tourModel?.departure}}
+                </li>
+                <li class="collection-item">
+                  <i class="fa fa-calendar" aria-hidden="true"></i> Вылет 24-01-2017
+                </li>
+                <li class="collection-item">
+                  <i class="fa fa-cutlery" aria-hidden="true"></i> {{tourModel?.supply}}
+                </li>
+                <li class="collection-item">
+                  <i class="fa fa-bed" aria-hidden="true"></i> {{tourModel?.days}} дней {{tourModel?.nights}} ночей
+                </li>
+                <li class="collection-item">
+                  <i class="fa fa-bus" aria-hidden="true"></i> Трансфер Free
+                </li>
+                <li class="collection-item">
+                  <i class="fa fa-suitcase" aria-hidden="true"></i> 23кг Free
+                </li>
+              </ul>
+            </div>
+            <div class="col s12 m6">
+              <blockquote>
+                Сервисы отеля
+              </blockquote>
+              <ul class="collection">
+                <li class="collection-item" *ngFor="let service of tourModel?.serviceList">
+                  <i class="tiny material-icons">done</i>
+                  {{service}}
+                </li>
+              </ul>
+            </div>
+          </div>
         </mz-collapsible-item-body>
       </mz-collapsible-item>
     </mz-collapsible>

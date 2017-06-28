@@ -24,7 +24,7 @@ export class ToursFiltersAndSortingComponent implements OnInit {
 
   initFilteringModel() {
     this.filteringModel = {
-      countries: [],
+      country: [],
       supply: [],
       stars: []
     };
@@ -62,10 +62,10 @@ export class ToursFiltersAndSortingComponent implements OnInit {
   }
 
   onSelectCountry(value: string, checked: boolean) {
-    this.filteringModel.countries = [];
+    this.filteringModel.country = [];
     _.find(this.countriesListForFiltering, {country: value}).checked = checked;
     _.filter(this.countriesListForFiltering, {checked: true}).forEach((country) => {
-      this.filteringModel.countries.push(country.country);
+      this.filteringModel.country.push(country.country);
     });
     this.applyFilterModel.emit(this.filteringModel);
   }
@@ -73,7 +73,7 @@ export class ToursFiltersAndSortingComponent implements OnInit {
   onSelectSupply(value: string, checked: boolean) {
     this.filteringModel.supply = [];
     _.find(this.supplyList, {label: value}).checked = checked;
-    _.filter(this.supplyList,{checked: true}).forEach((supply) => {
+    _.filter(this.supplyList, {checked: true}).forEach((supply) => {
       this.filteringModel.supply.push(supply.label);
     });
     this.applyFilterModel.emit(this.filteringModel);

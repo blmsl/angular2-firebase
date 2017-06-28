@@ -22,56 +22,31 @@ export class TourListingComponent implements OnInit {
   ngOnInit() {
     this.getToursList();
   }
-    // TODO:need filter refactoring (so tricky logic)
+
   getToursList(filteringModel?: FilterInterface) {
     this.toursService.list('tours').subscribe((response) => {
-      this.filteredData = [];
       if (filteringModel) {
-        const filterObs = Observable.create((observer) => {
-          // filter criteria with highest priority
-          let filteredByCountry = [];
-          filteringModel.countries.forEach((country) => {
-            filteredByCountry = filteredByCountry.concat( _.filter(response, {country: country}));
-          });
-          if (!filteringModel.countries.length) { filteredByCountry = response; }
-          observer.next(filteredByCountry);
-          observer.complete();
-        }).subscribe((filteredByCountryObs) => {
-          console.log('filteredByCountryObs', filteredByCountryObs);
-          const fiteringModelKeys = Object.keys(filteringModel);
-          // filter criteria with middle priority
+        const fiteringModelKeys = Object.keys(filteringModel);
+        this.toursList = _.filter(response, (filteringItem) => {
+          let compareResult;
           fiteringModelKeys.forEach((filterKey) => {
-            let filteredToursListBySeparateCriteria = [];
-            filteringModel[filterKey].forEach((filteringCriteriaItem) => {
-              if (filterKey === 'countries') { return; }
-              filteredToursListBySeparateCriteria = _.filter(filteredByCountryObs, { [filterKey]: filteringCriteriaItem });
-            });
-            this.filteredData = this.filteredData.concat(filteredToursListBySeparateCriteria);
+           // Removing empty filter fields
+           if (!filteringModel[filterKey].length) {
+             delete filteringModel[filterKey];
+             fiteringModelKeys.splice(fiteringModelKeys.indexOf(filterKey), 1);
+           }
           });
-
-          if (!filteringModel.supply.length && !filteringModel.stars.length) {
-            this.filteredData = this.filteredData.concat(filteredByCountryObs);
-          }
-          this.toursList = this.filterDuplicatesToursList(this.filteredData, 'id');
+           // Filtering by each criteria
+          fiteringModelKeys.forEach((filterKey) => {
+            if (compareResult === -1) { return; }
+            compareResult = filteringModel[filterKey].indexOf(filteringItem[filterKey]);
+          });
+          return compareResult !== -1;
         });
-        return;
+      } else {
+        this.toursList = response;
       }
-      this.toursList = response;
     });
-  }
-
-  filterDuplicatesToursList(arr, prop) {
-      const new_arr = [];
-      const lookup  = {};
-
-      for (var i in arr) {
-        lookup[arr[i][prop]] = arr[i];
-      }
-      for (i in lookup) {
-        new_arr.push(lookup[i]);
-      }
-
-      return new_arr;
   }
 
 }

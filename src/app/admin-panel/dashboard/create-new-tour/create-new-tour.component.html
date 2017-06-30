@@ -94,8 +94,11 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <textarea formControlName="detailDescription" class="materialize-textarea"></textarea>
-        <label>Подробное описание</label>
+        <!--<textarea formControlName="detailDescription" class="materialize-textarea"></textarea>-->
+        <app-tinymce-textarea
+          [elementId]="'my-editor-id'"
+          (onEditorKeyup)="onFeelingTextArea($event)">
+        </app-tinymce-textarea>
       </div>
       <div class="input-field col s12 m6">
         <textarea formControlName="shortDescription" class="materialize-textarea" maxlength="120" data-length="120"></textarea>

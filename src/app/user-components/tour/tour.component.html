@@ -45,7 +45,7 @@
           Общая информация
         </mz-collapsible-item-header>
         <mz-collapsible-item-body>
-          {{tourModel?.detailDescription}}
+          <div [innerHtml]="tourModel?.detailDescription"></div>
         </mz-collapsible-item-body>
       </mz-collapsible-item>
       <mz-collapsible-item [active]="true">

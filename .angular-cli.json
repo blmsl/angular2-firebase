@@ -27,6 +27,12 @@
         "../node_modules/font-awesome/scss/font-awesome.scss"
       ],
       "scripts": [
+        "../node_modules/tinymce/tinymce.js",
+        "../node_modules/tinymce/themes/modern/theme.js",
+        "../node_modules/tinymce/plugins/link/plugin.js",
+        "../node_modules/tinymce/plugins/paste/plugin.js",
+        "../node_modules/tinymce/plugins/table/plugin.js",
+        "../node_modules/tinymce/plugins/textcolor/plugin.js",
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/materialize-css/dist/js/materialize.min.js",
         "../node_modules/slick-carousel/slick/slick.js"

@@ -26,6 +26,7 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
   updatesModel = {};
   newTourPath: string;
   hotelLocation;
+  tourDescription: string;
 
   constructor(public fb: FormBuilder,
               public toursService: ToursService,
@@ -37,7 +38,6 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
       city: ['', Validators.required],
       price: ['', Validators.required],
       hotelName: ['', Validators.required],
-      detailDescription: ['', Validators.required],
       mainPhotoUrl: '',
       fullImageGalery: '',
       endDate: ['', Validators.required],
@@ -65,6 +65,11 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
     this.createTourModel.creationDate = new Date().toISOString();
     this.createTourModel.currency = 'USD';
     this.createTourModel.id = Math.floor(Math.random() * 100000000);
+    this.createTourModel.detailDescription = this.tourDescription;
+  }
+
+  onFeelingTextArea(event) {
+    this.tourDescription = event;
   }
 
   getDepartureCitiesListForDropDown() {

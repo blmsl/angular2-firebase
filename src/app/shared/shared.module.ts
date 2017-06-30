@@ -14,6 +14,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { GoogleMapAutocompleteComponent } from './components/google-map-autocomplete/google-map-autocomplete.component'
 import { ReactiveFormsModule } from "@angular/forms";
 import { GoogleMapComponent } from './components/google-map-iframe/google-map.component';
+import { TinymceTextareaComponent } from './components/tinymce-textarea/tinymce-textarea.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { GoogleMapComponent } from './components/google-map-iframe/google-map.co
     DefineCityListPipe,
     SpinnerComponent,
     GoogleMapAutocompleteComponent,
-    GoogleMapComponent
+    GoogleMapComponent,
+    TinymceTextareaComponent
   ],
   exports: [
     PaginationComponent,
@@ -46,7 +48,8 @@ import { GoogleMapComponent } from './components/google-map-iframe/google-map.co
     DefineCityListPipe,
     SpinnerComponent,
     GoogleMapAutocompleteComponent,
-    GoogleMapComponent
+    GoogleMapComponent,
+    TinymceTextareaComponent
   ]
 })
 export class SharedModule { }

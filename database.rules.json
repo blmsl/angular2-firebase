@@ -1,9 +1,17 @@
 {
   "rules": {
-    ".read": "true",
-    ".write": "auth != null",
     "tours": {
+      ".read": "true",
+      ".write": "auth != null",
       ".indexOn": ["country","stars"]
+    },
+    "orders": {
+      ".write": "true",
+      ".read": "auth != null"
+    },
+    "configurations": {
+      ".write": "auth != null",
+      ".read": "auth != null"
     }
   }
 }

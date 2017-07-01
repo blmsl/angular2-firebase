@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   singIn() {
     this.authService.singIn(this.singInForm.value.email, this.singInForm.value.password).then((response) => {
+      console.log('response', response);
       if (response) { this.router.navigate(['/dashboard']); }
       else { this.openAlertModal = true; }
     }, (error) => {

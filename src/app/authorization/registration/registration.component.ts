@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthServiceService} from "../../shared/services/auth-service.service";
-import {Router} from "@angular/router";
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthServiceService } from '../../shared/services/auth-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -13,20 +13,20 @@ export class RegistrationComponent implements OnInit {
 
   constructor(public fb: FormBuilder,
               public authServiceService: AuthServiceService,
-              public router:Router) { }
+              public router: Router) { }
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
-      email:'',
-      password:''
-    })
+      email: '',
+      password: ''
+    });
   }
 
   registration() {
-    console.log('this.registrationForm.value',this.registrationForm.value);
-    this.authServiceService.registration(this.registrationForm.value.email,this.registrationForm.value.password).then(()=>{
-    this.router.navigate(['/login'])
-    })
+    console.log('this.registrationForm.value', this.registrationForm.value);
+    this.authServiceService.registration(this.registrationForm.value.email, this.registrationForm.value.password).then(() => {
+    this.router.navigate(['/login']);
+    });
   }
 
 }

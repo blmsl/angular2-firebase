@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from "../authorization/login/login.component";
+import { LoginComponent } from '../authorization/login/login.component';
 
 const sharedAppRoutes: Routes = [
   { path: '',  redirectTo: '/login', pathMatch : 'full'},

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminPanelRoutingModule } from './admin-panel-routing.module';
-import { CreateNewTourComponent } from './dashboard/create-new-tour/create-new-tour.component'
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { SharedModule } from "../shared/shared.module";
+import { CreateNewTourComponent } from './dashboard/create-new-tour/create-new-tour.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 import { MaterializeModule } from 'ng2-materialize';
-import { ConfigurationPageComponent } from './dashboard/configuration-page/configuration-page.component'
+import { ConfigurationPageComponent } from './dashboard/configuration-page/configuration-page.component';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { ConfigurationPageComponent } from './dashboard/configuration-page/confi
     ReactiveFormsModule,
     SharedModule,
     FormsModule,
-    MaterializeModule.forRoot()
+    MaterializeModule.forRoot(),
   ],
   declarations: [
     DashboardComponent,

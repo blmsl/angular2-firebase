@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Ng2ImgToolsModule } from 'ng2-img-tools';
 import { MaterializeModule } from 'ng2-materialize';
-import { AgmCoreModule } from "angular2-google-maps/core";
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { PaginationComponent } from './pagination/pagination.component';
 import { UploadImagesComponent } from './components/upload-images/upload-images.component';
@@ -12,7 +12,7 @@ import { ObjectToCollectionPipe } from './pipes/object-to-collection.pipe';
 import { DefineCityListPipe } from './pipes/define-city-list.pipe';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { GoogleMapAutocompleteComponent } from './components/google-map-autocomplete/google-map-autocomplete.component'
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapComponent } from './components/google-map-iframe/google-map.component';
 import { TinymceTextareaComponent } from './components/tinymce-textarea/tinymce-textarea.component';
 
@@ -21,8 +21,8 @@ import { TinymceTextareaComponent } from './components/tinymce-textarea/tinymce-
     CommonModule,
     Ng2ImgToolsModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyCmE9-b1osvrr9-s_YInV5ecRCvTCFt22A",
-      libraries: ["places"]
+      apiKey: 'AIzaSyCmE9-b1osvrr9-s_YInV5ecRCvTCFt22A',
+      libraries: ['places']
     }),
     MaterializeModule.forRoot(),
     ReactiveFormsModule

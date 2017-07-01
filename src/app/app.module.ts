@@ -6,23 +6,27 @@ import { MaterializeModule } from 'ng2-materialize';
 
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from "./app-routing.module";
-import { LoginComponent } from "./authorization/login/login.component";
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './authorization/login/login.component';
 import { TourListingComponent } from './user-components/tour-listing/tour-listing.component';
 import { TourComponent } from './user-components/tour/tour.component';
-import { SharedModule } from './shared/shared.module'
-import { AuthServiceService } from './shared/services/auth-service.service'
-import { AngularFireModule } from "angularfire2";
-import { AngularFireDatabaseModule } from "angularfire2/database";
-import { Constants } from "./shared/core/constants";
+import { SharedModule } from './shared/shared.module';
+import { AuthServiceService } from './shared/services/auth-service.service';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { Constants } from './shared/core/constants';
 import { RegistrationComponent } from './authorization/registration/registration.component';
-import { AdminPanelModule } from "./admin-panel/admin-panel.module";
-import { MainComponentComponent } from './user-components/main-component/main-component.component'
-import { ToursService } from "./shared/services/tours.service";
-import { CanActiveService } from "./shared/services/can-active.service";
-import { ProcessHandlerService } from "./shared/services/process-handler.service";
+import { AdminPanelModule } from './admin-panel/admin-panel.module';
+import { MainComponentComponent } from './user-components/main-component/main-component.component';
+import { ToursService } from './shared/services/tours.service';
+import { CanActiveService } from './shared/services/can-active.service';
+import { ProcessHandlerService } from './shared/services/process-handler.service';
 import { TourItemComponent } from './user-components/tour-listing/tour-item/tour-item.component';
 import { ToursFiltersAndSortingComponent } from './user-components/tour-listing/tours-filters-and-sorting/tours-filters-and-sorting.component'
+import * as firebase from 'firebase';
+
+firebase.initializeApp(Constants.fireBaseConfig);
+
 
 @NgModule({
   declarations: [
@@ -45,8 +49,8 @@ import { ToursFiltersAndSortingComponent } from './user-components/tour-listing/
     AdminPanelModule,
     AppRoutingModule,
     MaterializeModule.forRoot(),
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(Constants.fireBaseConfig),
-    AngularFireDatabaseModule
   ],
   providers: [
     AuthServiceService,

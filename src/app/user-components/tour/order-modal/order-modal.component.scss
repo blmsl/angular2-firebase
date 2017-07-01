@@ -1,0 +1,43 @@
+$tiny: 400px;
+$small: 550px;
+$middle: 700px;
+$large: 1024px;
+
+@mixin respond-to($media) {
+  @if $media == tiny {
+    @media only screen and (max-width: $tiny) { @content; }
+  }
+  @else if $media == small {
+    @media only screen and (min-width: $tiny + 1) and (max-width: $small - 1) { @content; }
+  }
+  @else if $media == middle {
+    @media only screen and (min-width: $small + 1) and (max-width: $middle - 1) { @content; }
+  }
+  @else if $media == large {
+    @media only screen and (min-width: $middle + 1) and (max-width: $large - 1) { @content; }
+  }
+  //@else if $media == wide-screens {
+  //  @media only screen and (min-width: $large) { @content; }
+  //}
+}
+
+mz-modal {
+  .modal {
+    @include respond-to(tiny) {
+      width: 100%;
+      height: 100% !important;
+      min-height: 100% !important;
+      top: 0% !important;
+    }
+    @include respond-to(small) {
+      width: 85%;
+      height: 85% !important;
+      min-height: 85% !important;
+    }
+    @include respond-to(middle) {
+      width: 70%;
+      height: 70% !important;
+      min-height: 70% !important
+    }
+  }
+}

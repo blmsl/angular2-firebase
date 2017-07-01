@@ -1,0 +1,29 @@
+<mz-modal #bottomSheetModal [options]="modalOptions">
+  <mz-modal-header>
+    Задайте, пожалуйста свой вопрос!
+  </mz-modal-header>
+  <mz-modal-content>
+    <form [formGroup]="orderFormModel">
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" formControlName="customersName" class="validate">
+          <label>Как к Вам обращаться?</label>
+        </div>
+        <div class="input-field col s12">
+          <input type="number" formControlName="telephoneNumber" class="validate">
+          <label>Ваш номер телефона</label>
+        </div>
+        <div class="input-field col s12">
+          <mz-textarea-container>
+            <textarea mz-textarea id="comment-textarea" length="500"></textarea>
+          </mz-textarea-container>
+          <label>Введите Ваше обращение</label>
+        </div>
+      </div>
+    </form>
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close>Закрыть :(</button>
+    <button mz-button [flat]="true" mz-modal-close>Отправить :)</button>
+  </mz-modal-footer>
+</mz-modal>

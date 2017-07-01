@@ -24,6 +24,7 @@ import { ProcessHandlerService } from './shared/services/process-handler.service
 import { TourItemComponent } from './user-components/tour-listing/tour-item/tour-item.component';
 import { ToursFiltersAndSortingComponent } from './user-components/tour-listing/tours-filters-and-sorting/tours-filters-and-sorting.component'
 import * as firebase from 'firebase';
+import { OrderModalComponent } from './user-components/tour/order-modal/order-modal.component';
 
 firebase.initializeApp(Constants.fireBaseConfig);
 
@@ -37,7 +38,8 @@ firebase.initializeApp(Constants.fireBaseConfig);
     RegistrationComponent,
     MainComponentComponent,
     TourItemComponent,
-    ToursFiltersAndSortingComponent
+    ToursFiltersAndSortingComponent,
+    OrderModalComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,9 @@ firebase.initializeApp(Constants.fireBaseConfig);
     ToursService,
     CanActiveService,
     ProcessHandlerService,
+  ],
+  entryComponents: [
+    OrderModalComponent
   ],
   bootstrap: [AppComponent]
 })

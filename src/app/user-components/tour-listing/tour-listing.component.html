@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col s12 m3">
-    <app-tours-filters-and-sorting (applyFilterModel)="getToursList($event)"></app-tours-filters-and-sorting>
+    <app-tours-filters-and-sorting class="w-16 o-y pos-fix fixed" (applyFilterModel)="getToursList($event)"></app-tours-filters-and-sorting>
   </div>
   <div class="col s12 m9" *ngIf="!toursList || !toursList.length"></div>
-  <div *ngFor="let tour of toursList" class="col s12 m9 border-1-s-b p-0 z-depth-4 m-t-12p">
+  <div *ngFor="let tour of toursList" class="right col s12 m9 border-1-s-b p-0 z-depth-4 m-t-12p">
     <app-tour-item [tour]="tour"></app-tour-item>
   </div>
 </div>

@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="slider-nav p-t-5p">
-      <div *ngFor="let bigImage of tourModel?.fullImageGalery">
+      <div *ngFor="let bigImage of tourModel?.fullImageGalery" class="image-list">
         <img class="max-w-100 max-h-100 m-0-auto pointer" [src]="bigImage" alt="">
       </div>
     </div>
@@ -120,12 +120,10 @@
     </mz-collapsible>
   </div>
   <div class="row">
-    <div class="col s12">
-      <div class="card-panel light-green darken-4 p-5p z-depth-5 pointer-c pulse " (click)="openServiceModal()">
-        <h6 class="white-text center-align">
-          Оставить заявку
-        </h6>
-      </div>
+    <div class="col s12 center">
+      <a class="white-text center-align btn pulse" (click)="openServiceModal()">
+        Оставить заявку
+      </a>
     </div>
   </div>
 </div>

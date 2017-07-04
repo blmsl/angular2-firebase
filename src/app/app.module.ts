@@ -25,6 +25,7 @@ import { TourItemComponent } from './user-components/tour-listing/tour-item/tour
 import { ToursFiltersAndSortingComponent } from './user-components/tour-listing/tours-filters-and-sorting/tours-filters-and-sorting.component'
 import * as firebase from 'firebase';
 import { OrderModalComponent } from './user-components/tour/order-modal/order-modal.component';
+import { FooterComponent } from './user-components/main-component/footer/footer.component';
 
 firebase.initializeApp(Constants.fireBaseConfig);
 
@@ -39,7 +40,8 @@ firebase.initializeApp(Constants.fireBaseConfig);
     MainComponentComponent,
     TourItemComponent,
     ToursFiltersAndSortingComponent,
-    OrderModalComponent
+    OrderModalComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

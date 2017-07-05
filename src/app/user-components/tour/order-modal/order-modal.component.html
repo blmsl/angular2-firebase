@@ -1,10 +1,16 @@
 <mz-modal #bottomSheetModal [options]="modalOptions">
   <mz-modal-header>
-    Задайте, пожалуйста свой вопрос!
+    <div class="modal-header-container">
+      <div class="col s12 center">
+        <img src="../../../assets/img/270x32.png" alt="">
+      </div>
+      <span>
+      Задайте, пожалуйста свой вопрос!
+    </span>
+    </div>
   </mz-modal-header>
   <mz-modal-content>
     <form [formGroup]="orderFormModel">
-      <div class="row">
         <div class="input-field col s12">
           <input type="text" formControlName="customersName" class="validate">
           <label>Как к Вам обращаться?</label>
@@ -15,11 +21,9 @@
         </div>
         <div class="input-field col s12">
           <mz-textarea-container>
-            <textarea mz-textarea id="comment-textarea" length="500"></textarea>
+            <textarea placeholder="Введите Ваше обращение" mz-textarea id="comment-textarea" length="500"></textarea>
           </mz-textarea-container>
-          <label>Введите Ваше обращение</label>
         </div>
-      </div>
     </form>
   </mz-modal-content>
   <mz-modal-footer>

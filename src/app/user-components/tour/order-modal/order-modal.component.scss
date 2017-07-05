@@ -21,6 +21,23 @@ $large: 1024px;
   //}
 }
 
+.modal-header-container {
+  text-align: center !important;
+  font-weight: 300;
+  font-size: 30px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.materialize-textarea {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
 mz-modal {
   .modal {
     @include respond-to(tiny) {
@@ -31,8 +48,8 @@ mz-modal {
     }
     @include respond-to(small) {
       width: 85%;
-      height: 85% !important;
-      min-height: 85% !important;
+      height: 65% !important;
+      min-height: 65% !important;
     }
     @include respond-to(middle) {
       width: 70%;

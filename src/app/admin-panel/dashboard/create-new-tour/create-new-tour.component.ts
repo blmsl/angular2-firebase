@@ -75,6 +75,16 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
     this.createTourModel.creationDateStamp = `${currentDate.getFullYear()}${currentDate.getMonth()}${currentDate.getDate()}`;
   }
 
+  checkCreateTourModel() {
+    let foundEmptyField = false;
+    Object.keys(this.createTourModel).forEach((key) => {
+      if (!foundEmptyField) {
+        foundEmptyField = this.createTourModel[key] === ('undefined' || null || '' || NaN || 0);
+      } else { return; }
+    });
+    return foundEmptyField;
+  }
+
   onFeelingTextArea(event) {
     this.tourDescription = event;
   }
@@ -170,25 +180,27 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
   }
 
   createTour() {
-    // this.processHandlerService.start();
+      this.processHandlerService.start();
       this.getSelectsValue();
       this.initCreateTourModel();
       console.log('this.createTourModel', this.createTourModel);
       console.log('this.createTourForm', this.createTourForm);
-      // this.toursService.list('tours').push(this.createTourModel).then((response) => {
-      //   this.tourId = response.path.o[response.path.o.length - 1];
-      //   this.newTourPath = '/' + response.path.o.join('/');
-      //   Observable.zip(
-      //     this.newFileObs(),
-      //     this.newFilesListObs()
-      //   ).subscribe((finalResponse) => {
-      //     this.updatesModel[`${this.newTourPath}/mainPhotoUrl`] = finalResponse[0];
-      //     this.updatesModel[`${this.newTourPath}/fullImageGalery`] = finalResponse[1];
-      //     setTimeout(() => {
-      //       this.updateData(this.updatesModel).then(() => this.processHandlerService.done());
-      //     }, 500);
-      //   });
-      // });
+      if (!this.checkCreateTourModel()) {
+        this.toursService.list('tours').push(this.createTourModel).then((response) => {
+          this.tourId = response.path.o[response.path.o.length - 1];
+          this.newTourPath = '/' + response.path.o.join('/');
+          Observable.zip(
+            this.newFileObs(),
+            this.newFilesListObs()
+          ).subscribe((finalResponse) => {
+            this.updatesModel[`${this.newTourPath}/mainPhotoUrl`] = finalResponse[0];
+            this.updatesModel[`${this.newTourPath}/fullImageGalery`] = finalResponse[1];
+            setTimeout(() => {
+              this.updateData(this.updatesModel).then(() => this.processHandlerService.done());
+            }, 500);
+          });
+        });
+      }
     }
 
   updateData(updatesModel) {

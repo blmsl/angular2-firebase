@@ -27,10 +27,12 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
   newTourPath: string;
   hotelLocation;
   tourDescription: string;
+  endDate;
 
   constructor(public fb: FormBuilder,
               public toursService: ToursService,
               public processHandlerService: ProcessHandlerService) { }
+
 
   ngOnInit() {
     this.createTourForm = this.fb.group({
@@ -60,12 +62,17 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
   }
 
   initCreateTourModel() {
+    const currentDate = new Date();
     this.createTourModel = _.cloneDeep(this.createTourForm.value);
     this.createTourModel.hotelLocation = this.hotelLocation;
     this.createTourModel.creationDate = new Date().toISOString();
     this.createTourModel.currency = 'USD';
     this.createTourModel.id = Math.floor(Math.random() * 100000000);
     this.createTourModel.detailDescription = this.tourDescription;
+    this.createTourModel.endDate = $('.datepicker').val();
+    this.createTourModel.endDateStamp = parseInt($('.datepicker').val().split('/').reverse().join('/').replace(/\//g, ''), 10);
+    this.createTourModel.creationDate = `${currentDate.getFullYear()}/${currentDate.getMonth()}/${currentDate.getDate()}`;
+    this.createTourModel.creationDateStamp = `${currentDate.getFullYear()}${currentDate.getMonth()}${currentDate.getDate()}`;
   }
 
   onFeelingTextArea(event) {
@@ -163,24 +170,25 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
   }
 
   createTour() {
-    this.processHandlerService.start();
+    // this.processHandlerService.start();
       this.getSelectsValue();
-      console.log('this.createTourModel', this.createTourModel);
       this.initCreateTourModel();
-      this.toursService.list('tours').push(this.createTourModel).then((response) => {
-        this.tourId = response.path.o[response.path.o.length - 1];
-        this.newTourPath = '/' + response.path.o.join('/');
-        Observable.zip(
-          this.newFileObs(),
-          this.newFilesListObs()
-        ).subscribe((finalResponse) => {
-          this.updatesModel[`${this.newTourPath}/mainPhotoUrl`] = finalResponse[0];
-          this.updatesModel[`${this.newTourPath}/fullImageGalery`] = finalResponse[1];
-          setTimeout(() => {
-            this.updateData(this.updatesModel).then(() => this.processHandlerService.done());
-          }, 500);
-        });
-      });
+      console.log('this.createTourModel', this.createTourModel);
+      console.log('this.createTourForm', this.createTourForm);
+      // this.toursService.list('tours').push(this.createTourModel).then((response) => {
+      //   this.tourId = response.path.o[response.path.o.length - 1];
+      //   this.newTourPath = '/' + response.path.o.join('/');
+      //   Observable.zip(
+      //     this.newFileObs(),
+      //     this.newFilesListObs()
+      //   ).subscribe((finalResponse) => {
+      //     this.updatesModel[`${this.newTourPath}/mainPhotoUrl`] = finalResponse[0];
+      //     this.updatesModel[`${this.newTourPath}/fullImageGalery`] = finalResponse[1];
+      //     setTimeout(() => {
+      //       this.updateData(this.updatesModel).then(() => this.processHandlerService.done());
+      //     }, 500);
+      //   });
+      // });
     }
 
   updateData(updatesModel) {

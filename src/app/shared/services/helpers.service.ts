@@ -19,4 +19,16 @@ export class HelpersService {
     return new_arr;
   }
 
+  checkFieldOnDefining(model) {
+    let foundEmptyField = false;
+    if (model) {
+      Object.keys(model).forEach((key) => {
+        if (!foundEmptyField) {
+          foundEmptyField = model[key] === ('undefined' || null || '' || NaN || 0);
+        } else { return; }
+      });
+    } else { console.log('Model is Undefined!'); }
+    return foundEmptyField;
+  }
+
 }

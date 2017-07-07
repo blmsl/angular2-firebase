@@ -5,6 +5,7 @@ import { ProcessHandlerService } from '../../../shared/services/process-handler.
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 import * as firebase from 'firebase';
+import {HelpersService} from "../../../shared/services/helpers.service";
 declare const $: any;
 
 @Component({
@@ -32,7 +33,8 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
 
   constructor(public fb: FormBuilder,
               public toursService: ToursService,
-              public processHandlerService: ProcessHandlerService) { }
+              public processHandlerService: ProcessHandlerService,
+              private helpersService: HelpersService) { }
 
 
   ngOnInit() {
@@ -72,16 +74,6 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
     this.createTourModel.detailDescription = this.tourDescription;
     this.createTourModel.endDate = new Date(endDate[0], endDate[1], endDate[2]);
     this.createTourModel.creationDate = new Date(this.cd.getFullYear(), this.cd.getMonth(), this.cd.getDate());
-  }
-
-  checkCreateTourModel() {
-    let foundEmptyField = false;
-    Object.keys(this.createTourModel).forEach((key) => {
-      if (!foundEmptyField) {
-        foundEmptyField = this.createTourModel[key] === ('undefined' || null || '' || NaN || 0);
-      } else { return; }
-    });
-    return foundEmptyField;
   }
 
   onFeelingTextArea(event) {
@@ -184,7 +176,7 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
       this.initCreateTourModel();
       console.log('this.createTourModel', this.createTourModel);
       console.log('this.createTourForm', this.createTourForm);
-      if (!this.checkCreateTourModel()) {
+      if (!this.helpersService.checkFieldOnDefining(this.createTourModel)) {
         this.toursService.list('tours').push(this.createTourModel).then((response) => {
           this.tourId = response.path.o[response.path.o.length - 1];
           this.newTourPath = '/' + response.path.o.join('/');

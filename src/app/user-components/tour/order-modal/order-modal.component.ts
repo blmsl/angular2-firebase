@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import { MzBaseModal } from 'ng2-materialize';
+import {ToursService} from '../../../shared/services/tours.service';
 
 @Component({
   selector: 'app-order-modal',
@@ -12,7 +13,8 @@ export class OrderModalComponent extends MzBaseModal implements OnInit, OnChange
   orderFormModel;
   modalOptions;
   bottomSheetModal;
-  constructor(public fb: FormBuilder) {
+  constructor(public fb: FormBuilder,
+              private toursService: ToursService) {
     super();
   }
 
@@ -26,8 +28,15 @@ export class OrderModalComponent extends MzBaseModal implements OnInit, OnChange
   initOrderFormModel() {
     this.orderFormModel = this.fb.group({
       telephoneNumber: ['', Validators.required],
-      customersName: ['', Validators.required]
+      customersName: ['', Validators.required],
+      orderBody: ['', Validators.required]
     });
+  }
+
+  submit() {
+    this.orderFormModel.validate().subscribe((validation: boolean) => {
+      this.toursService.list('orders/anonymous').push(this.orderFormModel.value);
+    }, (error) => { console.log('validation error', error); });
   }
 
   initOrderModal() {

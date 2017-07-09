@@ -6,6 +6,8 @@ import {MzModalService, MzToastService} from 'ng2-materialize';
 import {OrderModalComponent} from './order-modal/order-modal.component';
 import {OrderModalSharedDataService} from "./order-modal/order-modal-shared-data.service";
 declare const $: any;
+import * as firebase from 'firebase/app';
+
 @Component({
   selector: 'app-tour',
   templateUrl: './tour.component.html',
@@ -27,6 +29,10 @@ export class TourComponent implements OnInit, AfterViewInit {
               private orderModalSharedDataService: OrderModalSharedDataService) { }
 
   ngOnInit() {
+    this.toursService.getObjectByKeyValue('orders/anonymous', 'telephoneNumber', 3333).subscribe((response) => {
+      console.log('response', response);
+    });
+
     this.activatedRoute.params.subscribe(params => {
       this.tourKey = params.key;
       this.toursService.getTourDetails(this.tourKey).subscribe((response) => {

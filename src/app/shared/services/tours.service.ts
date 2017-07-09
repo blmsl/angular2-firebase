@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import * as firebase from 'firebase/app';
+import {toPromise} from "rxjs/operator/toPromise";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class ToursService {
@@ -30,6 +32,26 @@ export class ToursService {
   }
   readData(path) {
     firebase.database().ref(path);
+  }
+
+  getObjectByKeyValue(rootRefPath, field, value) {
+    const rootRef = firebase.database().ref(rootRefPath);
+    let separateObject;
+    rootRef.orderByChild(field).equalTo(value).on('child_added', function(filteredData) {
+       firebase.database().ref(`${rootRefPath}/${filteredData.key}`).on('value', function(separateObjectResponse) {
+        separateObject = separateObjectResponse.val();
+      });
+    });
+
+    return Observable.create((observer) => {
+      const checkingInterval = setInterval(() => {
+        if (separateObject) {
+          observer.next(separateObject);
+          observer.complete();
+          clearInterval(checkingInterval);
+        }
+      }, 200);
+    });
   }
 
 }

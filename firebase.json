@@ -9,7 +9,7 @@
       "destination": "/index.html"
     }],
     "headers" : [{
-      "source": "**/*.@(css|html|js|map|json|woff)",
+      "source": "**/*.@(css|html|js|map|json|woff|jpg|jpeg|png)",
       "headers": [
         {"key": "Cache-Control", "value": "max-age=31536000"}
       ]

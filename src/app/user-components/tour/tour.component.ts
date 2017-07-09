@@ -4,6 +4,7 @@ import {ToursService} from '../../shared/services/tours.service';
 import * as _ from 'lodash';
 import {MzModalService, MzToastService} from 'ng2-materialize';
 import {OrderModalComponent} from './order-modal/order-modal.component';
+import {OrderModalSharedDataService} from "./order-modal/order-modal-shared-data.service";
 declare const $: any;
 @Component({
   selector: 'app-tour',
@@ -22,7 +23,8 @@ export class TourComponent implements OnInit, AfterViewInit {
               public toursService: ToursService,
               private el: ElementRef,
               private toastService: MzToastService,
-              private modalService: MzModalService) { }
+              private modalService: MzModalService,
+              private orderModalSharedDataService: OrderModalSharedDataService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
@@ -53,12 +55,10 @@ export class TourComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openServiceModal() {
+  openServiceModal(tourId, tourName) {
+    this.orderModalSharedDataService.data.tourId = tourId;
+    this.orderModalSharedDataService.data.tourName = tourName;
     this.modalService.open(OrderModalComponent);
-  }
-
-  showToast() {
-    this.toastService.show('Cпасибо большое за вашу заявку, мы в скором времени свяжемся с Вам ;)', 3000, 'green');
   }
 
   ngAfterViewInit() {

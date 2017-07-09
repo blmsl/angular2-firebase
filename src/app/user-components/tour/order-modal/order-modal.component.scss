@@ -37,6 +37,26 @@ $large: 1024px;
   margin-bottom: 0 !important;
 }
 
+.invalid-textarea {
+  border-bottom: 2px solid #f44336 !important;
+}
+
+.alert-input {
+  position: absolute;
+  bottom: 1px;
+  left: 8px;
+  font-size: 11px;
+  color: #f44336;
+}
+
+.alert-textarea {
+  position: absolute;
+  bottom: -12px;
+  left: 8px;
+  font-size: 11px;
+  color: #f44336;
+}
+
 
 mz-modal {
   .modal {

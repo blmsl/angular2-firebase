@@ -26,6 +26,7 @@ import { ToursFiltersAndSortingComponent } from './user-components/tour-listing/
 import * as firebase from 'firebase';
 import { OrderModalComponent } from './user-components/tour/order-modal/order-modal.component';
 import { FooterComponent } from './user-components/main-component/footer/footer.component';
+import {OrderModalSharedDataService} from "./user-components/tour/order-modal/order-modal-shared-data.service";
 
 firebase.initializeApp(Constants.fireBaseConfig);
 
@@ -61,6 +62,7 @@ firebase.initializeApp(Constants.fireBaseConfig);
     ToursService,
     CanActiveService,
     ProcessHandlerService,
+    OrderModalSharedDataService
   ],
   entryComponents: [
     OrderModalComponent

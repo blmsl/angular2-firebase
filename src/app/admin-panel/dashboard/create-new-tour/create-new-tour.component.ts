@@ -107,12 +107,12 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
       let timer = 0;
       const int = setInterval(() => {
         timer = +timer;
-        if(this.newFileUrl){
+        if (this.newFileUrl) {
           clearInterval(int);
           observer.next(this.newFileUrl);
           observer.complete();
         }
-        if(timer >= 50) {clearInterval(int);}
+        if (timer >= 50) { clearInterval(int); }
       }, 100);
     });
   }
@@ -122,7 +122,7 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
       let timer = 0;
       const int = setInterval(() => {
         timer = +timer;
-        if(this.newImagelistUrl.length) {
+        if (this.newImagelistUrl.length) {
           clearInterval(int);
           observer.next(this.newImagelistUrl);
           observer.complete();

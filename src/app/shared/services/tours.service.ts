@@ -31,10 +31,10 @@ export class ToursService {
     firebase.database().ref(path).set(data);
   }
   readData(path) {
-    firebase.database().ref(path);
+    return firebase.database().ref(path);
   }
 
-  getObjectByKeyValue(rootRefPath, field, value) {
+  getObjectByKeyValue(rootRefPath: string, field: string, value: any) {
     const rootRef = firebase.database().ref(rootRefPath);
     let separateObject;
     rootRef.orderByChild(field).equalTo(value).on('child_added', function(filteredData) {
@@ -44,11 +44,19 @@ export class ToursService {
     });
 
     return Observable.create((observer) => {
+      let counter = 0;
       const checkingInterval = setInterval(() => {
         if (separateObject) {
+          counter = +1;
           observer.next(separateObject);
           observer.complete();
           clearInterval(checkingInterval);
+        } else {
+          if (counter > 20) {
+            clearInterval(checkingInterval);
+            observer.next('data not received');
+            observer.complete();
+          }
         }
       }, 200);
     });

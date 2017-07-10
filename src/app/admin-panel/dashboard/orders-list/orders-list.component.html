@@ -1,0 +1,16 @@
+
+<ul class="collapsible" data-collapsible="accordion">
+  <li *ngFor="let order of ordersList; let i = index">
+    <div class="collapsible-header">
+      <i class="fa fa-address-card-o" aria-hidden="true"></i>
+      <span>First</span>
+      <div class="cross-container tooltipped" data-position="bottom" data-position="bottom"
+           data-tooltip="Перемемтить в архив">
+        <a data-delay="50">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+  </li>
+</ul>

@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MaterializeModule } from 'ng2-materialize';
 import { ConfigurationPageComponent } from './dashboard/configuration-page/configuration-page.component';
+import { OrdersListComponent } from './dashboard/orders-list/orders-list.component';
 
 
 @NgModule({
@@ -21,12 +22,14 @@ import { ConfigurationPageComponent } from './dashboard/configuration-page/confi
   declarations: [
     DashboardComponent,
     CreateNewTourComponent,
-    ConfigurationPageComponent
+    ConfigurationPageComponent,
+    OrdersListComponent
   ],
   exports: [
     DashboardComponent,
     CreateNewTourComponent,
-    ConfigurationPageComponent
+    ConfigurationPageComponent,
+    OrdersListComponent
   ]
 })
 export class AdminPanelModule { }

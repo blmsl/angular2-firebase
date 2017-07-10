@@ -1,0 +1,18 @@
+.collapsible-header {
+  color: black;
+  background: none;
+  i {
+    color: black;
+  }
+  .cross-container {
+    float: right;
+    i {
+      color: red;
+    }
+  }
+
+  .cross-container :hover {
+    color: gray;
+    transition: 500ms;
+  }
+}

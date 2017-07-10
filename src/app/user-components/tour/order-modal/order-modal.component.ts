@@ -17,6 +17,7 @@ export class OrderModalComponent extends MzBaseModal implements OnInit, OnChange
   tourId;
   tourName;
   orderSubmitModel;
+  cd = new Date(); // Current date;
 
 
   constructor(public fb: FormBuilder,
@@ -58,6 +59,7 @@ export class OrderModalComponent extends MzBaseModal implements OnInit, OnChange
     this.orderSubmitModel = this.orderFormModel.value;
     this.orderSubmitModel.tourId = this.tourId;
     this.orderSubmitModel.tourName = this.tourName;
+    this.orderSubmitModel.creationDate = new Date(this.cd.getFullYear(), this.cd.getMonth(), this.cd.getDate());
   }
 
   submit() {

@@ -2,8 +2,10 @@ import {Component, Input, OnChanges, OnInit, ViewEncapsulation} from '@angular/c
 import {FormBuilder, Validators} from '@angular/forms';
 import {MzBaseModal, MzToastService} from 'ng2-materialize';
 import {ToursService} from '../../../shared/services/tours.service';
-import {ActivatedRoute} from "@angular/router";
-import {OrderModalSharedDataService} from "./order-modal-shared-data.service";
+import {ActivatedRoute} from '@angular/router';
+import {OrderModalSharedDataService} from './order-modal-shared-data.service';
+
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-order-modal',
@@ -56,16 +58,18 @@ export class OrderModalComponent extends MzBaseModal implements OnInit, OnChange
   }
 
   intiOrderSubmitModel() {
-    this.orderSubmitModel = this.orderFormModel.value;
+    this.orderSubmitModel = _.cloneDeep(this.orderFormModel.value);
     this.orderSubmitModel.tourId = this.tourId;
     this.orderSubmitModel.tourName = this.tourName;
-    this.orderSubmitModel.creationDate = new Date(this.cd.getFullYear(), this.cd.getMonth(), this.cd.getDate());
+    this.orderSubmitModel.creationDate = `${new Date(this.cd.getFullYear(), this.cd.getMonth(), this.cd.getDate())}`;
+    this.orderSubmitModel.orderId = Math.floor(Math.random() * 100000000);
   }
 
   submit() {
     this.intiOrderSubmitModel();
     if (this.orderFormModel.valid) {
       this.showToast();
+      console.log('this.orderSubmitModel', this.orderSubmitModel);
       this.toursService.list('orders/anonymous').push(this.orderSubmitModel);
     } else {
       console.log('validation error');

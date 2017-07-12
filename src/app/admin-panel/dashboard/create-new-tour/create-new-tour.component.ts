@@ -72,8 +72,8 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
     this.createTourModel.currency = 'USD';
     this.createTourModel.id = Math.floor(Math.random() * 100000000);
     this.createTourModel.detailDescription = this.tourDescription;
-    this.createTourModel.endDate = new Date(endDate[0], endDate[1], endDate[2]);
-    this.createTourModel.creationDate = new Date(this.cd.getFullYear(), this.cd.getMonth(), this.cd.getDate());
+    this.createTourModel.endDate = `${new Date(endDate[0], endDate[1], endDate[2])}`;
+    this.createTourModel.creationDate = `${new Date(this.cd.getFullYear(), this.cd.getMonth(), this.cd.getDate())}`;
   }
 
   onFeelingTextArea(event) {

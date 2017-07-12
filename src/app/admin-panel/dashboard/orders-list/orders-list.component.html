@@ -1,16 +1,57 @@
 
+<h4 class="pages-hader">Лист заявок:</h4>
 <ul class="collapsible" data-collapsible="accordion">
   <li *ngFor="let order of ordersList; let i = index">
     <div class="collapsible-header">
       <i class="fa fa-address-card-o" aria-hidden="true"></i>
-      <span>First</span>
+      <span>{{order?.customersName}}</span>
       <div class="cross-container tooltipped" data-position="bottom" data-position="bottom"
            data-tooltip="Перемемтить в архив">
-        <a data-delay="50">
-          <i class="fa fa-times" aria-hidden="true"></i>
-        </a>
+          <a data-delay="50">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </a>
+      </div>
+      <div class="floatr">
+        <span class="bold">{{order?.creationDate | date:'HH:MM d.MM.y'}}</span>
       </div>
     </div>
-    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+    <div class="collapsible-body">
+      <div class="row">
+        <table class="responsive-table">
+          <thead>
+          <tr>
+            <th>Дата размещения заявки</th>
+            <th>Имя заказчика</th>
+            <th>Номер телефона</th>
+            <th>ID Тура</th>
+            <th>ID Заказа</th>
+            <th>Название гостиници</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{{order?.creationDate | date:'HH:MM d.MM.y'}}</td>
+            <td>{{order?.customersName}}</td>
+            <td>{{order?.telephoneNumber}}</td>
+            <td>{{order?.tourId}}</td>
+            <td>{{order?.orderId}}</td>
+            <td>{{order?.tourName}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <table>
+          <thead>
+          <tr>
+            <th>Тело сообщения</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td [ngClass]="'td-text'"> <span>{{order?.orderBody}}</span></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </li>
 </ul>

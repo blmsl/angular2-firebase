@@ -11,6 +11,15 @@
     }
   }
 
+  .bold {
+    font-weight: bold;
+  }
+
+  .td-text {
+    white-space: normal !important;
+    text-align: left !important;
+  }
+
   .cross-container :hover {
     color: gray;
     transition: 500ms;

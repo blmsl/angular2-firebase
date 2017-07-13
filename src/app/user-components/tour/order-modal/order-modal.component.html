@@ -1,62 +1,66 @@
-<mz-modal #bottomSheetModal [options]="modalOptions">
-  <mz-modal-header>
-    <div class="modal-header-container">
-      <div class="col s12 center">
-        <img src="../../../assets/img/270x32.png" alt="">
+<div class="mz-modal-container">
+  <mz-modal #bottomSheetModal [options]="modalOptions">
+    <mz-modal-header>
+      <div class="modal-header-container">
+        <div class="col s12 center">
+          <img src="../../../assets/img/270x32.png" alt="">
+        </div>
+        <span>
+        Задайте, пожалуйста свой вопрос!
+      </span>
       </div>
-      <span>
-      Задайте, пожалуйста свой вопрос!
-    </span>
-    </div>
-  </mz-modal-header>
-  <mz-modal-content>
-    <div class="col s12">
-      <span class="font-w-400">Гостиница: </span>
-      <span>{{tourName}}</span>
-    </div>
-    <div class="col s12">
-      <span class="font-w-400">ID Тура: </span>
-      <span>{{tourId}}</span>
-    </div>
-    <form [formGroup]="orderFormModel">
-        <div class="input-field col s12">
-          <input formControlName="customersName"
-                 type="text"
-                 [ngClass]="{'invalid': !orderFormModel.controls.customersName.valid}"
-                 class="validate"
-                 id="orderForm_customersName"
-                 minlength="3"
-                 required>
-          <label for="orderForm_customersName">Как к Вам обращаться?</label>
-          <span *ngIf="!orderFormModel.controls.customersName.valid" class="alert-input">Нам просто нужно знать как к Вам обращаться</span>
-        </div>
-        <div class="input-field col s12">
-          <input type="number"
-                 name="telephoneNumber"
-                 id="orderForm_telephoneNumber"
-                 formControlName="telephoneNumber"
-                 [ngClass]="{'invalid': !customValidateTelephoneNumber()}"
-                 class="validate">
-          <label for="orderForm_telephoneNumber">Ваш номер телефона</label>
-          <span *ngIf="!customValidateTelephoneNumber()" class="alert-input">Пример: 0501234567</span>
-        </div>
-        <div class="input-field col s12">
-          <mz-textarea-container>
-            <textarea class="invalid-textarea"
-                      placeholder="Введите Ваше обращение"
-                      formControlName="orderBody"
-                      mz-textarea
-                      [ngClass]="{'invalid-textarea': !orderFormModel.controls.orderBody.valid}"
-                      id="comment-textarea"
-                      length="500">
-            </textarea>
-            <span *ngIf="!orderFormModel.controls.orderBody.valid" class="alert-textarea">Введите Ваше предложение</span>
-          </mz-textarea-container>
-        </div>
-    </form>
-  </mz-modal-content>
-  <mz-modal-footer>
-    <button mz-button [flat]="true" mz-modal-close>Закрыть :(</button>
-    <button [disabled]="!orderFormModel.valid" mz-button (click)="submit()" mz-modal-close>Отправить :)</button>
-  </mz-modal-footer>
-</mz-modal>
+    </mz-modal-header>
+    <mz-modal-content>
+      <div class="col s12">
+        <span class="font-w-400">Гостиница: </span>
+        <span>{{tourName}}</span>
+      </div>
+      <div class="col s12">
+        <span class="font-w-400">ID Тура: </span>
+        <span>{{tourId}}</span>
+      </div>
+      <form [formGroup]="orderFormModel">
+          <div class="input-field col s12">
+            <input formControlName="customersName"
+                   type="text"
+                   [ngClass]="{'invalid': !orderFormModel.controls.customersName.valid}"
+                   class="validate"
+                   id="orderForm_customersName"
+                   minlength="3"
+                   required>
+            <label for="orderForm_customersName">Как к Вам обращаться?</label>
+            <span *ngIf="!orderFormModel.controls.customersName.valid" class="alert-input">Нам просто нужно знать как к Вам обращаться</span>
+          </div>
+          <div class="input-field col s12">
+            <input type="number"
+                   name="telephoneNumber"
+                   id="orderForm_telephoneNumber"
+                   formControlName="telephoneNumber"
+                   [ngClass]="{'invalid': !customValidateTelephoneNumber()}"
+                   class="validate">
+            <label for="orderForm_telephoneNumber">Ваш номер телефона</label>
+            <span *ngIf="!customValidateTelephoneNumber()" class="alert-input">Пример: 0501234567</span>
+          </div>
+          <div class="input-field col s12">
+            <mz-textarea-container>
+              <textarea class="invalid-textarea"
+                        placeholder="Введите Ваше обращение"
+                        formControlName="orderBody"
+                        mz-textarea
+                        [ngClass]="{'invalid-textarea': !orderFormModel.controls.orderBody.valid}"
+                        id="comment-textarea"
+                        length="500">
+              </textarea>
+              <span *ngIf="!orderFormModel.controls.orderBody.valid" class="alert-textarea">Введите Ваше предложение</span>
+            </mz-textarea-container>
+          </div>
+      </form>
+    </mz-modal-content>
+    <mz-modal-footer>
+      <button mz-button [flat]="true" mz-modal-close>Закрыть :(</button>
+      <button [disabled]="!orderFormModel.valid" mz-button (click)="submit()" mz-modal-close>Отправить :)</button>
+    </mz-modal-footer>
+  </mz-modal>
+</div>
+
+

@@ -11,8 +11,8 @@ import * as firebase from 'firebase/app';
 @Component({
   selector: 'app-tour',
   templateUrl: './tour.component.html',
-  styleUrls: ['./tour.component.scss']
-
+  styleUrls: ['./tour.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TourComponent implements OnInit, AfterViewInit {
   tourKey;

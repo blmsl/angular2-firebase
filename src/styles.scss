@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 // Media Query Ranges
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
 $small-screen-up: 601px !default;
 $medium-screen-up: 993px !default;
 $large-screen-up: 1201px !default;
@@ -33,9 +35,23 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
+  vertical-align: middle;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
+
+.collapsible {
+  border-radius: 10px 10px 0px;
+  .collapsible-header {
+    background-color: #ee6e73;
+    color: whitesmoke;
+    border-radius: 10px 10px 0px;
+    i {
+      color: whitesmoke;
+    }
+  }
+}
+
 
 .pages-hader {
   text-align: center;

@@ -5,7 +5,6 @@ import { ToursService } from '../../../shared/services/tours.service';
   selector: 'app-orders-list',
   templateUrl: './orders-list.component.html',
   styleUrls: ['./orders-list.component.scss'],
-  encapsulation: ViewEncapsulation.None
 
 })
 export class OrdersListComponent implements OnInit {

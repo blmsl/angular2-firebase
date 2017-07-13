@@ -58,6 +58,10 @@ export class ToursFiltersAndSortingComponent implements OnInit {
   getSupplyList() {
     this.toursService.list('configurations/supply').subscribe((response) => {
       this.supplyList = response;
+      console.log('response', response);
+      setTimeout(() => {
+        $('.tooltipped').tooltip({delay: 50});
+      }, 300);
     });
   }
 
@@ -80,7 +84,7 @@ export class ToursFiltersAndSortingComponent implements OnInit {
   }
 
   onSelectStars(value: string, checked: boolean) {
-    const valeTrans = parseInt(value);
+    const valeTrans = parseInt(value, 10);
     this.filteringModel.stars = [];
     _.find(this.starsCheckboxList, {label: valeTrans}).checked = checked;
     _.filter(this.starsCheckboxList, {checked: true}).forEach((stars) => {

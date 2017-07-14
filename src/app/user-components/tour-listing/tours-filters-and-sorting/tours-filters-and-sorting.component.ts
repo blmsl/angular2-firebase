@@ -4,8 +4,7 @@ import {ToursService} from '../../../shared/services/tours.service';
 @Component({
   selector: 'app-tours-filters-and-sorting',
   templateUrl: './tours-filters-and-sorting.component.html',
-  styleUrls: ['./tours-filters-and-sorting.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./tours-filters-and-sorting.component.scss']
 })
 export class ToursFiltersAndSortingComponent implements OnInit {
   @Output() applyFilterModel = new EventEmitter;
@@ -20,6 +19,17 @@ export class ToursFiltersAndSortingComponent implements OnInit {
     this.initFilteringModel();
     this.initStartCheckBoxModel();
     this.getSupplyList();
+  }
+
+  initNafFiltering() {
+    $('.button-collapse').sideNav({
+        menuWidth: 500, // Default is 300
+        edge: 'left', // Choose the horizontal origin
+        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        draggable: true // Choose whether you can drag to open on touch screens
+      }
+    );
+    $('.shut-down').sideNav('hide');
   }
 
   initFilteringModel() {

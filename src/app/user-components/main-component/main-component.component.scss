@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 body {
   display: flex;
   min-height: 100vh;
@@ -9,5 +11,24 @@ main {
 }
 
 .container {
-  width: 85% !important;
+  width: 85%;
 }
+
+@media #{$medium-only} {
+  .container {
+    width: 92% !important;
+  }
+}
+
+@media #{$small-and-down} {
+  .container {
+    width: 92% !important;
+  }
+}
+
+@media #{$large-and-up} {
+  .container {
+    width: 70% !important;
+  }
+}
+

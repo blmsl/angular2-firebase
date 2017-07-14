@@ -19,3 +19,22 @@
     margin: 4px 0 4px 0;
   }
 }
+
+#filter-container-mobile {
+  .open-filter-icon {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    padding: 13px 15px;
+    background: green;
+    border-radius: 59px;
+    color: white;
+    box-shadow: 0px 0px 9px 3px grey;
+    z-index: 100;
+  }
+  .side-nav li {
+    line-height: 5px !important;
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+  }
+}

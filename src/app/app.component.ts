@@ -1,8 +1,8 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import { initializeApp, database } from 'firebase'
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { initializeApp, database } from 'firebase';
 import { ProcessHandlerService } from "./shared/services/process-handler.service"
 
-declare let $:any;
+declare let $: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +11,7 @@ declare let $:any;
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'app works!';
 
-  constructor(public processHandlerService:ProcessHandlerService) {
+  constructor(public processHandlerService: ProcessHandlerService) {
   }
   ngOnInit() {
   }

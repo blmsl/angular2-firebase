@@ -1,36 +1,84 @@
-<div class="filters-container">
-  <div class="filter-header">Кол-во звезд
-    <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+<div class="hide-on-small-and-down">
+  <div class="filters-container">
+    <div class="filter-header">Кол-во звезд
+      <i class="fa fa-filter  " aria-hidden="true"></i>
+    </div>
+    <div *ngFor="let starsItem of starsCheckboxList; let i = index">
+      <input class="filled-in"
+             [value]="starsItem.label"
+             type="checkbox"
+             [checked]="starsItem['checked']"
+             [id]="'stars'+i"
+             (change)="onSelectStars($event.target.value, $event.target.checked)"/>
+      <label [for]="'stars'+i"><img *ngFor="let starts of starsItem?.quantity" class="h-21p" src="./assets/img/star.png" alt="country"></label>
+    </div>
+    <hr>
   </div>
-  <div *ngFor="let starsItem of starsCheckboxList; let i = index">
-    <input class="filled-in"
-           [value]="starsItem.label"
-           type="checkbox"
-           [checked]="starsItem['checked']"
-           [id]="'stars'+i"
-           (change)="onSelectStars($event.target.value, $event.target.checked)"/>
-    <label [for]="'stars'+i"><img *ngFor="let starts of starsItem?.quantity" class="h-21p" src="./assets/img/star.png" alt="country"></label>
+  <div class="filters-container">
+    <div class="filter-header">Страна
+      <i class="fa fa-filter  " aria-hidden="true"></i>
+    </div>
+    <div *ngFor="let country of countriesListForFiltering; let i = index">
+      <input class="filled-in" [value]="country.country" type="checkbox" [checked]="country['checked']" [id]="'country'+i"
+             (change)="onSelectCountry($event.target.value,$event.target.checked)"/>
+      <label [for]="'country'+i">{{country.country}}</label>
+    </div>
+    <hr>
   </div>
-  <hr>
+  <div class="filters-container">
+    <div class="filter-header">Система питания
+      <i class="fa fa-filter  " aria-hidden="true"></i>
+    </div>
+    <div *ngFor="let supply of supplyList; let i = index">
+      <input class="filled-in" [value]="supply.label" type="checkbox" [checked]="supply['checked']" [id]="'supply'+i"
+             (change)="onSelectSupply($event.target.value,$event.target.checked)"/>
+      <label [for]="'supply'+i">{{supply.label}}</label>
+    </div>
+  </div>
 </div>
-<div class="filters-container">
-  <div class="filter-header">Страна
-    <i class="fa fa-minus-square-o" aria-hidden="true"></i>
-  </div>
-  <div *ngFor="let country of countriesListForFiltering; let i = index">
-    <input class="filled-in" [value]="country.country" type="checkbox" [checked]="country['checked']" [id]="'country'+i"
-           (change)="onSelectCountry($event.target.value,$event.target.checked)"/>
-    <label [for]="'country'+i">{{country.country}}</label>
-  </div>
-  <hr>
-</div>
-<div class="filters-container">
-  <div class="filter-header">Система питания
-    <i class="fa fa-minus-square-o" aria-hidden="true"></i>
-  </div>
-  <div *ngFor="let supply of supplyList; let i = index">
-    <input class="filled-in" [value]="supply.label" type="checkbox" [checked]="supply['checked']" [id]="'supply'+i"
-           (change)="onSelectSupply($event.target.value,$event.target.checked)"/>
-    <label [for]="'supply'+i">{{supply.label}}</label>
-  </div>
+<div id="filter-container-mobile" class="hide-on-med-and-up hide-on-med-only">
+  <a data-activates="slide-filtering" class="button-collapse pointer">
+    <i class="fa fa-filter open-filter-icon" aria-hidden="true"></i>
+  </a>
+  <ul id="slide-filtering" class="side-nav">
+    <!--<li><a class="subheader">Subheader</a></li>-->
+    <li>
+      <div class="filters-container">
+        <div class="filter-header">Кол-во звезд
+          <i class="fa fa-filter  " aria-hidden="true"></i>
+        </div>
+        <div *ngFor="let starsItem of starsCheckboxList; let i = index">
+          <input class="filled-in"
+                 [value]="starsItem.label"
+                 type="checkbox"
+                 [checked]="starsItem['checked']"
+                 [id]="'stars'+i"
+                 (change)="onSelectStars($event.target.value, $event.target.checked)"/>
+          <label [for]="'stars'+i"><img *ngFor="let starts of starsItem?.quantity" class="h-21p" src="./assets/img/star.png" alt="country"></label>
+        </div>
+        <hr>
+      </div>
+      <div class="filters-container">
+        <div class="filter-header">Страна
+          <i class="fa fa-filter  " aria-hidden="true"></i>
+        </div>
+        <div *ngFor="let country of countriesListForFiltering; let i = index">
+          <input class="filled-in" [value]="country.country" type="checkbox" [checked]="country['checked']" [id]="'country'+i"
+                 (change)="onSelectCountry($event.target.value,$event.target.checked)"/>
+          <label [for]="'country'+i">{{country.country}}</label>
+        </div>
+        <hr>
+      </div>
+      <div class="filters-container">
+        <div class="filter-header">Система питания
+          <i class="fa fa-filter  " aria-hidden="true"></i>
+        </div>
+        <div *ngFor="let supply of supplyList; let i = index">
+          <input class="filled-in" [value]="supply.label" type="checkbox" [checked]="supply['checked']" [id]="'supply'+i"
+                 (change)="onSelectSupply($event.target.value,$event.target.checked)"/>
+          <label [for]="'supply'+i">{{supply.label}}</label>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>

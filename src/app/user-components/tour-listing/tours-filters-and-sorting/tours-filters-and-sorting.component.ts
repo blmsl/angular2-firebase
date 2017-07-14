@@ -19,17 +19,20 @@ export class ToursFiltersAndSortingComponent implements OnInit {
     this.initFilteringModel();
     this.initStartCheckBoxModel();
     this.getSupplyList();
+    this.initNavFiltering();
   }
 
-  initNafFiltering() {
+  initNavFiltering() {
     $('.button-collapse').sideNav({
-        menuWidth: 500, // Default is 300
+        menuWidth: 300, // Default is 300
         edge: 'left', // Choose the horizontal origin
-        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-        draggable: true // Choose whether you can drag to open on touch screens
       }
     );
-    $('.shut-down').sideNav('hide');
+    $('.drag-target').on('click', () => {
+      setTimeout(() => {
+        $('#sidenav-overlay').remove();
+      }, 200);
+    });
   }
 
   initFilteringModel() {

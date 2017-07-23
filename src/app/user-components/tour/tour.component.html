@@ -1,10 +1,23 @@
 <div class="row">
   <div class="col s12 center">
-    <div class="col s12 m8 text-a-l m-b-5p">
-      <h5 class="m-b--5p">{{tourModel?.hotelName}} <img class="h-21p" src="./assets/img/star.png" alt="country" *ngFor="let star of _.range(0,tourModel?.stars)"></h5>
-      <span *ngIf="tourModel?.country">
-          {{tourModel?.country}} ({{tourModel?.city}} )
-      </span>
+    <div class="tour-header-container col s12 text-a-l m-b-5p">
+      <div class="col s9">
+        <h5 class="tour-header_tour-title-line">{{tourModel?.hotelName}}</h5>
+        <p class="tour-header_tour-contry-stars-line" *ngIf="tourModel?.country">
+          <span class="tour-header_tour-country">
+            {{tourModel?.country}} ({{tourModel?.city}})
+          </span>
+          <span class="tour-header_tour-stars">
+            <img class="h-21p" src="./assets/img/star.png" alt="country"
+                 *ngFor="let star of _.range(0,tourModel?.stars)">
+          </span>
+        </p>
+      </div>
+      <div class="col s3 tour-header_price-container">
+        <h5 class="center-align">
+          {{tourModel?.price | currency:'USD':true:'1.0'}}
+        </h5>
+      </div>
     </div>
   </div>
   <div class="col s12 l9 m12 slider-container">
@@ -21,15 +34,15 @@
   </div>
   <div class="col s12 m12 l3">
     <div class="card-panel teal z-depth-5">
-          <p class="white-text"><i class="material-icons">short_text</i>
-            {{tourModel?.shortDescription}}
-          </p>
+      <p class="white-text"><i class="material-icons">short_text</i>
+        {{tourModel?.shortDescription}}
+      </p>
     </div>
-    <div class="card-panel light-green p-5p z-depth-5">
-      <h5 class="white-text center-align">
-        {{tourModel?.price | currency:'USD':true:'1.0'}}
-      </h5>
-    </div>
+    <!--<div class="card-panel light-green p-5p z-depth-5">-->
+      <!--<h5 class="white-text center-align">-->
+        <!--{{tourModel?.price | currency:'USD':true:'1.0'}}-->
+      <!--</h5>-->
+    <!--</div>-->
   </div>
   <div class="col s12">
     <mz-collapsible
@@ -63,7 +76,8 @@
               <span class="text-decor-un font-bold"> {{tourModel?.hotelLocation?.addressName}}</span>
             </span>
             <!--<app-google-map-iframe [tourLocation]="tourModel?.hotelLocation"></app-google-map-iframe>-->
-            <app-google-map-autocomplete *ngIf="alreadyLoaded" [tourLocation]="tourModel?.hotelLocation" [readOnly]="true" ></app-google-map-autocomplete>
+            <app-google-map-autocomplete *ngIf="alreadyLoaded" [tourLocation]="tourModel?.hotelLocation"
+                                         [readOnly]="true"></app-google-map-autocomplete>
           </div>
         </mz-collapsible-item-body>
       </mz-collapsible-item>
@@ -87,7 +101,7 @@
                   <i class="fa fa-plane" aria-hidden="true"></i> Вылет из {{tourModel?.departure}}
                 </li>
                 <li class="collection-item">
-                  <i class="fa fa-calendar" aria-hidden="true"></i> Вылет 24-01-2017
+                  <i class="fa fa-calendar" aria-hidden="true"></i> Вылет {{tourModel?.endDate | date:"dd.MM.yy"}}
                 </li>
                 <li class="collection-item">
                   <i class="fa fa-cutlery" aria-hidden="true"></i> {{tourModel?.supply}}

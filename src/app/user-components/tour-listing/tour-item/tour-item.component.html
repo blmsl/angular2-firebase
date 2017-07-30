@@ -16,6 +16,11 @@
         <i class="fa fa-plane" aria-hidden="true"></i> Вылет из {{tour?.departure}}
       </li>
       <li class="collection-item p-5p">
+        <i class="fa fa-ticket" aria-hidden="true"></i>
+        <span *ngIf="tour?.flightIncluded">Перелет включен</span>
+        <span *ngIf="!tour?.flightIncluded">Перелет не включен</span>
+      </li>
+      <li class="collection-item p-5p">
         <i class="fa fa-calendar" aria-hidden="true"></i> Вылет {{tour?.endDate | date:"dd.MM.yy"}}
       </li>
       <li class="collection-item p-5p">
@@ -27,10 +32,10 @@
         <i class="fa fa-bed" aria-hidden="true"></i> {{tour?.days}} дней {{tour?.nights}} ночей
       </li>
       <li class="collection-item p-5p">
-        <i class="fa fa-bus" aria-hidden="true"></i> Трансфер Free
+        <i class="fa fa-bus" aria-hidden="true"></i> Трансфер включен
       </li>
       <li class="collection-item p-5p">
-        <i class="fa fa-suitcase" aria-hidden="true"></i> 23кг Free
+        <i class="fa fa-suitcase" aria-hidden="true"></i> 23кг включено
       </li>
     </ul>
   </div>

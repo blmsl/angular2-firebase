@@ -5,12 +5,12 @@ export class ProcessHandlerService {
   active;
   constructor() { }
 
-  start(){
-    this.active = true
+  start() {
+    this.active = true;
   }
 
   done() {
-    this.active = false
+    this.active = false;
   }
 
 }

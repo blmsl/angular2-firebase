@@ -7,6 +7,7 @@ import {OrderModalComponent} from './order-modal/order-modal.component';
 import {OrderModalSharedDataService} from "./order-modal/order-modal-shared-data.service";
 declare const $: any;
 import * as firebase from 'firebase/app';
+import {ProcessHandlerService} from "../../shared/services/process-handler.service";
 
 @Component({
   selector: 'app-tour',
@@ -26,9 +27,11 @@ export class TourComponent implements OnInit, AfterViewInit {
               private el: ElementRef,
               private toastService: MzToastService,
               private modalService: MzModalService,
-              private orderModalSharedDataService: OrderModalSharedDataService) { }
+              private orderModalSharedDataService: OrderModalSharedDataService,
+              private processHandlerService: ProcessHandlerService) { }
 
   ngOnInit() {
+    this.processHandlerService.start();
     this.toursService.getObjectByKeyValue('orders/anonymous', 'telephoneNumber', 3333).subscribe((response) => {
       console.log('response', response);
     });
@@ -59,6 +62,13 @@ export class TourComponent implements OnInit, AfterViewInit {
         focusOnSelect: true
       });
     });
+  }
+
+  finishedLoadingImg() {
+    const timeOut = setTimeout(() => {
+      this.processHandlerService.done();
+      clearTimeout(timeOut);
+    }, 500);
   }
 
   openServiceModal(tourId, tourName) {

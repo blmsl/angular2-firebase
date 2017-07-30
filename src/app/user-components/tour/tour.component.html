@@ -23,7 +23,7 @@
   <div class="col s12 l9 m12 slider-container">
     <div class="slider-for center">
       <div *ngFor="let bigImage of tourModel?.fullImageGalery">
-        <img class="max-w-100 max-h-100 m-0-auto pointer" [src]="bigImage" alt="">
+        <img class="max-w-100 max-h-100 m-0-auto pointer" (load)="finishedLoadingImg()" [src]="bigImage" alt="">
       </div>
     </div>
     <div class="slider-nav p-t-5p">
@@ -99,7 +99,13 @@
               </blockquote>
               <ul class="collection m-t-0p">
                 <li class="collection-item">
-                  <i class="fa fa-plane" aria-hidden="true"></i> Вылет из {{tourModel?.departure}}
+                  <i class="fa fa-plane" aria-hidden="true"></i>
+                  <span>Вылет из {{tourModel?.departure}}</span>
+                </li>
+                <li>
+                  <i class="fa fa-ticket" aria-hidden="true"></i>
+                  <span *ngIf="tourModel?.flightIncluded">Перелет включен</span>
+                  <span *ngIf="!tourModel?.flightIncluded">Перелет не включен</span>
                 </li>
                 <li class="collection-item">
                   <i class="fa fa-calendar" aria-hidden="true"></i> Вылет {{tourModel?.endDate | date:"dd.MM.yy"}}
@@ -113,10 +119,10 @@
                   <i class="fa fa-bed" aria-hidden="true"></i> {{tourModel?.days}} дней {{tourModel?.nights}} ночей
                 </li>
                 <li class="collection-item">
-                  <i class="fa fa-bus" aria-hidden="true"></i> Трансфер
+                  <i class="fa fa-bus" aria-hidden="true"></i> Трансфер включен
                 </li>
                 <li class="collection-item">
-                  <i class="fa fa-suitcase" aria-hidden="true"></i> 23кг Free
+                  <i class="fa fa-suitcase" aria-hidden="true"></i> 23кг включен
                 </li>
               </ul>
             </div>

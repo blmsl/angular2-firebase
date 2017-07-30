@@ -47,7 +47,8 @@
   <div class="col s12">
     <mz-collapsible
       [mode]="'expandable'"
-      [popout]="false">
+      [popout]="false"
+      class="all-packages">
       <mz-collapsible-item [active]="true">
         <mz-collapsible-item-header>
           <i mz-icon
@@ -72,7 +73,7 @@
         </mz-collapsible-item-header>
         <mz-collapsible-item-body>
           <div class="row">
-            <span class="block m-b-10p">Мето нахождения отеля:
+            <span class="block m-b-10p p-l-8p">Мето нахождения отеля:
               <span class="text-decor-un font-bold"> {{tourModel?.hotelLocation?.addressName}}</span>
             </span>
             <!--<app-google-map-iframe [tourLocation]="tourModel?.hotelLocation"></app-google-map-iframe>-->
@@ -92,7 +93,7 @@
         </mz-collapsible-item-header>
         <mz-collapsible-item-body>
           <div class="row">
-            <div class="col s12 m6">
+            <div class="col s12 m6 tour-package">
               <blockquote>
                 Включено в стоимость
               </blockquote>
@@ -104,20 +105,22 @@
                   <i class="fa fa-calendar" aria-hidden="true"></i> Вылет {{tourModel?.endDate | date:"dd.MM.yy"}}
                 </li>
                 <li class="collection-item">
-                  <i class="fa fa-cutlery" aria-hidden="true"></i> {{tourModel?.supply}}
+                  <i class="fa fa-cutlery" aria-hidden="true"></i>
+                  <span>{{tourModel?.supply.label}}</span>
+                  <p class="f-s-10 m-t-2p m-b-2p">*{{tourModel?.supply.value}}</p>
                 </li>
                 <li class="collection-item">
                   <i class="fa fa-bed" aria-hidden="true"></i> {{tourModel?.days}} дней {{tourModel?.nights}} ночей
                 </li>
                 <li class="collection-item">
-                  <i class="fa fa-bus" aria-hidden="true"></i> Трансфер Free
+                  <i class="fa fa-bus" aria-hidden="true"></i> Трансфер
                 </li>
                 <li class="collection-item">
                   <i class="fa fa-suitcase" aria-hidden="true"></i> 23кг Free
                 </li>
               </ul>
             </div>
-            <div class="col s12 m6">
+            <div class="col s12 m6 tour-service-list">
               <blockquote>
                 Сервисы отеля
               </blockquote>

@@ -26,3 +26,19 @@
     margin-top: 12px;
   }
 }
+.all-packages {
+  .collapsible-body {
+    padding: 3px 10px !important;
+  }
+  .tour-package {
+    li {
+      padding: 3px 2px !important;
+    }
+  }
+
+  .tour-service-list {
+    li {
+      padding: 3px 2px !important;
+    }
+  }
+}

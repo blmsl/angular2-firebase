@@ -52,7 +52,8 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
       nights: ['', Validators.required],
       days: ['', Validators.required],
       departure: ['', Validators.required],
-      supply: ['', Validators.required]
+      supply: ['', Validators.required],
+      flightIncluded: ['', Validators.required]
     });
     this.getCountriesList();
     this.getServicesList();
@@ -88,7 +89,6 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
 
   getSupplyListForDropDown() {
     this.toursService.list('configurations/supply').subscribe((response) => {
-      console.log('supply', response);
       this.supplyListForDropDown = response;
     });
   }
@@ -168,6 +168,10 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
 
   onSelectSupply(supply) {
     this.createTourForm.value.supply = supply;
+  }
+
+  onSelectFlightIncluded(flightIncluded) {
+    this.createTourForm.value.flightIncluded = flightIncluded;
   }
 
   createTour() {

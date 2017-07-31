@@ -33,11 +33,25 @@
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s5">
+        <div class="input-field col s12 m6">
           <input type="text" formControlName="hotelName" class="validate">
           <label>Название отеля</label>
         </div>
-        <div class="col s3" *ngIf="departureCitiesListForDropDown">
+        <div class="col s12 m6">
+          <mz-select-container>
+            <select mz-select
+                    [label]="'Питание'"
+                    (change)="onSelectSupply($event.target.value)"
+                    [placeholder]="'Схема питания'"
+                    formControlName="supply"
+                    id="supplySelect">
+              <option *ngFor="let supply of supplyListForDropDown" [value]="supply">{{supply.label}}</option>
+            </select>
+          </mz-select-container>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6" *ngIf="departureCitiesListForDropDown">
           <mz-select-container>
             <select mz-select
                     [label]="'Вылет из'"
@@ -49,15 +63,16 @@
             </select>
           </mz-select-container>
         </div>
-        <div class="col s4" *ngIf="departureCitiesListForDropDown">
+        <div class="col s12 m6">
           <mz-select-container>
             <select mz-select
-                    [label]="'Питание'"
-                    (change)="onSelectSupply($event.target.value)"
-                    [placeholder]="'Схема питания'"
-                    formControlName="supply"
-                    id="supplySelect">
-              <option *ngFor="let supply of supplyListForDropDown" [value]="supply.label">{{supply.label}}</option>
+                    [label]="'Включен ли перелет'"
+                    (change)="onSelectFlightIncluded($event.target.value)"
+                    [placeholder]="'Перелет'"
+                    formControlName="flightIncluded"
+                    id="flightIncludedSelect">
+              <option [value]="true">Да</option>
+              <option [value]="false">Нет</option>
             </select>
           </mz-select-container>
         </div>
@@ -113,7 +128,7 @@
         <blockquote>
           Сервисы отеля
         </blockquote>
-        <p *ngFor="let service of servicesListForView; let i = index">
+        <p class="m-0" *ngFor="let service of servicesListForView; let i = index">
           <input [value]="service.title" type="checkbox" [checked]="service.checked" [id]="i"
                  (change)="onSelectHotelService($event.target.value,$event.target.checked)"/>
           <label [for]="i">{{service.title}}</label>

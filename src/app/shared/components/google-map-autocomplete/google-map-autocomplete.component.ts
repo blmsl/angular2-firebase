@@ -30,9 +30,9 @@ export class GoogleMapAutocompleteComponent implements OnInit,OnChanges {
   ) {}
 
   ngOnChanges() {
-    if(this.tourLocation){
-      this.latitude = this.tourLocation.latitude;
-      this.longitude = this.tourLocation.longitude;
+    if(this.tourLocation) {
+      this.latitude = Number(this.tourLocation.latitude);
+      this.longitude = Number(this.tourLocation.longitude);
       this.zoom = 7;
     }
   }

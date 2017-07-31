@@ -80,7 +80,23 @@
     </div>
     <div class="row">
       <div class="col s12">
-        <app-google-map-autocomplete (emitLocation)="onSelectHotelLocation($event)" ></app-google-map-autocomplete>
+        <div class="input-field col s12 m6">
+          <input type="text" formControlName="addressName" class="validate">
+          <label>Адрес отеля</label>
+        </div>
+      </div>
+      <div class="col s12">
+        <div class="col s12 center">
+          <a href="http://www.latlong.net/" target="_blank">http://www.latlong.net</a>
+        </div>
+        <div class="input-field col s12 m6">
+          <input type="text" formControlName="latitude" class="validate">
+          <label>Долгота (latitude)</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input type="text" formControlName="longitude" class="validate">
+          <label>Широта (longitude)</label>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -115,6 +131,14 @@
           [elementId]="'my-editor-id'"
           (onEditorKeyup)="onFeelingTextArea($event)">
         </app-tinymce-textarea>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field col s12">
+            <input type="text" formControlName="video" class="validate">
+            <label>Видео ролик (Ссылка на ролико должна быть такого типа - //www.youtube.com/embed/sPTPyD-YE08)</label>
+          </div>
+        </div>
       </div>
       <div class="input-field col s12 m6">
         <textarea formControlName="shortDescription" class="materialize-textarea" maxlength="250" data-length="250"></textarea>

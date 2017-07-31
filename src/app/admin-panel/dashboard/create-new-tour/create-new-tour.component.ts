@@ -26,9 +26,14 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
   supplyListForDropDown: any[];
   updatesModel = {};
   newTourPath: string;
-  hotelLocation;
+  hotelLocation = {
+    addressName: null,
+    latitude: null,
+    longitude: null,
+  };
   tourDescription: string;
   endDate;
+  tourSupply;
   cd = new Date(); // Current date;
 
   constructor(public fb: FormBuilder,
@@ -53,7 +58,11 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
       days: ['', Validators.required],
       departure: ['', Validators.required],
       supply: ['', Validators.required],
-      flightIncluded: ['', Validators.required]
+      flightIncluded: ['', Validators.required],
+      video: ['', Validators.required],
+      addressName: ['', Validators.required],
+      latitude: ['', Validators.required],
+      longitude: ['', Validators.required],
     });
     this.getCountriesList();
     this.getServicesList();
@@ -68,7 +77,15 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
   initCreateTourModel() {
     const endDate = $('.datepicker').val().split('/').reverse();
     this.createTourModel = _.cloneDeep(this.createTourForm.value);
-    this.createTourModel.hotelLocation = this.hotelLocation;
+    this.createTourModel.hotelLocation = {
+      addressName: this.createTourForm.value.addressName,
+      latitude: this.createTourForm.value.latitude,
+      longitude: this.createTourForm.value.longitude,
+    };
+    this.createTourModel.supply = {
+      label: this.tourSupply.label,
+      value: this.tourSupply.value
+    };
     this.createTourModel.creationDate = new Date().toISOString();
     this.createTourModel.currency = 'USD';
     this.createTourModel.id = Math.floor(Math.random() * 100000000);
@@ -99,7 +116,6 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
 
   onSelectHotelLocation(location) {
     this.hotelLocation = location;
-    console.log('this.createTourForm', this.createTourForm);
   }
 
   newFileObs() {
@@ -167,7 +183,7 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
   }
 
   onSelectSupply(supply) {
-    this.createTourForm.value.supply = supply;
+    this.tourSupply = supply;
   }
 
   onSelectFlightIncluded(flightIncluded) {

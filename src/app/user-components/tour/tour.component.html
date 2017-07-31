@@ -64,6 +64,17 @@
       </mz-collapsible-item>
       <mz-collapsible-item [active]="true">
         <mz-collapsible-item-header>
+          <i class="fa fa-file-video-o" aria-hidden="true"></i>
+          Видео
+        </mz-collapsible-item-header>
+        <mz-collapsible-item-body>
+          <div class="video-container">
+            <iframe width="853" height="480" [src]="tourModel?.video" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </mz-collapsible-item-body>
+      </mz-collapsible-item>
+      <mz-collapsible-item [active]="true">
+        <mz-collapsible-item-header>
           <i mz-icon
              [align]="'left'"
              [icon]="'my_location'"

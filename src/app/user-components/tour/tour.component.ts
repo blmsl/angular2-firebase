@@ -8,6 +8,7 @@ import {OrderModalSharedDataService} from "./order-modal/order-modal-shared-data
 declare const $: any;
 import * as firebase from 'firebase/app';
 import {ProcessHandlerService} from "../../shared/services/process-handler.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-tour',
@@ -28,17 +29,19 @@ export class TourComponent implements OnInit, AfterViewInit {
               private toastService: MzToastService,
               private modalService: MzModalService,
               private orderModalSharedDataService: OrderModalSharedDataService,
-              private processHandlerService: ProcessHandlerService) { }
+              private processHandlerService: ProcessHandlerService,
+              public domSanitize: DomSanitizer) { }
 
   ngOnInit() {
     this.processHandlerService.start();
-    this.toursService.getObjectByKeyValue('orders/anonymous', 'telephoneNumber', 3333).subscribe((response) => {
-      console.log('response', response);
-    });
+    // this.toursService.getObjectByKeyValue('orders/anonymous', 'telephoneNumber', 3333).subscribe((response) => {
+    //   console.log('response', response);
+    // });
 
     this.activatedRoute.params.subscribe(params => {
       this.tourKey = params.key;
       this.toursService.getTourDetails(this.tourKey).subscribe((response) => {
+        response.video = this.domSanitize.bypassSecurityTrustResourceUrl(response.video);
         this.tourModel = response;
         this.initImageGallery();
         $('.materialboxed').materialbox();

@@ -59,10 +59,12 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
       departure: ['', Validators.required],
       supply: ['', Validators.required],
       flightIncluded: ['', Validators.required],
-      video: ['', Validators.required],
+      video: '',
       addressName: ['', Validators.required],
       latitude: ['', Validators.required],
       longitude: ['', Validators.required],
+      adults: ['', Validators.required],
+      children: ['', Validators.required],
     });
     this.getCountriesList();
     this.getServicesList();
@@ -82,10 +84,7 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
       latitude: this.createTourForm.value.latitude,
       longitude: this.createTourForm.value.longitude,
     };
-    this.createTourModel.supply = {
-      label: this.tourSupply.label,
-      value: this.tourSupply.value
-    };
+    this.createTourModel.supply = this.tourSupply;
     this.createTourModel.creationDate = new Date().toISOString();
     this.createTourModel.currency = 'USD';
     this.createTourModel.id = Math.floor(Math.random() * 100000000);
@@ -150,7 +149,6 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
 
   getSelectsValue() {
     this.createTourForm.value.stars = parseFloat($('.starsSelect').find('.select-dropdown').val());
-    console.log('this.createTourForm.value.stars', this.createTourForm.value.stars);
   }
 
   getServicesList() {
@@ -183,7 +181,7 @@ export class CreateNewTourComponent implements OnInit, AfterViewInit {
   }
 
   onSelectSupply(supply) {
-    this.tourSupply = supply;
+    this.tourSupply = _.find(this.supplyListForDropDown, {label: supply});
   }
 
   onSelectFlightIncluded(flightIncluded) {

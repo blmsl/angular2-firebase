@@ -21,7 +21,7 @@ export class TinymceTextareaComponent implements OnInit, AfterViewInit, OnDestro
     tinymce.init({
       selector: '#' + this.elementId,
       plugins: ['link', 'paste', 'table', 'textcolor'],
-        skin_url: '../../../assets/skins/lightgray',
+      skin_url: '../../../assets/skins/lightgray',
       setup: editor => {
         this.editor = editor;
         editor.on('keyup', () => {

@@ -62,13 +62,13 @@
           <div [innerHtml]="tourModel?.detailDescription"></div>
         </mz-collapsible-item-body>
       </mz-collapsible-item>
-      <mz-collapsible-item [active]="true" *ngIf="tourModel?.video">
+      <mz-collapsible-item [active]="true">
         <mz-collapsible-item-header>
           <i class="fa fa-file-video-o" aria-hidden="true"></i>
           Видео
         </mz-collapsible-item-header>
         <mz-collapsible-item-body>
-          <div class="video-container">
+          <div class="video-container" *ngIf="tourModel?.video">
             <iframe width="853" height="480" [src]="tourModel?.video" frameborder="0" allowfullscreen></iframe>
           </div>
         </mz-collapsible-item-body>
@@ -125,6 +125,15 @@
                   <i class="fa fa-cutlery" aria-hidden="true"></i>
                   <span>{{tourModel?.supply.label}}</span>
                   <p class="f-s-10 m-t-2p m-b-2p">*{{tourModel?.supply.value}}</p>
+                </li>
+                <li class="collection-item">
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                  <span>
+                    {{tourModel?.adults}} взрослых
+                  </span>
+                  <span *ngIf="tourModel?.children && (tourModel?.children > 0)">
+                    {{tourModel?.children}} детей
+                  </span>
                 </li>
                 <li class="collection-item">
                   <i class="fa fa-bed" aria-hidden="true"></i> {{tourModel?.days}} дней {{tourModel?.nights}} ночей

@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fceb9f3c-e06f-4388-9155-7bf6b3827719" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/components/tinymce-textarea/tinymce-textarea.component.ts" afterPath="$PROJECT_DIR$/src/app/shared/components/tinymce-textarea/tinymce-textarea.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/user-components/tour-listing/tour-item/tour-item.component.html" afterPath="$PROJECT_DIR$/src/app/user-components/tour-listing/tour-item/tour-item.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/user-components/tour/tour.component.html" afterPath="$PROJECT_DIR$/src/app/user-components/tour/tour.component.html" />
     </list>
     <ignored path="poehaly-angular-firebase.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/src/app/user-components/tour/tour.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="424">
-              <caret line="135" column="25" lean-forward="true" selection-start-line="129" selection-start-column="18" selection-end-line="135" selection-end-column="25" />
+              <caret line="135" column="25" lean-forward="false" selection-start-line="129" selection-start-column="18" selection-end-line="135" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -38,8 +35,8 @@
       <file leaf-file-name="tour-item.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/user-components/tour-listing/tour-item/tour-item.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+            <state relative-caret-position="362">
+              <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -61,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/src/app/shared/components/tinymce-textarea/tinymce-textarea.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="172">
-              <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+              <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -606,12 +603,12 @@
       <workItem from="1500121336634" duration="12649000" />
       <workItem from="1500838757873" duration="5534000" />
       <workItem from="1501411098216" duration="5049000" />
-      <workItem from="1501524403192" duration="12788000" />
+      <workItem from="1501524403192" duration="13263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="427991000" />
+    <option name="totallyTimeSpent" value="428466000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -985,10 +982,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="0" column="35706" lean-forward="false" selection-start-line="0" selection-start-column="35706" selection-end-line="0" selection-end-column="35706" />
-          <folding>
-            <element signature="e#3479#3714#2" expanded="true" />
-            <element signature="e#4732#4837#2" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,7 +1016,7 @@
     <entry file="file://$PROJECT_DIR$/src/app/shared/components/tinymce-textarea/tinymce-textarea.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
-          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+          <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1048,15 +1042,15 @@
     <entry file="file://$PROJECT_DIR$/src/app/user-components/tour/tour.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="424">
-          <caret line="135" column="25" lean-forward="true" selection-start-line="129" selection-start-column="18" selection-end-line="135" selection-end-column="25" />
+          <caret line="135" column="25" lean-forward="false" selection-start-line="129" selection-start-column="18" selection-end-line="135" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/user-components/tour-listing/tour-item/tour-item.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+        <state relative-caret-position="362">
+          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
           <folding />
         </state>
       </provider>

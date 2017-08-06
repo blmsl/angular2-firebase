@@ -49,7 +49,7 @@
       [mode]="'expandable'"
       [popout]="false"
       class="all-packages">
-      <mz-collapsible-item [active]="true">
+      <mz-collapsible-item>
         <mz-collapsible-item-header>
           <i mz-icon
              [align]="'left'"
@@ -62,7 +62,7 @@
           <div [innerHtml]="tourModel?.detailDescription"></div>
         </mz-collapsible-item-body>
       </mz-collapsible-item>
-      <mz-collapsible-item [active]="true">
+      <mz-collapsible-item>
         <mz-collapsible-item-header>
           <i class="fa fa-file-video-o" aria-hidden="true"></i>
           Видео
@@ -73,8 +73,8 @@
           </div>
         </mz-collapsible-item-body>
       </mz-collapsible-item>
-      <mz-collapsible-item [active]="true">
-        <mz-collapsible-item-header>
+      <mz-collapsible-item>
+        <mz-collapsible-item-header (click)="openMapColapseble()">
           <i mz-icon
              [align]="'left'"
              [icon]="'my_location'"

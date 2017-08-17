@@ -1,14 +1,14 @@
-import {Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ToursService} from '../../shared/services/tours.service';
 import * as _ from 'lodash';
 import {MzModalService, MzToastService} from 'ng2-materialize';
 import {OrderModalComponent} from './order-modal/order-modal.component';
-import {OrderModalSharedDataService} from './order-modal/order-modal-shared-data.service';
+import {OrderModalSharedDataService} from "./order-modal/order-modal-shared-data.service";
 declare const $: any;
 import * as firebase from 'firebase/app';
-import {ProcessHandlerService} from '../../shared/services/process-handler.service';
-import {DomSanitizer} from '@angular/platform-browser';
+import {ProcessHandlerService} from "../../shared/services/process-handler.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-tour',
@@ -16,7 +16,7 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./tour.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class TourComponent implements OnInit {
+export class TourComponent implements OnInit, AfterViewInit {
   tourKey;
   tourModel;
   alreadyLoaded;
@@ -80,11 +80,12 @@ export class TourComponent implements OnInit {
     this.modalService.open(OrderModalComponent);
   }
 
-  openMapColapseble() {
+  ngAfterViewInit() {
     const mapTimeOut = setTimeout(() => {
       this.alreadyLoaded = true;
       clearTimeout(mapTimeOut);
     }, 200);
   }
+
 
 }

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterializeModule } from 'ng2-materialize';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 import { AppComponent } from './app.component';
@@ -56,6 +58,7 @@ firebase.initializeApp(Constants.fireBaseConfig);
     AppRoutingModule,
     MaterializeModule.forRoot(),
     AngularFireDatabaseModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(Constants.fireBaseConfig),
   ],
   providers: [

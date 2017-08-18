@@ -3,7 +3,7 @@ var app = express();
 
 /* serves main page */
 app.get("/", function(req, res) {
-  res.sendfile('dist/index.htm')
+  res.sendfile('dist')
 });
 
 app.post("/user/add", function(req, res) {

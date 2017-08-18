@@ -3,7 +3,7 @@ var app = express();
 
 /* serves main page */
 app.get("/", function(req, res) {
-  res.sendfile('dist')
+  res.sendfile('./dist/')
 });
 
 app.post("/user/add", function(req, res) {
@@ -13,11 +13,11 @@ app.post("/user/add", function(req, res) {
 
 /* serves all the static files */
 app.get(/^(.+)$/, function(req, res) {
-  console.log('static file request : ' + req.params);
-  res.sendfile( __dirname + req.params[0]);
+  console.log('static file request : ' + req.params[0]);
+  res.sendfile('dist/' + req.params[0]);
 });
 
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 80;
 app.listen(port, function() {
   console.log("Listening on " + port);
 });

@@ -8,7 +8,7 @@ app.all('*', (req, res) => {
   res.sendfile('dist/');
 });
 
-var port = '4300';
+var port = '80';
 app.listen(port, function() {
   console.log("Listening on " + port);
 });

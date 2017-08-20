@@ -8,7 +8,7 @@ app.all('/portal/*', (req, res) => {
   res.sendfile('dist/');
 });
 
-var port = '83';
+var port = '80';
 app.listen(port, function() {
   console.log("Listening on " + port);
 });

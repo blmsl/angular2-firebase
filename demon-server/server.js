@@ -4,7 +4,7 @@ var app = express();
 app.use(compression());
 app.use(express.static('dist'));
 
-app.all('*', (req, res) => {
+app.all('/portal/*', (req, res) => {
   res.sendfile('dist/');
 });
 
